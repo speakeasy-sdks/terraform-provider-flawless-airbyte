@@ -5,7 +5,7 @@ package shared
 type Notification struct {
 	CustomerioConfiguration *CustomerioNotificationConfiguration `json:"customerioConfiguration,omitempty"`
 	NotificationType        NotificationType                     `json:"notificationType"`
-	SendOnFailure           bool                                 `json:"sendOnFailure"`
-	SendOnSuccess           bool                                 `json:"sendOnSuccess"`
+	SendOnFailure           *bool                                `json:"sendOnFailure,omitempty"`
+	SendOnSuccess           *bool                                `json:"sendOnSuccess,omitempty"`
 	SlackConfiguration      *SlackNotificationConfiguration      `json:"slackConfiguration,omitempty"`
 }

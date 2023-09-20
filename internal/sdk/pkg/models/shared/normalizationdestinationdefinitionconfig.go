@@ -11,5 +11,5 @@ type NormalizationDestinationDefinitionConfig struct {
 	// a field indicating the tag of the docker repository to be used for normalization.
 	NormalizationTag *string `json:"normalizationTag,omitempty"`
 	// whether the destination definition supports normalization.
-	Supported bool `json:"supported"`
+	Supported *bool `json:"supported,omitempty"`
 }
