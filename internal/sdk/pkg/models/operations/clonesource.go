@@ -8,13 +8,16 @@ import (
 )
 
 type CloneSourceResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Input failed validation
 	InvalidInputExceptionInfo *shared.InvalidInputExceptionInfo
 	// Object with given id was not found.
 	NotFoundKnownExceptionInfo *shared.NotFoundKnownExceptionInfo
 	// Successful operation
-	SourceRead  *shared.SourceRead
-	StatusCode  int
+	SourceRead *shared.SourceRead
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }

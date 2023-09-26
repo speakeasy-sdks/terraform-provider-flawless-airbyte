@@ -8,6 +8,7 @@ import (
 )
 
 type ListSourcesForWorkspaceResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Input failed validation
 	InvalidInputExceptionInfo *shared.InvalidInputExceptionInfo
@@ -15,6 +16,8 @@ type ListSourcesForWorkspaceResponse struct {
 	NotFoundKnownExceptionInfo *shared.NotFoundKnownExceptionInfo
 	// Successful operation
 	SourceReadList *shared.SourceReadList
-	StatusCode     int
-	RawResponse    *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }

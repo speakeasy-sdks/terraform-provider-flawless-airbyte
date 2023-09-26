@@ -8,6 +8,7 @@ import (
 )
 
 type SyncConnectionResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Input failed validation
 	InvalidInputExceptionInfo *shared.InvalidInputExceptionInfo
@@ -15,6 +16,8 @@ type SyncConnectionResponse struct {
 	JobInfoRead *shared.JobInfoRead
 	// Object with given id was not found.
 	NotFoundKnownExceptionInfo *shared.NotFoundKnownExceptionInfo
-	StatusCode                 int
-	RawResponse                *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }

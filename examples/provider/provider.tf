@@ -2,7 +2,7 @@ terraform {
   required_providers {
     airbyte = {
       source  = "flawless/airbyte"
-      version = "0.1.2"
+      version = "0.2.0"
     }
   }
 }

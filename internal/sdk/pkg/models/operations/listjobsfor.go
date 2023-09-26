@@ -8,6 +8,7 @@ import (
 )
 
 type ListJobsForResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Input failed validation
 	InvalidInputExceptionInfo *shared.InvalidInputExceptionInfo
@@ -15,6 +16,8 @@ type ListJobsForResponse struct {
 	JobReadList *shared.JobReadList
 	// Object with given id was not found.
 	NotFoundKnownExceptionInfo *shared.NotFoundKnownExceptionInfo
-	StatusCode                 int
-	RawResponse                *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
