@@ -16,7 +16,7 @@ terraform {
   required_providers {
     airbyte = {
       source  = "flawless/airbyte"
-      version = "0.2.0"
+      version = "0.2.1"
     }
   }
 }
@@ -51,8 +51,6 @@ TF_REATTACH_PROVIDERS=... terraform apply
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
