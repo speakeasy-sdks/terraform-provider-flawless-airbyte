@@ -2,9 +2,60 @@
 
 package shared
 
+import (
+	"encoding/json"
+)
+
 // ActorDefinitionResourceRequirements - actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
 type ActorDefinitionResourceRequirements struct {
 	// optional resource requirements to run workers (blank for unbounded allocations)
 	Default     *ResourceRequirements  `json:"default,omitempty"`
 	JobSpecific []JobTypeResourceLimit `json:"jobSpecific,omitempty"`
+
+	AdditionalProperties interface{} `json:"-"`
+}
+type _ActorDefinitionResourceRequirements ActorDefinitionResourceRequirements
+
+func (c *ActorDefinitionResourceRequirements) UnmarshalJSON(bs []byte) error {
+	data := _ActorDefinitionResourceRequirements{}
+
+	if err := json.Unmarshal(bs, &data); err != nil {
+		return err
+	}
+	*c = ActorDefinitionResourceRequirements(data)
+
+	additionalFields := make(map[string]interface{})
+
+	if err := json.Unmarshal(bs, &additionalFields); err != nil {
+		return err
+	}
+	delete(additionalFields, "default")
+	delete(additionalFields, "jobSpecific")
+
+	c.AdditionalProperties = additionalFields
+
+	return nil
+}
+
+func (c ActorDefinitionResourceRequirements) MarshalJSON() ([]byte, error) {
+	out := map[string]interface{}{}
+	bs, err := json.Marshal(_ActorDefinitionResourceRequirements(c))
+	if err != nil {
+		return nil, err
+	}
+
+	if err := json.Unmarshal([]byte(bs), &out); err != nil {
+		return nil, err
+	}
+
+	bs, err = json.Marshal(c.AdditionalProperties)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := json.Unmarshal([]byte(bs), &out); err != nil {
+		return nil, err
+	}
+
+	return json.Marshal(out)
 }

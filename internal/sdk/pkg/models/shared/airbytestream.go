@@ -2,6 +2,10 @@
 
 package shared
 
+import (
+	"encoding/json"
+)
+
 // AirbyteStream - the immutable schema defined by the source
 type AirbyteStream struct {
 	// Path to the field that will be used to determine if a record is new or modified since the last sync. If not provided by the source, the end user will have to specify the comparable themselves.
@@ -17,4 +21,56 @@ type AirbyteStream struct {
 	// If the source defines the primary key, paths to the fields that will be used as a primary key. If not provided by the source, the end user will have to specify the primary key themselves.
 	SourceDefinedPrimaryKey [][]string `json:"sourceDefinedPrimaryKey,omitempty"`
 	SupportedSyncModes      []SyncMode `json:"supportedSyncModes,omitempty"`
+
+	AdditionalProperties interface{} `json:"-"`
+}
+type _AirbyteStream AirbyteStream
+
+func (c *AirbyteStream) UnmarshalJSON(bs []byte) error {
+	data := _AirbyteStream{}
+
+	if err := json.Unmarshal(bs, &data); err != nil {
+		return err
+	}
+	*c = AirbyteStream(data)
+
+	additionalFields := make(map[string]interface{})
+
+	if err := json.Unmarshal(bs, &additionalFields); err != nil {
+		return err
+	}
+	delete(additionalFields, "defaultCursorField")
+	delete(additionalFields, "jsonSchema")
+	delete(additionalFields, "name")
+	delete(additionalFields, "namespace")
+	delete(additionalFields, "sourceDefinedCursor")
+	delete(additionalFields, "sourceDefinedPrimaryKey")
+	delete(additionalFields, "supportedSyncModes")
+
+	c.AdditionalProperties = additionalFields
+
+	return nil
+}
+
+func (c AirbyteStream) MarshalJSON() ([]byte, error) {
+	out := map[string]interface{}{}
+	bs, err := json.Marshal(_AirbyteStream(c))
+	if err != nil {
+		return nil, err
+	}
+
+	if err := json.Unmarshal([]byte(bs), &out); err != nil {
+		return nil, err
+	}
+
+	bs, err = json.Marshal(c.AdditionalProperties)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := json.Unmarshal([]byte(bs), &out); err != nil {
+		return nil, err
+	}
+
+	return json.Marshal(out)
 }

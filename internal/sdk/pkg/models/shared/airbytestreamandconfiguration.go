@@ -2,10 +2,61 @@
 
 package shared
 
+import (
+	"encoding/json"
+)
+
 // AirbyteStreamAndConfiguration - each stream is split in two parts; the immutable schema from source and mutable configuration for destination
 type AirbyteStreamAndConfiguration struct {
 	// the mutable part of the stream to configure the destination
 	Config *AirbyteStreamConfiguration `json:"config,omitempty"`
 	// the immutable schema defined by the source
 	Stream *AirbyteStream `json:"stream,omitempty"`
+
+	AdditionalProperties interface{} `json:"-"`
+}
+type _AirbyteStreamAndConfiguration AirbyteStreamAndConfiguration
+
+func (c *AirbyteStreamAndConfiguration) UnmarshalJSON(bs []byte) error {
+	data := _AirbyteStreamAndConfiguration{}
+
+	if err := json.Unmarshal(bs, &data); err != nil {
+		return err
+	}
+	*c = AirbyteStreamAndConfiguration(data)
+
+	additionalFields := make(map[string]interface{})
+
+	if err := json.Unmarshal(bs, &additionalFields); err != nil {
+		return err
+	}
+	delete(additionalFields, "config")
+	delete(additionalFields, "stream")
+
+	c.AdditionalProperties = additionalFields
+
+	return nil
+}
+
+func (c AirbyteStreamAndConfiguration) MarshalJSON() ([]byte, error) {
+	out := map[string]interface{}{}
+	bs, err := json.Marshal(_AirbyteStreamAndConfiguration(c))
+	if err != nil {
+		return nil, err
+	}
+
+	if err := json.Unmarshal([]byte(bs), &out); err != nil {
+		return nil, err
+	}
+
+	bs, err = json.Marshal(c.AdditionalProperties)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := json.Unmarshal([]byte(bs), &out); err != nil {
+		return nil, err
+	}
+
+	return json.Marshal(out)
 }

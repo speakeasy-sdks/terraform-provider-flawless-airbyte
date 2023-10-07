@@ -2,10 +2,61 @@
 
 package shared
 
+import (
+	"encoding/json"
+)
+
 // JobTypeResourceLimit - sets resource requirements for a specific job type for an actor definition. these values override the default, if both are set.
 type JobTypeResourceLimit struct {
 	// enum that describes the different types of jobs that the platform runs.
 	JobType JobType `json:"jobType"`
 	// optional resource requirements to run workers (blank for unbounded allocations)
 	ResourceRequirements ResourceRequirements `json:"resourceRequirements"`
+
+	AdditionalProperties interface{} `json:"-"`
+}
+type _JobTypeResourceLimit JobTypeResourceLimit
+
+func (c *JobTypeResourceLimit) UnmarshalJSON(bs []byte) error {
+	data := _JobTypeResourceLimit{}
+
+	if err := json.Unmarshal(bs, &data); err != nil {
+		return err
+	}
+	*c = JobTypeResourceLimit(data)
+
+	additionalFields := make(map[string]interface{})
+
+	if err := json.Unmarshal(bs, &additionalFields); err != nil {
+		return err
+	}
+	delete(additionalFields, "jobType")
+	delete(additionalFields, "resourceRequirements")
+
+	c.AdditionalProperties = additionalFields
+
+	return nil
+}
+
+func (c JobTypeResourceLimit) MarshalJSON() ([]byte, error) {
+	out := map[string]interface{}{}
+	bs, err := json.Marshal(_JobTypeResourceLimit(c))
+	if err != nil {
+		return nil, err
+	}
+
+	if err := json.Unmarshal([]byte(bs), &out); err != nil {
+		return nil, err
+	}
+
+	bs, err = json.Marshal(c.AdditionalProperties)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := json.Unmarshal([]byte(bs), &out); err != nil {
+		return nil, err
+	}
+
+	return json.Marshal(out)
 }

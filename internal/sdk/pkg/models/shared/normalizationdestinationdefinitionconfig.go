@@ -2,6 +2,10 @@
 
 package shared
 
+import (
+	"encoding/json"
+)
+
 // NormalizationDestinationDefinitionConfig - describes a normalization config for destination definition
 type NormalizationDestinationDefinitionConfig struct {
 	// a field indicating the type of integration dialect to use for normalization.
@@ -12,4 +16,53 @@ type NormalizationDestinationDefinitionConfig struct {
 	NormalizationTag *string `json:"normalizationTag,omitempty"`
 	// whether the destination definition supports normalization.
 	Supported *bool `json:"supported,omitempty"`
+
+	AdditionalProperties interface{} `json:"-"`
+}
+type _NormalizationDestinationDefinitionConfig NormalizationDestinationDefinitionConfig
+
+func (c *NormalizationDestinationDefinitionConfig) UnmarshalJSON(bs []byte) error {
+	data := _NormalizationDestinationDefinitionConfig{}
+
+	if err := json.Unmarshal(bs, &data); err != nil {
+		return err
+	}
+	*c = NormalizationDestinationDefinitionConfig(data)
+
+	additionalFields := make(map[string]interface{})
+
+	if err := json.Unmarshal(bs, &additionalFields); err != nil {
+		return err
+	}
+	delete(additionalFields, "normalizationIntegrationType")
+	delete(additionalFields, "normalizationRepository")
+	delete(additionalFields, "normalizationTag")
+	delete(additionalFields, "supported")
+
+	c.AdditionalProperties = additionalFields
+
+	return nil
+}
+
+func (c NormalizationDestinationDefinitionConfig) MarshalJSON() ([]byte, error) {
+	out := map[string]interface{}{}
+	bs, err := json.Marshal(_NormalizationDestinationDefinitionConfig(c))
+	if err != nil {
+		return nil, err
+	}
+
+	if err := json.Unmarshal([]byte(bs), &out); err != nil {
+		return nil, err
+	}
+
+	bs, err = json.Marshal(c.AdditionalProperties)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := json.Unmarshal([]byte(bs), &out); err != nil {
+		return nil, err
+	}
+
+	return json.Marshal(out)
 }
