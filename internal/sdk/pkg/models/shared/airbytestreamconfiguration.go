@@ -2,10 +2,6 @@
 
 package shared
 
-import (
-	"encoding/json"
-)
-
 // AirbyteStreamConfiguration - the mutable part of the stream to configure the destination
 type AirbyteStreamConfiguration struct {
 	// Alias name to the stream to be used in the destination
@@ -24,58 +20,4 @@ type AirbyteStreamConfiguration struct {
 	// Does the connector suggest that this stream be enabled by default?
 	Suggested *bool    `json:"suggested,omitempty"`
 	SyncMode  SyncMode `json:"syncMode"`
-
-	AdditionalProperties interface{} `json:"-"`
-}
-type _AirbyteStreamConfiguration AirbyteStreamConfiguration
-
-func (c *AirbyteStreamConfiguration) UnmarshalJSON(bs []byte) error {
-	data := _AirbyteStreamConfiguration{}
-
-	if err := json.Unmarshal(bs, &data); err != nil {
-		return err
-	}
-	*c = AirbyteStreamConfiguration(data)
-
-	additionalFields := make(map[string]interface{})
-
-	if err := json.Unmarshal(bs, &additionalFields); err != nil {
-		return err
-	}
-	delete(additionalFields, "aliasName")
-	delete(additionalFields, "cursorField")
-	delete(additionalFields, "destinationSyncMode")
-	delete(additionalFields, "fieldSelectionEnabled")
-	delete(additionalFields, "primaryKey")
-	delete(additionalFields, "selected")
-	delete(additionalFields, "selectedFields")
-	delete(additionalFields, "suggested")
-	delete(additionalFields, "syncMode")
-
-	c.AdditionalProperties = additionalFields
-
-	return nil
-}
-
-func (c AirbyteStreamConfiguration) MarshalJSON() ([]byte, error) {
-	out := map[string]interface{}{}
-	bs, err := json.Marshal(_AirbyteStreamConfiguration(c))
-	if err != nil {
-		return nil, err
-	}
-
-	if err := json.Unmarshal([]byte(bs), &out); err != nil {
-		return nil, err
-	}
-
-	bs, err = json.Marshal(c.AdditionalProperties)
-	if err != nil {
-		return nil, err
-	}
-
-	if err := json.Unmarshal([]byte(bs), &out); err != nil {
-		return nil, err
-	}
-
-	return json.Marshal(out)
 }

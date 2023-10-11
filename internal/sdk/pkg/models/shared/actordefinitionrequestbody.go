@@ -2,58 +2,7 @@
 
 package shared
 
-import (
-	"encoding/json"
-)
-
 type ActorDefinitionRequestBody struct {
 	ActorDefinitionID string    `json:"actorDefinitionId"`
 	ActorType         ActorType `json:"actorType"`
-
-	AdditionalProperties interface{} `json:"-"`
-}
-type _ActorDefinitionRequestBody ActorDefinitionRequestBody
-
-func (c *ActorDefinitionRequestBody) UnmarshalJSON(bs []byte) error {
-	data := _ActorDefinitionRequestBody{}
-
-	if err := json.Unmarshal(bs, &data); err != nil {
-		return err
-	}
-	*c = ActorDefinitionRequestBody(data)
-
-	additionalFields := make(map[string]interface{})
-
-	if err := json.Unmarshal(bs, &additionalFields); err != nil {
-		return err
-	}
-	delete(additionalFields, "actorDefinitionId")
-	delete(additionalFields, "actorType")
-
-	c.AdditionalProperties = additionalFields
-
-	return nil
-}
-
-func (c ActorDefinitionRequestBody) MarshalJSON() ([]byte, error) {
-	out := map[string]interface{}{}
-	bs, err := json.Marshal(_ActorDefinitionRequestBody(c))
-	if err != nil {
-		return nil, err
-	}
-
-	if err := json.Unmarshal([]byte(bs), &out); err != nil {
-		return nil, err
-	}
-
-	bs, err = json.Marshal(c.AdditionalProperties)
-	if err != nil {
-		return nil, err
-	}
-
-	if err := json.Unmarshal([]byte(bs), &out); err != nil {
-		return nil, err
-	}
-
-	return json.Marshal(out)
 }

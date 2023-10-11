@@ -181,9 +181,9 @@ func New(opts ...SDKOption) *Airbyte {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "terraform",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.5.1",
-			GenVersion:        "2.150.0",
-			UserAgent:         "speakeasy-sdk/terraform 0.5.1 2.150.0 1.0.0 airbyte",
+			SDKVersion:        "0.5.2",
+			GenVersion:        "2.152.1",
+			UserAgent:         "speakeasy-sdk/terraform 0.5.2 2.152.1 1.0.0 airbyte",
 		},
 	}
 	for _, opt := range opts {
