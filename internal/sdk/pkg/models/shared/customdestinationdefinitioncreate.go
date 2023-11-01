@@ -6,3 +6,17 @@ type CustomDestinationDefinitionCreate struct {
 	DestinationDefinition DestinationDefinitionCreate `json:"destinationDefinition"`
 	WorkspaceID           string                      `json:"workspaceId"`
 }
+
+func (o *CustomDestinationDefinitionCreate) GetDestinationDefinition() DestinationDefinitionCreate {
+	if o == nil {
+		return DestinationDefinitionCreate{}
+	}
+	return o.DestinationDefinition
+}
+
+func (o *CustomDestinationDefinitionCreate) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

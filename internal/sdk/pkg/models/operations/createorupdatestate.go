@@ -21,3 +21,45 @@ type CreateOrUpdateStateResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *CreateOrUpdateStateResponse) GetConnectionState() *shared.ConnectionState {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionState
+}
+
+func (o *CreateOrUpdateStateResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateOrUpdateStateResponse) GetInvalidInputExceptionInfo() *shared.InvalidInputExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidInputExceptionInfo
+}
+
+func (o *CreateOrUpdateStateResponse) GetNotFoundKnownExceptionInfo() *shared.NotFoundKnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.NotFoundKnownExceptionInfo
+}
+
+func (o *CreateOrUpdateStateResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateOrUpdateStateResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

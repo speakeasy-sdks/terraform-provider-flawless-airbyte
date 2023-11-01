@@ -6,3 +6,17 @@ type SourceDefinitionIDWithWorkspaceID struct {
 	SourceDefinitionID string `json:"sourceDefinitionId"`
 	WorkspaceID        string `json:"workspaceId"`
 }
+
+func (o *SourceDefinitionIDWithWorkspaceID) GetSourceDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceDefinitionID
+}
+
+func (o *SourceDefinitionIDWithWorkspaceID) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

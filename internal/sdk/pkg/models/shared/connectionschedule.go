@@ -48,3 +48,17 @@ type ConnectionSchedule struct {
 	TimeUnit ConnectionScheduleTimeUnit `json:"timeUnit"`
 	Units    int64                      `json:"units"`
 }
+
+func (o *ConnectionSchedule) GetTimeUnit() ConnectionScheduleTimeUnit {
+	if o == nil {
+		return ConnectionScheduleTimeUnit("")
+	}
+	return o.TimeUnit
+}
+
+func (o *ConnectionSchedule) GetUnits() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Units
+}

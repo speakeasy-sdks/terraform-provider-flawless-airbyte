@@ -21,3 +21,45 @@ type UpdateWorkspaceNameResponse struct {
 	// Successful operation
 	WorkspaceRead *shared.WorkspaceRead
 }
+
+func (o *UpdateWorkspaceNameResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateWorkspaceNameResponse) GetInvalidInputExceptionInfo() *shared.InvalidInputExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidInputExceptionInfo
+}
+
+func (o *UpdateWorkspaceNameResponse) GetNotFoundKnownExceptionInfo() *shared.NotFoundKnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.NotFoundKnownExceptionInfo
+}
+
+func (o *UpdateWorkspaceNameResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateWorkspaceNameResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *UpdateWorkspaceNameResponse) GetWorkspaceRead() *shared.WorkspaceRead {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceRead
+}

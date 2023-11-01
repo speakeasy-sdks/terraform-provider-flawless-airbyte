@@ -5,3 +5,10 @@ package shared
 type JobOptionalRead struct {
 	Job *JobRead `json:"job,omitempty"`
 }
+
+func (o *JobOptionalRead) GetJob() *JobRead {
+	if o == nil {
+		return nil
+	}
+	return o.Job
+}

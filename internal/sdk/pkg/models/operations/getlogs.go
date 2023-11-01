@@ -21,3 +21,45 @@ type GetLogsResponse struct {
 	// Returns the log file
 	GetLogs200TextPlainBinaryString []byte
 }
+
+func (o *GetLogsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetLogsResponse) GetInvalidInputExceptionInfo() *shared.InvalidInputExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidInputExceptionInfo
+}
+
+func (o *GetLogsResponse) GetNotFoundKnownExceptionInfo() *shared.NotFoundKnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.NotFoundKnownExceptionInfo
+}
+
+func (o *GetLogsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetLogsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *GetLogsResponse) GetGetLogs200TextPlainBinaryString() []byte {
+	if o == nil {
+		return nil
+	}
+	return o.GetLogs200TextPlainBinaryString
+}

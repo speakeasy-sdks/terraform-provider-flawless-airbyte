@@ -14,3 +14,73 @@ type AttemptRead struct {
 	TotalStats     *AttemptStats          `json:"totalStats,omitempty"`
 	UpdatedAt      int64                  `json:"updatedAt"`
 }
+
+func (o *AttemptRead) GetBytesSynced() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.BytesSynced
+}
+
+func (o *AttemptRead) GetCreatedAt() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.CreatedAt
+}
+
+func (o *AttemptRead) GetEndedAt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EndedAt
+}
+
+func (o *AttemptRead) GetFailureSummary() *AttemptFailureSummary {
+	if o == nil {
+		return nil
+	}
+	return o.FailureSummary
+}
+
+func (o *AttemptRead) GetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ID
+}
+
+func (o *AttemptRead) GetRecordsSynced() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RecordsSynced
+}
+
+func (o *AttemptRead) GetStatus() AttemptStatus {
+	if o == nil {
+		return AttemptStatus("")
+	}
+	return o.Status
+}
+
+func (o *AttemptRead) GetStreamStats() []AttemptStreamStats {
+	if o == nil {
+		return nil
+	}
+	return o.StreamStats
+}
+
+func (o *AttemptRead) GetTotalStats() *AttemptStats {
+	if o == nil {
+		return nil
+	}
+	return o.TotalStats
+}
+
+func (o *AttemptRead) GetUpdatedAt() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.UpdatedAt
+}

@@ -10,3 +10,24 @@ type WebhookConfigWrite struct {
 	// if supplied, the webhook config will be validated by checking that this URL returns a 2xx response.
 	ValidationURL *string `json:"validationUrl,omitempty"`
 }
+
+func (o *WebhookConfigWrite) GetAuthToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AuthToken
+}
+
+func (o *WebhookConfigWrite) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *WebhookConfigWrite) GetValidationURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValidationURL
+}

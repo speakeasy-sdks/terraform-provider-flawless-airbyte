@@ -7,3 +7,24 @@ type NotificationItem struct {
 	NotificationType        []NotificationType                   `json:"notificationType,omitempty"`
 	SlackConfiguration      *SlackNotificationConfiguration      `json:"slackConfiguration,omitempty"`
 }
+
+func (o *NotificationItem) GetCustomerioConfiguration() *CustomerioNotificationConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.CustomerioConfiguration
+}
+
+func (o *NotificationItem) GetNotificationType() []NotificationType {
+	if o == nil {
+		return nil
+	}
+	return o.NotificationType
+}
+
+func (o *NotificationItem) GetSlackConfiguration() *SlackNotificationConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.SlackConfiguration
+}

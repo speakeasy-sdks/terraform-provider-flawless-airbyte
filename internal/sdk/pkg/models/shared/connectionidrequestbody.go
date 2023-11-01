@@ -5,3 +5,10 @@ package shared
 type ConnectionIDRequestBody struct {
 	ConnectionID string `json:"connectionId"`
 }
+
+func (o *ConnectionIDRequestBody) GetConnectionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConnectionID
+}

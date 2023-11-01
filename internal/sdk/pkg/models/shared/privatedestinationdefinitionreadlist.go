@@ -5,3 +5,10 @@ package shared
 type PrivateDestinationDefinitionReadList struct {
 	DestinationDefinitions []PrivateDestinationDefinitionRead `json:"destinationDefinitions"`
 }
+
+func (o *PrivateDestinationDefinitionReadList) GetDestinationDefinitions() []PrivateDestinationDefinitionRead {
+	if o == nil {
+		return []PrivateDestinationDefinitionRead{}
+	}
+	return o.DestinationDefinitions
+}

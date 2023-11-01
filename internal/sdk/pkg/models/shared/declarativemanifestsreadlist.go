@@ -5,3 +5,10 @@ package shared
 type DeclarativeManifestsReadList struct {
 	ManifestVersions []DeclarativeManifestVersionRead `json:"manifestVersions"`
 }
+
+func (o *DeclarativeManifestsReadList) GetManifestVersions() []DeclarativeManifestVersionRead {
+	if o == nil {
+		return []DeclarativeManifestVersionRead{}
+	}
+	return o.ManifestVersions
+}

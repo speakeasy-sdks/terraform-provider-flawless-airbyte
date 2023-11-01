@@ -9,3 +9,38 @@ type SourceSnippetRead struct {
 	SourceID           string  `json:"sourceId"`
 	SourceName         string  `json:"sourceName"`
 }
+
+func (o *SourceSnippetRead) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *SourceSnippetRead) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *SourceSnippetRead) GetSourceDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceDefinitionID
+}
+
+func (o *SourceSnippetRead) GetSourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceID
+}
+
+func (o *SourceSnippetRead) GetSourceName() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceName
+}

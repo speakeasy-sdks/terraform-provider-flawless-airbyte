@@ -7,3 +7,24 @@ type CompleteOAuthResponse struct {
 	RequestError     *string                `json:"request_error,omitempty"`
 	RequestSucceeded bool                   `json:"request_succeeded"`
 }
+
+func (o *CompleteOAuthResponse) GetAuthPayload() map[string]interface{} {
+	if o == nil {
+		return map[string]interface{}{}
+	}
+	return o.AuthPayload
+}
+
+func (o *CompleteOAuthResponse) GetRequestError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RequestError
+}
+
+func (o *CompleteOAuthResponse) GetRequestSucceeded() bool {
+	if o == nil {
+		return false
+	}
+	return o.RequestSucceeded
+}

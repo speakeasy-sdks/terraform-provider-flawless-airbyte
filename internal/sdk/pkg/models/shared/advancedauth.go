@@ -42,3 +42,31 @@ type AdvancedAuth struct {
 	// Value of the predicate_key fields for the advanced auth to be applicable.
 	PredicateValue *string `json:"predicateValue,omitempty"`
 }
+
+func (o *AdvancedAuth) GetAuthFlowType() *AdvancedAuthAuthFlowType {
+	if o == nil {
+		return nil
+	}
+	return o.AuthFlowType
+}
+
+func (o *AdvancedAuth) GetOauthConfigSpecification() *OAuthConfigSpecification {
+	if o == nil {
+		return nil
+	}
+	return o.OauthConfigSpecification
+}
+
+func (o *AdvancedAuth) GetPredicateKey() []string {
+	if o == nil {
+		return nil
+	}
+	return o.PredicateKey
+}
+
+func (o *AdvancedAuth) GetPredicateValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PredicateValue
+}

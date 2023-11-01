@@ -7,3 +7,17 @@ type SourceCloneConfiguration struct {
 	ConnectionConfiguration interface{} `json:"connectionConfiguration,omitempty"`
 	Name                    *string     `json:"name,omitempty"`
 }
+
+func (o *SourceCloneConfiguration) GetConnectionConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionConfiguration
+}
+
+func (o *SourceCloneConfiguration) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

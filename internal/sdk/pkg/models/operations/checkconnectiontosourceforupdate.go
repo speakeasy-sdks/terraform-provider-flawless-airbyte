@@ -21,3 +21,45 @@ type CheckConnectionToSourceForUpdateResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *CheckConnectionToSourceForUpdateResponse) GetCheckConnectionRead() *shared.CheckConnectionRead {
+	if o == nil {
+		return nil
+	}
+	return o.CheckConnectionRead
+}
+
+func (o *CheckConnectionToSourceForUpdateResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CheckConnectionToSourceForUpdateResponse) GetInvalidInputExceptionInfo() *shared.InvalidInputExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidInputExceptionInfo
+}
+
+func (o *CheckConnectionToSourceForUpdateResponse) GetNotFoundKnownExceptionInfo() *shared.NotFoundKnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.NotFoundKnownExceptionInfo
+}
+
+func (o *CheckConnectionToSourceForUpdateResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CheckConnectionToSourceForUpdateResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

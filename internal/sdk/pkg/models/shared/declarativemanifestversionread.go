@@ -7,3 +7,24 @@ type DeclarativeManifestVersionRead struct {
 	IsActive    bool   `json:"isActive"`
 	Version     int64  `json:"version"`
 }
+
+func (o *DeclarativeManifestVersionRead) GetDescription() string {
+	if o == nil {
+		return ""
+	}
+	return o.Description
+}
+
+func (o *DeclarativeManifestVersionRead) GetIsActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.IsActive
+}
+
+func (o *DeclarativeManifestVersionRead) GetVersion() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Version
+}

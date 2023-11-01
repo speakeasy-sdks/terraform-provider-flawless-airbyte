@@ -5,3 +5,10 @@ package shared
 type ConnectionReadList struct {
 	Connections []ConnectionRead `json:"connections"`
 }
+
+func (o *ConnectionReadList) GetConnections() []ConnectionRead {
+	if o == nil {
+		return []ConnectionRead{}
+	}
+	return o.Connections
+}

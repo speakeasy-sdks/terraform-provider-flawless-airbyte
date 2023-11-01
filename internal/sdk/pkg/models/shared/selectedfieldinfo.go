@@ -6,3 +6,10 @@ package shared
 type SelectedFieldInfo struct {
 	FieldPath []string `json:"fieldPath,omitempty"`
 }
+
+func (o *SelectedFieldInfo) GetFieldPath() []string {
+	if o == nil {
+		return nil
+	}
+	return o.FieldPath
+}

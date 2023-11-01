@@ -47,3 +47,45 @@ type FieldTransform struct {
 	TransformType     FieldTransformTransformType `json:"transformType"`
 	UpdateFieldSchema *FieldSchemaUpdate          `json:"updateFieldSchema,omitempty"`
 }
+
+func (o *FieldTransform) GetAddField() *FieldAdd {
+	if o == nil {
+		return nil
+	}
+	return o.AddField
+}
+
+func (o *FieldTransform) GetBreaking() bool {
+	if o == nil {
+		return false
+	}
+	return o.Breaking
+}
+
+func (o *FieldTransform) GetFieldName() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.FieldName
+}
+
+func (o *FieldTransform) GetRemoveField() *FieldRemove {
+	if o == nil {
+		return nil
+	}
+	return o.RemoveField
+}
+
+func (o *FieldTransform) GetTransformType() FieldTransformTransformType {
+	if o == nil {
+		return FieldTransformTransformType("")
+	}
+	return o.TransformType
+}
+
+func (o *FieldTransform) GetUpdateFieldSchema() *FieldSchemaUpdate {
+	if o == nil {
+		return nil
+	}
+	return o.UpdateFieldSchema
+}

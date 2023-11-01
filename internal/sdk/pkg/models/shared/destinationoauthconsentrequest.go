@@ -11,3 +11,38 @@ type DestinationOauthConsentRequest struct {
 	RedirectURL string `json:"redirectUrl"`
 	WorkspaceID string `json:"workspaceId"`
 }
+
+func (o *DestinationOauthConsentRequest) GetDestinationDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationDefinitionID
+}
+
+func (o *DestinationOauthConsentRequest) GetDestinationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationID
+}
+
+func (o *DestinationOauthConsentRequest) GetOAuthInputConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.OAuthInputConfiguration
+}
+
+func (o *DestinationOauthConsentRequest) GetRedirectURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.RedirectURL
+}
+
+func (o *DestinationOauthConsentRequest) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

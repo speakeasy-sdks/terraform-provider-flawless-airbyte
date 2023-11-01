@@ -5,3 +5,10 @@ package shared
 type DiscoverCatalogResult struct {
 	CatalogID string `json:"catalogId"`
 }
+
+func (o *DiscoverCatalogResult) GetCatalogID() string {
+	if o == nil {
+		return ""
+	}
+	return o.CatalogID
+}

@@ -10,3 +10,45 @@ type NotFoundKnownExceptionInfo struct {
 	RootCauseExceptionClassName *string  `json:"rootCauseExceptionClassName,omitempty"`
 	RootCauseExceptionStack     []string `json:"rootCauseExceptionStack,omitempty"`
 }
+
+func (o *NotFoundKnownExceptionInfo) GetExceptionClassName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExceptionClassName
+}
+
+func (o *NotFoundKnownExceptionInfo) GetExceptionStack() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ExceptionStack
+}
+
+func (o *NotFoundKnownExceptionInfo) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *NotFoundKnownExceptionInfo) GetMessage() string {
+	if o == nil {
+		return ""
+	}
+	return o.Message
+}
+
+func (o *NotFoundKnownExceptionInfo) GetRootCauseExceptionClassName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RootCauseExceptionClassName
+}
+
+func (o *NotFoundKnownExceptionInfo) GetRootCauseExceptionStack() []string {
+	if o == nil {
+		return nil
+	}
+	return o.RootCauseExceptionStack
+}

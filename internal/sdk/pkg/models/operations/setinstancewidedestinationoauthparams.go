@@ -19,3 +19,38 @@ type SetInstancewideDestinationOauthParamsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *SetInstancewideDestinationOauthParamsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *SetInstancewideDestinationOauthParamsResponse) GetKnownExceptionInfo() *shared.KnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.KnownExceptionInfo
+}
+
+func (o *SetInstancewideDestinationOauthParamsResponse) GetNotFoundKnownExceptionInfo() *shared.NotFoundKnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.NotFoundKnownExceptionInfo
+}
+
+func (o *SetInstancewideDestinationOauthParamsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *SetInstancewideDestinationOauthParamsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

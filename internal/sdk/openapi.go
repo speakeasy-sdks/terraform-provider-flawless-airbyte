@@ -4,6 +4,7 @@ package sdk
 
 import (
 	"airbyte/internal/sdk/pkg/models/operations"
+	"airbyte/internal/sdk/pkg/models/sdkerrors"
 	"airbyte/internal/sdk/pkg/utils"
 	"bytes"
 	"context"
@@ -64,6 +65,8 @@ func (s *openapi) GetOpenAPISpec(ctx context.Context) (*operations.GetOpenAPISpe
 		switch {
 		case utils.MatchContentType(contentType, `text/plain`):
 			res.GetOpenAPISpec200TextPlainBinaryString = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

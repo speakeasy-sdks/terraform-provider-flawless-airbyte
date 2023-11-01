@@ -9,3 +9,31 @@ type SourceUpdate struct {
 	SecretID                *string     `json:"secretId,omitempty"`
 	SourceID                string      `json:"sourceId"`
 }
+
+func (o *SourceUpdate) GetConnectionConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionConfiguration
+}
+
+func (o *SourceUpdate) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *SourceUpdate) GetSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretID
+}
+
+func (o *SourceUpdate) GetSourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceID
+}

@@ -9,3 +9,31 @@ type PartialSourceUpdate struct {
 	SecretID                *string     `json:"secretId,omitempty"`
 	SourceID                string      `json:"sourceId"`
 }
+
+func (o *PartialSourceUpdate) GetConnectionConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionConfiguration
+}
+
+func (o *PartialSourceUpdate) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *PartialSourceUpdate) GetSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretID
+}
+
+func (o *PartialSourceUpdate) GetSourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceID
+}

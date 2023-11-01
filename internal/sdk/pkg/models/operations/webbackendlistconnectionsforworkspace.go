@@ -21,3 +21,45 @@ type WebBackendListConnectionsForWorkspaceResponse struct {
 	// Successful operation
 	WebBackendConnectionReadList *shared.WebBackendConnectionReadList
 }
+
+func (o *WebBackendListConnectionsForWorkspaceResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *WebBackendListConnectionsForWorkspaceResponse) GetInvalidInputExceptionInfo() *shared.InvalidInputExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidInputExceptionInfo
+}
+
+func (o *WebBackendListConnectionsForWorkspaceResponse) GetNotFoundKnownExceptionInfo() *shared.NotFoundKnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.NotFoundKnownExceptionInfo
+}
+
+func (o *WebBackendListConnectionsForWorkspaceResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *WebBackendListConnectionsForWorkspaceResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *WebBackendListConnectionsForWorkspaceResponse) GetWebBackendConnectionReadList() *shared.WebBackendConnectionReadList {
+	if o == nil {
+		return nil
+	}
+	return o.WebBackendConnectionReadList
+}

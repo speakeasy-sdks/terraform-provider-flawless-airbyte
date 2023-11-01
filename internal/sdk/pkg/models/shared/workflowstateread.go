@@ -5,3 +5,10 @@ package shared
 type WorkflowStateRead struct {
 	Running bool `json:"running"`
 }
+
+func (o *WorkflowStateRead) GetRunning() bool {
+	if o == nil {
+		return false
+	}
+	return o.Running
+}

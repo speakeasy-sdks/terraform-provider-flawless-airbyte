@@ -20,3 +20,80 @@ type WebBackendConnectionListItem struct {
 	// Active means that data is flowing through the connection. Inactive means it is not. Deprecated means the connection is off and cannot be re-activated. the schema field describes the elements of the schema that will be synced.
 	Status ConnectionStatus `json:"status"`
 }
+
+func (o *WebBackendConnectionListItem) GetConnectionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConnectionID
+}
+
+func (o *WebBackendConnectionListItem) GetDestination() DestinationSnippetRead {
+	if o == nil {
+		return DestinationSnippetRead{}
+	}
+	return o.Destination
+}
+
+func (o *WebBackendConnectionListItem) GetIsSyncing() bool {
+	if o == nil {
+		return false
+	}
+	return o.IsSyncing
+}
+
+func (o *WebBackendConnectionListItem) GetLatestSyncJobCreatedAt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LatestSyncJobCreatedAt
+}
+
+func (o *WebBackendConnectionListItem) GetLatestSyncJobStatus() *JobStatus {
+	if o == nil {
+		return nil
+	}
+	return o.LatestSyncJobStatus
+}
+
+func (o *WebBackendConnectionListItem) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *WebBackendConnectionListItem) GetScheduleData() *ConnectionScheduleData {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduleData
+}
+
+func (o *WebBackendConnectionListItem) GetScheduleType() *ConnectionScheduleType {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduleType
+}
+
+func (o *WebBackendConnectionListItem) GetSchemaChange() SchemaChange {
+	if o == nil {
+		return SchemaChange("")
+	}
+	return o.SchemaChange
+}
+
+func (o *WebBackendConnectionListItem) GetSource() SourceSnippetRead {
+	if o == nil {
+		return SourceSnippetRead{}
+	}
+	return o.Source
+}
+
+func (o *WebBackendConnectionListItem) GetStatus() ConnectionStatus {
+	if o == nil {
+		return ConnectionStatus("")
+	}
+	return o.Status
+}

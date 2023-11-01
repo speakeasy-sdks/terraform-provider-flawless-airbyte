@@ -7,3 +7,24 @@ type InvalidInputProperty struct {
 	Message      *string `json:"message,omitempty"`
 	PropertyPath string  `json:"propertyPath"`
 }
+
+func (o *InvalidInputProperty) GetInvalidValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidValue
+}
+
+func (o *InvalidInputProperty) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *InvalidInputProperty) GetPropertyPath() string {
+	if o == nil {
+		return ""
+	}
+	return o.PropertyPath
+}

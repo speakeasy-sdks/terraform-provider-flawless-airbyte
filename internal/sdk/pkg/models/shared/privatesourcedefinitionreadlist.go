@@ -5,3 +5,10 @@ package shared
 type PrivateSourceDefinitionReadList struct {
 	SourceDefinitions []PrivateSourceDefinitionRead `json:"sourceDefinitions"`
 }
+
+func (o *PrivateSourceDefinitionReadList) GetSourceDefinitions() []PrivateSourceDefinitionRead {
+	if o == nil {
+		return []PrivateSourceDefinitionRead{}
+	}
+	return o.SourceDefinitions
+}

@@ -6,3 +6,17 @@ type ActorDefinitionRequestBody struct {
 	ActorDefinitionID string    `json:"actorDefinitionId"`
 	ActorType         ActorType `json:"actorType"`
 }
+
+func (o *ActorDefinitionRequestBody) GetActorDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ActorDefinitionID
+}
+
+func (o *ActorDefinitionRequestBody) GetActorType() ActorType {
+	if o == nil {
+		return ActorType("")
+	}
+	return o.ActorType
+}

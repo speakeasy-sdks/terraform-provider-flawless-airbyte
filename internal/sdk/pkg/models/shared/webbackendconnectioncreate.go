@@ -2,6 +2,10 @@
 
 package shared
 
+import (
+	"airbyte/internal/sdk/pkg/utils"
+)
+
 type WebBackendConnectionCreate struct {
 	DestinationID string     `json:"destinationId"`
 	Geography     *Geography `json:"geography,omitempty"`
@@ -10,7 +14,7 @@ type WebBackendConnectionCreate struct {
 	// Method used for computing final namespace in destination
 	NamespaceDefinition *NamespaceDefinitionType `json:"namespaceDefinition,omitempty"`
 	// Used when namespaceDefinition is 'customformat'. If blank then behaves like namespaceDefinition = 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
-	NamespaceFormat              *string                       `json:"namespaceFormat,omitempty"`
+	NamespaceFormat              *string                       `default:"null" json:"namespaceFormat"`
 	NonBreakingChangesPreference *NonBreakingChangesPreference `json:"nonBreakingChangesPreference,omitempty"`
 	OperationIds                 []string                      `json:"operationIds,omitempty"`
 	Operations                   []OperationCreate             `json:"operations,omitempty"`
@@ -30,4 +34,134 @@ type WebBackendConnectionCreate struct {
 	Status ConnectionStatus `json:"status"`
 	// describes the available schema (catalog).
 	SyncCatalog *AirbyteCatalog `json:"syncCatalog,omitempty"`
+}
+
+func (w WebBackendConnectionCreate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(w, "", false)
+}
+
+func (w *WebBackendConnectionCreate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &w, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *WebBackendConnectionCreate) GetDestinationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationID
+}
+
+func (o *WebBackendConnectionCreate) GetGeography() *Geography {
+	if o == nil {
+		return nil
+	}
+	return o.Geography
+}
+
+func (o *WebBackendConnectionCreate) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *WebBackendConnectionCreate) GetNamespaceDefinition() *NamespaceDefinitionType {
+	if o == nil {
+		return nil
+	}
+	return o.NamespaceDefinition
+}
+
+func (o *WebBackendConnectionCreate) GetNamespaceFormat() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NamespaceFormat
+}
+
+func (o *WebBackendConnectionCreate) GetNonBreakingChangesPreference() *NonBreakingChangesPreference {
+	if o == nil {
+		return nil
+	}
+	return o.NonBreakingChangesPreference
+}
+
+func (o *WebBackendConnectionCreate) GetOperationIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.OperationIds
+}
+
+func (o *WebBackendConnectionCreate) GetOperations() []OperationCreate {
+	if o == nil {
+		return nil
+	}
+	return o.Operations
+}
+
+func (o *WebBackendConnectionCreate) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *WebBackendConnectionCreate) GetResourceRequirements() *ResourceRequirements {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceRequirements
+}
+
+func (o *WebBackendConnectionCreate) GetSchedule() *ConnectionSchedule {
+	if o == nil {
+		return nil
+	}
+	return o.Schedule
+}
+
+func (o *WebBackendConnectionCreate) GetScheduleData() *ConnectionScheduleData {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduleData
+}
+
+func (o *WebBackendConnectionCreate) GetScheduleType() *ConnectionScheduleType {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduleType
+}
+
+func (o *WebBackendConnectionCreate) GetSourceCatalogID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceCatalogID
+}
+
+func (o *WebBackendConnectionCreate) GetSourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceID
+}
+
+func (o *WebBackendConnectionCreate) GetStatus() ConnectionStatus {
+	if o == nil {
+		return ConnectionStatus("")
+	}
+	return o.Status
+}
+
+func (o *WebBackendConnectionCreate) GetSyncCatalog() *AirbyteCatalog {
+	if o == nil {
+		return nil
+	}
+	return o.SyncCatalog
 }

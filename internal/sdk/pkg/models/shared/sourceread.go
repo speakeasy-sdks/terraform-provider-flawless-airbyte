@@ -12,3 +12,52 @@ type SourceRead struct {
 	SourceName              string      `json:"sourceName"`
 	WorkspaceID             string      `json:"workspaceId"`
 }
+
+func (o *SourceRead) GetConnectionConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionConfiguration
+}
+
+func (o *SourceRead) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *SourceRead) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *SourceRead) GetSourceDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceDefinitionID
+}
+
+func (o *SourceRead) GetSourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceID
+}
+
+func (o *SourceRead) GetSourceName() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceName
+}
+
+func (o *SourceRead) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

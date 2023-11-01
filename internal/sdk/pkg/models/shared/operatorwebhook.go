@@ -14,6 +14,20 @@ type OperatorWebhookDbtCloud struct {
 	JobID int64 `json:"jobId"`
 }
 
+func (o *OperatorWebhookDbtCloud) GetAccountID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.AccountID
+}
+
+func (o *OperatorWebhookDbtCloud) GetJobID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.JobID
+}
+
 type OperatorWebhookWebhookType string
 
 const (
@@ -42,13 +56,48 @@ type OperatorWebhook struct {
 	DbtCloud *OperatorWebhookDbtCloud `json:"dbtCloud,omitempty"`
 	// DEPRECATED. Populate dbtCloud instead.
 	//
-	// @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+	// Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
 	ExecutionBody *string `json:"executionBody,omitempty"`
 	// DEPRECATED. Populate dbtCloud instead.
 	//
-	// @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+	// Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
 	ExecutionURL *string `json:"executionUrl,omitempty"`
 	// The id of the webhook configs to use from the workspace.
 	WebhookConfigID *string                     `json:"webhookConfigId,omitempty"`
 	WebhookType     *OperatorWebhookWebhookType `json:"webhookType,omitempty"`
+}
+
+func (o *OperatorWebhook) GetDbtCloud() *OperatorWebhookDbtCloud {
+	if o == nil {
+		return nil
+	}
+	return o.DbtCloud
+}
+
+func (o *OperatorWebhook) GetExecutionBody() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExecutionBody
+}
+
+func (o *OperatorWebhook) GetExecutionURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExecutionURL
+}
+
+func (o *OperatorWebhook) GetWebhookConfigID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookConfigID
+}
+
+func (o *OperatorWebhook) GetWebhookType() *OperatorWebhookWebhookType {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookType
 }

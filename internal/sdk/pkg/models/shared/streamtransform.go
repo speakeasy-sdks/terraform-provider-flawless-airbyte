@@ -43,3 +43,24 @@ type StreamTransform struct {
 	// list of field transformations. order does not matter.
 	UpdateStream []FieldTransform `json:"updateStream,omitempty"`
 }
+
+func (o *StreamTransform) GetStreamDescriptor() StreamDescriptor {
+	if o == nil {
+		return StreamDescriptor{}
+	}
+	return o.StreamDescriptor
+}
+
+func (o *StreamTransform) GetTransformType() StreamTransformTransformType {
+	if o == nil {
+		return StreamTransformTransformType("")
+	}
+	return o.TransformType
+}
+
+func (o *StreamTransform) GetUpdateStream() []FieldTransform {
+	if o == nil {
+		return nil
+	}
+	return o.UpdateStream
+}

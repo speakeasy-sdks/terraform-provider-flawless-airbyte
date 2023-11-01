@@ -6,3 +6,17 @@ type StreamDescriptor struct {
 	Name      string  `json:"name"`
 	Namespace *string `json:"namespace,omitempty"`
 }
+
+func (o *StreamDescriptor) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *StreamDescriptor) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}

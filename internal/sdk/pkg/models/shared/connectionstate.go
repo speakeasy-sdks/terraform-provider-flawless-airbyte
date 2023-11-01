@@ -10,3 +10,38 @@ type ConnectionState struct {
 	StateType    ConnectionStateType `json:"stateType"`
 	StreamState  []StreamState       `json:"streamState,omitempty"`
 }
+
+func (o *ConnectionState) GetConnectionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConnectionID
+}
+
+func (o *ConnectionState) GetGlobalState() *GlobalState {
+	if o == nil {
+		return nil
+	}
+	return o.GlobalState
+}
+
+func (o *ConnectionState) GetState() *StateBlob {
+	if o == nil {
+		return nil
+	}
+	return o.State
+}
+
+func (o *ConnectionState) GetStateType() ConnectionStateType {
+	if o == nil {
+		return ConnectionStateType("")
+	}
+	return o.StateType
+}
+
+func (o *ConnectionState) GetStreamState() []StreamState {
+	if o == nil {
+		return nil
+	}
+	return o.StreamState
+}

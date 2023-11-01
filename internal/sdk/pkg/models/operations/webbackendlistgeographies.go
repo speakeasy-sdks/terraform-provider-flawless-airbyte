@@ -17,3 +17,31 @@ type WebBackendListGeographiesResponse struct {
 	// Successful operation
 	WebBackendGeographiesListResult *shared.WebBackendGeographiesListResult
 }
+
+func (o *WebBackendListGeographiesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *WebBackendListGeographiesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *WebBackendListGeographiesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *WebBackendListGeographiesResponse) GetWebBackendGeographiesListResult() *shared.WebBackendGeographiesListResult {
+	if o == nil {
+		return nil
+	}
+	return o.WebBackendGeographiesListResult
+}

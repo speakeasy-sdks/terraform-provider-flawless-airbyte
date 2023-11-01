@@ -11,3 +11,45 @@ type DestinationSearch struct {
 	Name                    *string     `json:"name,omitempty"`
 	WorkspaceID             *string     `json:"workspaceId,omitempty"`
 }
+
+func (o *DestinationSearch) GetConnectionConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionConfiguration
+}
+
+func (o *DestinationSearch) GetDestinationDefinitionID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationDefinitionID
+}
+
+func (o *DestinationSearch) GetDestinationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationID
+}
+
+func (o *DestinationSearch) GetDestinationName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationName
+}
+
+func (o *DestinationSearch) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *DestinationSearch) GetWorkspaceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceID
+}

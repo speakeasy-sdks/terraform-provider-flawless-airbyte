@@ -5,3 +5,10 @@ package shared
 type SlugRequestBody struct {
 	Slug string `json:"slug"`
 }
+
+func (o *SlugRequestBody) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}

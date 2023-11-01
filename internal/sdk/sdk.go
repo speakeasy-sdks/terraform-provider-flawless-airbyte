@@ -5,6 +5,7 @@ package sdk
 import (
 	"airbyte/internal/sdk/pkg/models/shared"
 	"airbyte/internal/sdk/pkg/utils"
+	"context"
 	"fmt"
 	"net/http"
 	"time"
@@ -41,7 +42,7 @@ func Float64(f float64) *float64 { return &f }
 type sdkConfiguration struct {
 	DefaultClient     HTTPClient
 	SecurityClient    HTTPClient
-	Security          *shared.Security
+	Security          func(context.Context) (interface{}, error)
 	ServerURL         string
 	ServerIndex       int
 	Language          string
@@ -49,6 +50,7 @@ type sdkConfiguration struct {
 	SDKVersion        string
 	GenVersion        string
 	UserAgent         string
+	RetryConfig       *utils.RetryConfig
 }
 
 func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
@@ -59,7 +61,7 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 	return ServerList[c.ServerIndex], nil
 }
 
-// Airbyte - Airbyte Configuration API: Airbyte Configuration API
+// Airbyte Configuration API: Airbyte Configuration API
 // [https://airbyte.io](https://airbyte.io).
 //
 // The Configuration API is an internal Airbyte API that is designed for communications between different Airbyte components.
@@ -85,21 +87,21 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 //
 // https://airbyte.io - Find out more about Airbyte
 type Airbyte struct {
-	// Attempt - Interactions with attempt related resources.
+	// Interactions with attempt related resources.
 	Attempt *attempt
-	// Connection - Connection between sources and destinations.
+	// Connection between sources and destinations.
 	Connection                   *connection
 	ConnectorBuilderProject      *connectorBuilderProject
 	DeclarativeSourceDefinitions *declarativeSourceDefinitions
-	// Destination - Destination related resources.
+	// Destination related resources.
 	Destination *destination
-	// DestinationDefinition - DestinationDefinition related resources.
+	// DestinationDefinition related resources.
 	DestinationDefinition *destinationDefinition
-	// DestinationDefinitionSpecification - DestinationDefinitionSpecification related resources.
+	// DestinationDefinitionSpecification related resources.
 	DestinationDefinitionSpecification *destinationDefinitionSpecification
-	// DestinationOauth - Source OAuth related resources to delegate access from user.
+	// Source OAuth related resources to delegate access from user.
 	DestinationOauth *destinationOauth
-	// Health - Healthchecks
+	// Healthchecks
 	Health        *health
 	Internal      *internal
 	Jobs          *jobs
@@ -108,23 +110,23 @@ type Airbyte struct {
 	Openapi       *openapi
 	Operation     *operation
 	Scheduler     *scheduler
-	// Source - Source related resources.
+	// Source related resources.
 	Source *source
-	// SourceDefinition - SourceDefinition related resources.
+	// SourceDefinition related resources.
 	SourceDefinition *sourceDefinition
-	// SourceDefinitionSpecification - SourceDefinition specification related resources.
+	// SourceDefinition specification related resources.
 	SourceDefinitionSpecification *sourceDefinitionSpecification
-	// SourceOauth - Source OAuth related resources to delegate access from user.
+	// Source OAuth related resources to delegate access from user.
 	SourceOauth *sourceOauth
-	// State - Interactions with state related resources.
+	// Interactions with state related resources.
 	State          *state
 	StreamStatuses *streamStatuses
 	Streams        *streams
-	// WebBackend - Endpoints for the Airbyte web application. Those APIs should not be called outside the web application implementation and are not
+	// Endpoints for the Airbyte web application. Those APIs should not be called outside the web application implementation and are not
 	// guaranteeing any backwards compatibility.
 	//
 	WebBackend *webBackend
-	// Workspace - Workspace related resources.
+	// Workspace related resources.
 	Workspace *workspace
 
 	sdkConfiguration sdkConfiguration
@@ -168,10 +170,31 @@ func WithClient(client HTTPClient) SDKOption {
 	}
 }
 
+func withSecurity(security interface{}) func(context.Context) (interface{}, error) {
+	return func(context.Context) (interface{}, error) {
+		return &security, nil
+	}
+}
+
 // WithSecurity configures the SDK to use the provided security details
 func WithSecurity(security shared.Security) SDKOption {
 	return func(sdk *Airbyte) {
-		sdk.sdkConfiguration.Security = &security
+		sdk.sdkConfiguration.Security = withSecurity(security)
+	}
+}
+
+// WithSecuritySource configures the SDK to invoke the Security Source function on each method call to determine authentication
+func WithSecuritySource(security func(context.Context) (shared.Security, error)) SDKOption {
+	return func(sdk *Airbyte) {
+		sdk.sdkConfiguration.Security = func(ctx context.Context) (interface{}, error) {
+			return security(ctx)
+		}
+	}
+}
+
+func WithRetryConfig(retryConfig utils.RetryConfig) SDKOption {
+	return func(sdk *Airbyte) {
+		sdk.sdkConfiguration.RetryConfig = &retryConfig
 	}
 }
 
@@ -179,11 +202,11 @@ func WithSecurity(security shared.Security) SDKOption {
 func New(opts ...SDKOption) *Airbyte {
 	sdk := &Airbyte{
 		sdkConfiguration: sdkConfiguration{
-			Language:          "terraform",
+			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.5.2",
-			GenVersion:        "2.152.1",
-			UserAgent:         "speakeasy-sdk/terraform 0.5.2 2.152.1 1.0.0 airbyte",
+			SDKVersion:        "0.6.0",
+			GenVersion:        "2.173.0",
+			UserAgent:         "speakeasy-sdk/go 0.6.0 2.173.0 1.0.0 airbyte",
 		},
 	}
 	for _, opt := range opts {

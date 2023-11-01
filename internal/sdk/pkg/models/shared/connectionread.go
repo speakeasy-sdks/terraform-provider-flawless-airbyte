@@ -2,6 +2,10 @@
 
 package shared
 
+import (
+	"airbyte/internal/sdk/pkg/utils"
+)
+
 type ConnectionRead struct {
 	BreakingChange bool       `json:"breakingChange"`
 	ConnectionID   string     `json:"connectionId"`
@@ -11,7 +15,7 @@ type ConnectionRead struct {
 	// Method used for computing final namespace in destination
 	NamespaceDefinition *NamespaceDefinitionType `json:"namespaceDefinition,omitempty"`
 	// Used when namespaceDefinition is 'customformat'. If blank then behaves like namespaceDefinition = 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
-	NamespaceFormat              *string                       `json:"namespaceFormat,omitempty"`
+	NamespaceFormat              *string                       `default:"null" json:"namespaceFormat"`
 	NonBreakingChangesPreference *NonBreakingChangesPreference `json:"nonBreakingChangesPreference,omitempty"`
 	NotifySchemaChanges          *bool                         `json:"notifySchemaChanges,omitempty"`
 	NotifySchemaChangesByEmail   *bool                         `json:"notifySchemaChangesByEmail,omitempty"`
@@ -33,4 +37,162 @@ type ConnectionRead struct {
 	// describes the available schema (catalog).
 	SyncCatalog AirbyteCatalog `json:"syncCatalog"`
 	WorkspaceID *string        `json:"workspaceId,omitempty"`
+}
+
+func (c ConnectionRead) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ConnectionRead) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ConnectionRead) GetBreakingChange() bool {
+	if o == nil {
+		return false
+	}
+	return o.BreakingChange
+}
+
+func (o *ConnectionRead) GetConnectionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConnectionID
+}
+
+func (o *ConnectionRead) GetDestinationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationID
+}
+
+func (o *ConnectionRead) GetGeography() *Geography {
+	if o == nil {
+		return nil
+	}
+	return o.Geography
+}
+
+func (o *ConnectionRead) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *ConnectionRead) GetNamespaceDefinition() *NamespaceDefinitionType {
+	if o == nil {
+		return nil
+	}
+	return o.NamespaceDefinition
+}
+
+func (o *ConnectionRead) GetNamespaceFormat() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NamespaceFormat
+}
+
+func (o *ConnectionRead) GetNonBreakingChangesPreference() *NonBreakingChangesPreference {
+	if o == nil {
+		return nil
+	}
+	return o.NonBreakingChangesPreference
+}
+
+func (o *ConnectionRead) GetNotifySchemaChanges() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.NotifySchemaChanges
+}
+
+func (o *ConnectionRead) GetNotifySchemaChangesByEmail() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.NotifySchemaChangesByEmail
+}
+
+func (o *ConnectionRead) GetOperationIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.OperationIds
+}
+
+func (o *ConnectionRead) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *ConnectionRead) GetResourceRequirements() *ResourceRequirements {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceRequirements
+}
+
+func (o *ConnectionRead) GetSchedule() *ConnectionSchedule {
+	if o == nil {
+		return nil
+	}
+	return o.Schedule
+}
+
+func (o *ConnectionRead) GetScheduleData() *ConnectionScheduleData {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduleData
+}
+
+func (o *ConnectionRead) GetScheduleType() *ConnectionScheduleType {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduleType
+}
+
+func (o *ConnectionRead) GetSourceCatalogID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceCatalogID
+}
+
+func (o *ConnectionRead) GetSourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceID
+}
+
+func (o *ConnectionRead) GetStatus() ConnectionStatus {
+	if o == nil {
+		return ConnectionStatus("")
+	}
+	return o.Status
+}
+
+func (o *ConnectionRead) GetSyncCatalog() AirbyteCatalog {
+	if o == nil {
+		return AirbyteCatalog{}
+	}
+	return o.SyncCatalog
+}
+
+func (o *ConnectionRead) GetWorkspaceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceID
 }

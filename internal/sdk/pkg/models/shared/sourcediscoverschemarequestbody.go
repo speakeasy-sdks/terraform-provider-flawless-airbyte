@@ -8,3 +8,31 @@ type SourceDiscoverSchemaRequestBody struct {
 	NotifySchemaChange *bool   `json:"notifySchemaChange,omitempty"`
 	SourceID           string  `json:"sourceId"`
 }
+
+func (o *SourceDiscoverSchemaRequestBody) GetConnectionID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionID
+}
+
+func (o *SourceDiscoverSchemaRequestBody) GetDisableCache() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DisableCache
+}
+
+func (o *SourceDiscoverSchemaRequestBody) GetNotifySchemaChange() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.NotifySchemaChange
+}
+
+func (o *SourceDiscoverSchemaRequestBody) GetSourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceID
+}

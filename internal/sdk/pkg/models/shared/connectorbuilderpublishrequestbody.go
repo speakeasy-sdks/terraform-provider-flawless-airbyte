@@ -8,3 +8,31 @@ type ConnectorBuilderPublishRequestBody struct {
 	Name                       string                    `json:"name"`
 	WorkspaceID                string                    `json:"workspaceId"`
 }
+
+func (o *ConnectorBuilderPublishRequestBody) GetBuilderProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.BuilderProjectID
+}
+
+func (o *ConnectorBuilderPublishRequestBody) GetInitialDeclarativeManifest() DeclarativeSourceManifest {
+	if o == nil {
+		return DeclarativeSourceManifest{}
+	}
+	return o.InitialDeclarativeManifest
+}
+
+func (o *ConnectorBuilderPublishRequestBody) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *ConnectorBuilderPublishRequestBody) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

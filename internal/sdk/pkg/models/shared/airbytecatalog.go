@@ -6,3 +6,10 @@ package shared
 type AirbyteCatalog struct {
 	Streams []AirbyteStreamAndConfiguration `json:"streams"`
 }
+
+func (o *AirbyteCatalog) GetStreams() []AirbyteStreamAndConfiguration {
+	if o == nil {
+		return []AirbyteStreamAndConfiguration{}
+	}
+	return o.Streams
+}

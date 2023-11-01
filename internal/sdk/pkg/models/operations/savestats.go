@@ -17,3 +17,31 @@ type SaveStatsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *SaveStatsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *SaveStatsResponse) GetInternalOperationResult() *shared.InternalOperationResult {
+	if o == nil {
+		return nil
+	}
+	return o.InternalOperationResult
+}
+
+func (o *SaveStatsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *SaveStatsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

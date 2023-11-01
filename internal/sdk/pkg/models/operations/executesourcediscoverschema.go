@@ -19,3 +19,38 @@ type ExecuteSourceDiscoverSchemaResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *ExecuteSourceDiscoverSchemaResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ExecuteSourceDiscoverSchemaResponse) GetInvalidInputExceptionInfo() *shared.InvalidInputExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidInputExceptionInfo
+}
+
+func (o *ExecuteSourceDiscoverSchemaResponse) GetSourceDiscoverSchemaRead() *shared.SourceDiscoverSchemaRead {
+	if o == nil {
+		return nil
+	}
+	return o.SourceDiscoverSchemaRead
+}
+
+func (o *ExecuteSourceDiscoverSchemaResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ExecuteSourceDiscoverSchemaResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

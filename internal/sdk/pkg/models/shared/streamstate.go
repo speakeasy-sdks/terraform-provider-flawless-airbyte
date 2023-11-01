@@ -6,3 +6,17 @@ type StreamState struct {
 	StreamDescriptor StreamDescriptor `json:"streamDescriptor"`
 	StreamState      *StateBlob       `json:"streamState,omitempty"`
 }
+
+func (o *StreamState) GetStreamDescriptor() StreamDescriptor {
+	if o == nil {
+		return StreamDescriptor{}
+	}
+	return o.StreamDescriptor
+}
+
+func (o *StreamState) GetStreamState() *StateBlob {
+	if o == nil {
+		return nil
+	}
+	return o.StreamState
+}

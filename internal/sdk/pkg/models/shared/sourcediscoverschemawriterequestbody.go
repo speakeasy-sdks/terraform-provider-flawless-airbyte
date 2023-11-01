@@ -10,3 +10,31 @@ type SourceDiscoverSchemaWriteRequestBody struct {
 	ConnectorVersion  *string        `json:"connectorVersion,omitempty"`
 	SourceID          *string        `json:"sourceId,omitempty"`
 }
+
+func (o *SourceDiscoverSchemaWriteRequestBody) GetCatalog() AirbyteCatalog {
+	if o == nil {
+		return AirbyteCatalog{}
+	}
+	return o.Catalog
+}
+
+func (o *SourceDiscoverSchemaWriteRequestBody) GetConfigurationHash() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConfigurationHash
+}
+
+func (o *SourceDiscoverSchemaWriteRequestBody) GetConnectorVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectorVersion
+}
+
+func (o *SourceDiscoverSchemaWriteRequestBody) GetSourceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceID
+}

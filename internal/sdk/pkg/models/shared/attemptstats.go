@@ -11,3 +11,52 @@ type AttemptStats struct {
 	RecordsEmitted       *int64 `json:"recordsEmitted,omitempty"`
 	StateMessagesEmitted *int64 `json:"stateMessagesEmitted,omitempty"`
 }
+
+func (o *AttemptStats) GetBytesCommitted() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.BytesCommitted
+}
+
+func (o *AttemptStats) GetBytesEmitted() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.BytesEmitted
+}
+
+func (o *AttemptStats) GetEstimatedBytes() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EstimatedBytes
+}
+
+func (o *AttemptStats) GetEstimatedRecords() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EstimatedRecords
+}
+
+func (o *AttemptStats) GetRecordsCommitted() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RecordsCommitted
+}
+
+func (o *AttemptStats) GetRecordsEmitted() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RecordsEmitted
+}
+
+func (o *AttemptStats) GetStateMessagesEmitted() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.StateMessagesEmitted
+}

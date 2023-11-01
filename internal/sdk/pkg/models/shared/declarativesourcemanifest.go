@@ -10,3 +10,31 @@ type DeclarativeSourceManifest struct {
 	Spec    SourceDefinitionSpecification `json:"spec"`
 	Version int64                         `json:"version"`
 }
+
+func (o *DeclarativeSourceManifest) GetDescription() string {
+	if o == nil {
+		return ""
+	}
+	return o.Description
+}
+
+func (o *DeclarativeSourceManifest) GetManifest() DeclarativeManifest {
+	if o == nil {
+		return DeclarativeManifest{}
+	}
+	return o.Manifest
+}
+
+func (o *DeclarativeSourceManifest) GetSpec() SourceDefinitionSpecification {
+	if o == nil {
+		return SourceDefinitionSpecification{}
+	}
+	return o.Spec
+}
+
+func (o *DeclarativeSourceManifest) GetVersion() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Version
+}

@@ -11,3 +11,38 @@ type SourceOauthConsentRequest struct {
 	SourceID           *string `json:"sourceId,omitempty"`
 	WorkspaceID        string  `json:"workspaceId"`
 }
+
+func (o *SourceOauthConsentRequest) GetOAuthInputConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.OAuthInputConfiguration
+}
+
+func (o *SourceOauthConsentRequest) GetRedirectURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.RedirectURL
+}
+
+func (o *SourceOauthConsentRequest) GetSourceDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceDefinitionID
+}
+
+func (o *SourceOauthConsentRequest) GetSourceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceID
+}
+
+func (o *SourceOauthConsentRequest) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

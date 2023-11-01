@@ -6,3 +6,17 @@ type ConnectionStream struct {
 	StreamName      string `json:"streamName"`
 	StreamNamespace string `json:"streamNamespace"`
 }
+
+func (o *ConnectionStream) GetStreamName() string {
+	if o == nil {
+		return ""
+	}
+	return o.StreamName
+}
+
+func (o *ConnectionStream) GetStreamNamespace() string {
+	if o == nil {
+		return ""
+	}
+	return o.StreamNamespace
+}

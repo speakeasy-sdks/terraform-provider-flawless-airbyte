@@ -6,3 +6,17 @@ type DestinationDefinitionIDWithWorkspaceID struct {
 	DestinationDefinitionID string `json:"destinationDefinitionId"`
 	WorkspaceID             string `json:"workspaceId"`
 }
+
+func (o *DestinationDefinitionIDWithWorkspaceID) GetDestinationDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationDefinitionID
+}
+
+func (o *DestinationDefinitionIDWithWorkspaceID) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

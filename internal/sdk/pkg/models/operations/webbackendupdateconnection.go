@@ -19,3 +19,38 @@ type WebBackendUpdateConnectionResponse struct {
 	// Successful operation
 	WebBackendConnectionRead *shared.WebBackendConnectionRead
 }
+
+func (o *WebBackendUpdateConnectionResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *WebBackendUpdateConnectionResponse) GetInvalidInputExceptionInfo() *shared.InvalidInputExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidInputExceptionInfo
+}
+
+func (o *WebBackendUpdateConnectionResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *WebBackendUpdateConnectionResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *WebBackendUpdateConnectionResponse) GetWebBackendConnectionRead() *shared.WebBackendConnectionRead {
+	if o == nil {
+		return nil
+	}
+	return o.WebBackendConnectionRead
+}

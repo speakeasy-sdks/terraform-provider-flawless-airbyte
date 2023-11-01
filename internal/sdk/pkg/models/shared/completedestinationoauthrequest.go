@@ -13,3 +13,45 @@ type CompleteDestinationOAuthRequest struct {
 	RedirectURL *string `json:"redirectUrl,omitempty"`
 	WorkspaceID string  `json:"workspaceId"`
 }
+
+func (o *CompleteDestinationOAuthRequest) GetDestinationDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationDefinitionID
+}
+
+func (o *CompleteDestinationOAuthRequest) GetDestinationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationID
+}
+
+func (o *CompleteDestinationOAuthRequest) GetOAuthInputConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.OAuthInputConfiguration
+}
+
+func (o *CompleteDestinationOAuthRequest) GetQueryParams() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.QueryParams
+}
+
+func (o *CompleteDestinationOAuthRequest) GetRedirectURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectURL
+}
+
+func (o *CompleteDestinationOAuthRequest) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

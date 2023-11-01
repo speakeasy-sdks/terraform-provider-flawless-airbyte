@@ -5,3 +5,10 @@ package shared
 type WorkspaceReadList struct {
 	Workspaces []WorkspaceRead `json:"workspaces"`
 }
+
+func (o *WorkspaceReadList) GetWorkspaces() []WorkspaceRead {
+	if o == nil {
+		return []WorkspaceRead{}
+	}
+	return o.Workspaces
+}

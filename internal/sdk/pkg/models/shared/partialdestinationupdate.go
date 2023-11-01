@@ -8,3 +8,24 @@ type PartialDestinationUpdate struct {
 	DestinationID           *string     `json:"destinationId,omitempty"`
 	Name                    *string     `json:"name,omitempty"`
 }
+
+func (o *PartialDestinationUpdate) GetConnectionConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionConfiguration
+}
+
+func (o *PartialDestinationUpdate) GetDestinationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationID
+}
+
+func (o *PartialDestinationUpdate) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

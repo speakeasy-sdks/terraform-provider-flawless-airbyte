@@ -7,3 +7,17 @@ type ConnectionStateCreateOrUpdate struct {
 	// Contains the state for a connection. The stateType field identifies what type of state it is. Only the field corresponding to that type will be set, the rest will be null. If stateType=not_set, then none of the fields will be set.
 	ConnectionState ConnectionState `json:"connectionState"`
 }
+
+func (o *ConnectionStateCreateOrUpdate) GetConnectionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConnectionID
+}
+
+func (o *ConnectionStateCreateOrUpdate) GetConnectionState() ConnectionState {
+	if o == nil {
+		return ConnectionState{}
+	}
+	return o.ConnectionState
+}

@@ -19,3 +19,38 @@ type SetInstancewideSourceOauthParamsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *SetInstancewideSourceOauthParamsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *SetInstancewideSourceOauthParamsResponse) GetKnownExceptionInfo() *shared.KnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.KnownExceptionInfo
+}
+
+func (o *SetInstancewideSourceOauthParamsResponse) GetNotFoundKnownExceptionInfo() *shared.NotFoundKnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.NotFoundKnownExceptionInfo
+}
+
+func (o *SetInstancewideSourceOauthParamsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *SetInstancewideSourceOauthParamsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

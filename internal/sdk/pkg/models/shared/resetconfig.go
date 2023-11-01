@@ -6,3 +6,10 @@ package shared
 type ResetConfig struct {
 	StreamsToReset []StreamDescriptor `json:"streamsToReset,omitempty"`
 }
+
+func (o *ResetConfig) GetStreamsToReset() []StreamDescriptor {
+	if o == nil {
+		return nil
+	}
+	return o.StreamsToReset
+}

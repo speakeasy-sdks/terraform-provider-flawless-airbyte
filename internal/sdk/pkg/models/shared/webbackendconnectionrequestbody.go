@@ -6,3 +6,17 @@ type WebBackendConnectionRequestBody struct {
 	ConnectionID         string `json:"connectionId"`
 	WithRefreshedCatalog *bool  `json:"withRefreshedCatalog,omitempty"`
 }
+
+func (o *WebBackendConnectionRequestBody) GetConnectionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConnectionID
+}
+
+func (o *WebBackendConnectionRequestBody) GetWithRefreshedCatalog() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.WithRefreshedCatalog
+}

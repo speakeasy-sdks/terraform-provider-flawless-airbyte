@@ -7,3 +7,17 @@ type SourceCloneRequestBody struct {
 	SourceCloneID       string                    `json:"sourceCloneId"`
 	SourceConfiguration *SourceCloneConfiguration `json:"sourceConfiguration,omitempty"`
 }
+
+func (o *SourceCloneRequestBody) GetSourceCloneID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceCloneID
+}
+
+func (o *SourceCloneRequestBody) GetSourceConfiguration() *SourceCloneConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.SourceConfiguration
+}

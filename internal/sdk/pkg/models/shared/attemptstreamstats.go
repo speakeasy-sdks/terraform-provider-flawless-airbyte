@@ -7,3 +7,24 @@ type AttemptStreamStats struct {
 	StreamName      string       `json:"streamName"`
 	StreamNamespace *string      `json:"streamNamespace,omitempty"`
 }
+
+func (o *AttemptStreamStats) GetStats() AttemptStats {
+	if o == nil {
+		return AttemptStats{}
+	}
+	return o.Stats
+}
+
+func (o *AttemptStreamStats) GetStreamName() string {
+	if o == nil {
+		return ""
+	}
+	return o.StreamName
+}
+
+func (o *AttemptStreamStats) GetStreamNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StreamNamespace
+}

@@ -21,3 +21,66 @@ type AirbyteStreamConfiguration struct {
 	Suggested *bool    `json:"suggested,omitempty"`
 	SyncMode  SyncMode `json:"syncMode"`
 }
+
+func (o *AirbyteStreamConfiguration) GetAliasName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AliasName
+}
+
+func (o *AirbyteStreamConfiguration) GetCursorField() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CursorField
+}
+
+func (o *AirbyteStreamConfiguration) GetDestinationSyncMode() DestinationSyncMode {
+	if o == nil {
+		return DestinationSyncMode("")
+	}
+	return o.DestinationSyncMode
+}
+
+func (o *AirbyteStreamConfiguration) GetFieldSelectionEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FieldSelectionEnabled
+}
+
+func (o *AirbyteStreamConfiguration) GetPrimaryKey() [][]string {
+	if o == nil {
+		return nil
+	}
+	return o.PrimaryKey
+}
+
+func (o *AirbyteStreamConfiguration) GetSelected() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Selected
+}
+
+func (o *AirbyteStreamConfiguration) GetSelectedFields() []SelectedFieldInfo {
+	if o == nil {
+		return nil
+	}
+	return o.SelectedFields
+}
+
+func (o *AirbyteStreamConfiguration) GetSuggested() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Suggested
+}
+
+func (o *AirbyteStreamConfiguration) GetSyncMode() SyncMode {
+	if o == nil {
+		return SyncMode("")
+	}
+	return o.SyncMode
+}

@@ -9,3 +9,31 @@ type DeclarativeManifestRead struct {
 	Manifest *DeclarativeManifest `json:"manifest,omitempty"`
 	Version  *int64               `json:"version,omitempty"`
 }
+
+func (o *DeclarativeManifestRead) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *DeclarativeManifestRead) GetIsDraft() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDraft
+}
+
+func (o *DeclarativeManifestRead) GetManifest() *DeclarativeManifest {
+	if o == nil {
+		return nil
+	}
+	return o.Manifest
+}
+
+func (o *DeclarativeManifestRead) GetVersion() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Version
+}

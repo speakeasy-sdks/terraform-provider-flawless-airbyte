@@ -6,3 +6,17 @@ type CustomSourceDefinitionCreate struct {
 	SourceDefinition SourceDefinitionCreate `json:"sourceDefinition"`
 	WorkspaceID      string                 `json:"workspaceId"`
 }
+
+func (o *CustomSourceDefinitionCreate) GetSourceDefinition() SourceDefinitionCreate {
+	if o == nil {
+		return SourceDefinitionCreate{}
+	}
+	return o.SourceDefinition
+}
+
+func (o *CustomSourceDefinitionCreate) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

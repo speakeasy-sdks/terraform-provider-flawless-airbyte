@@ -8,3 +8,31 @@ type DeclarativeSourceDefinitionCreateManifestRequestBody struct {
 	SourceDefinitionID  string                    `json:"sourceDefinitionId"`
 	WorkspaceID         string                    `json:"workspaceId"`
 }
+
+func (o *DeclarativeSourceDefinitionCreateManifestRequestBody) GetDeclarativeManifest() DeclarativeSourceManifest {
+	if o == nil {
+		return DeclarativeSourceManifest{}
+	}
+	return o.DeclarativeManifest
+}
+
+func (o *DeclarativeSourceDefinitionCreateManifestRequestBody) GetSetAsActiveManifest() bool {
+	if o == nil {
+		return false
+	}
+	return o.SetAsActiveManifest
+}
+
+func (o *DeclarativeSourceDefinitionCreateManifestRequestBody) GetSourceDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceDefinitionID
+}
+
+func (o *DeclarativeSourceDefinitionCreateManifestRequestBody) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

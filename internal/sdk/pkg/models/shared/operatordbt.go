@@ -8,3 +8,31 @@ type OperatorDbt struct {
 	GitRepoBranch *string `json:"gitRepoBranch,omitempty"`
 	GitRepoURL    string  `json:"gitRepoUrl"`
 }
+
+func (o *OperatorDbt) GetDbtArguments() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DbtArguments
+}
+
+func (o *OperatorDbt) GetDockerImage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DockerImage
+}
+
+func (o *OperatorDbt) GetGitRepoBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitRepoBranch
+}
+
+func (o *OperatorDbt) GetGitRepoURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.GitRepoURL
+}

@@ -14,3 +14,66 @@ type JobRead struct {
 	Status      JobStatus    `json:"status"`
 	UpdatedAt   int64        `json:"updatedAt"`
 }
+
+func (o *JobRead) GetConfigID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConfigID
+}
+
+func (o *JobRead) GetConfigType() JobConfigType {
+	if o == nil {
+		return JobConfigType("")
+	}
+	return o.ConfigType
+}
+
+func (o *JobRead) GetCreatedAt() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.CreatedAt
+}
+
+func (o *JobRead) GetEnabledStreams() []StreamDescriptor {
+	if o == nil {
+		return nil
+	}
+	return o.EnabledStreams
+}
+
+func (o *JobRead) GetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ID
+}
+
+func (o *JobRead) GetResetConfig() *ResetConfig {
+	if o == nil {
+		return nil
+	}
+	return o.ResetConfig
+}
+
+func (o *JobRead) GetStartedAt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.StartedAt
+}
+
+func (o *JobRead) GetStatus() JobStatus {
+	if o == nil {
+		return JobStatus("")
+	}
+	return o.Status
+}
+
+func (o *JobRead) GetUpdatedAt() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.UpdatedAt
+}

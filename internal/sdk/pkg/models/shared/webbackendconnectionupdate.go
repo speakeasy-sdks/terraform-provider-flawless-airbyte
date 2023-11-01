@@ -2,6 +2,10 @@
 
 package shared
 
+import (
+	"airbyte/internal/sdk/pkg/utils"
+)
+
 // WebBackendConnectionUpdate - Used to apply a patch-style update to a connection, which means that null properties remain unchanged
 type WebBackendConnectionUpdate struct {
 	ConnectionID string     `json:"connectionId"`
@@ -11,7 +15,7 @@ type WebBackendConnectionUpdate struct {
 	// Method used for computing final namespace in destination
 	NamespaceDefinition *NamespaceDefinitionType `json:"namespaceDefinition,omitempty"`
 	// Used when namespaceDefinition is 'customformat'. If blank then behaves like namespaceDefinition = 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
-	NamespaceFormat              *string                             `json:"namespaceFormat,omitempty"`
+	NamespaceFormat              *string                             `default:"null" json:"namespaceFormat"`
 	NonBreakingChangesPreference *NonBreakingChangesPreference       `json:"nonBreakingChangesPreference,omitempty"`
 	NotifySchemaChanges          *bool                               `json:"notifySchemaChanges,omitempty"`
 	NotifySchemaChangesByEmail   *bool                               `json:"notifySchemaChangesByEmail,omitempty"`
@@ -32,4 +36,141 @@ type WebBackendConnectionUpdate struct {
 	Status *ConnectionStatus `json:"status,omitempty"`
 	// describes the available schema (catalog).
 	SyncCatalog *AirbyteCatalog `json:"syncCatalog,omitempty"`
+}
+
+func (w WebBackendConnectionUpdate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(w, "", false)
+}
+
+func (w *WebBackendConnectionUpdate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &w, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *WebBackendConnectionUpdate) GetConnectionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConnectionID
+}
+
+func (o *WebBackendConnectionUpdate) GetGeography() *Geography {
+	if o == nil {
+		return nil
+	}
+	return o.Geography
+}
+
+func (o *WebBackendConnectionUpdate) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *WebBackendConnectionUpdate) GetNamespaceDefinition() *NamespaceDefinitionType {
+	if o == nil {
+		return nil
+	}
+	return o.NamespaceDefinition
+}
+
+func (o *WebBackendConnectionUpdate) GetNamespaceFormat() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NamespaceFormat
+}
+
+func (o *WebBackendConnectionUpdate) GetNonBreakingChangesPreference() *NonBreakingChangesPreference {
+	if o == nil {
+		return nil
+	}
+	return o.NonBreakingChangesPreference
+}
+
+func (o *WebBackendConnectionUpdate) GetNotifySchemaChanges() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.NotifySchemaChanges
+}
+
+func (o *WebBackendConnectionUpdate) GetNotifySchemaChangesByEmail() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.NotifySchemaChangesByEmail
+}
+
+func (o *WebBackendConnectionUpdate) GetOperations() []WebBackendOperationCreateOrUpdate {
+	if o == nil {
+		return nil
+	}
+	return o.Operations
+}
+
+func (o *WebBackendConnectionUpdate) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *WebBackendConnectionUpdate) GetResourceRequirements() *ResourceRequirements {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceRequirements
+}
+
+func (o *WebBackendConnectionUpdate) GetSchedule() *ConnectionSchedule {
+	if o == nil {
+		return nil
+	}
+	return o.Schedule
+}
+
+func (o *WebBackendConnectionUpdate) GetScheduleData() *ConnectionScheduleData {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduleData
+}
+
+func (o *WebBackendConnectionUpdate) GetScheduleType() *ConnectionScheduleType {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduleType
+}
+
+func (o *WebBackendConnectionUpdate) GetSkipReset() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SkipReset
+}
+
+func (o *WebBackendConnectionUpdate) GetSourceCatalogID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceCatalogID
+}
+
+func (o *WebBackendConnectionUpdate) GetStatus() *ConnectionStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *WebBackendConnectionUpdate) GetSyncCatalog() *AirbyteCatalog {
+	if o == nil {
+		return nil
+	}
+	return o.SyncCatalog
 }

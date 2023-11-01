@@ -7,3 +7,24 @@ type WebBackendWorkspaceStateResult struct {
 	HasDestinations bool `json:"hasDestinations"`
 	HasSources      bool `json:"hasSources"`
 }
+
+func (o *WebBackendWorkspaceStateResult) GetHasConnections() bool {
+	if o == nil {
+		return false
+	}
+	return o.HasConnections
+}
+
+func (o *WebBackendWorkspaceStateResult) GetHasDestinations() bool {
+	if o == nil {
+		return false
+	}
+	return o.HasDestinations
+}
+
+func (o *WebBackendWorkspaceStateResult) GetHasSources() bool {
+	if o == nil {
+		return false
+	}
+	return o.HasSources
+}

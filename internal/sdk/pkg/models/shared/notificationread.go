@@ -38,3 +38,17 @@ type NotificationRead struct {
 	Message *string                `json:"message,omitempty"`
 	Status  NotificationReadStatus `json:"status"`
 }
+
+func (o *NotificationRead) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *NotificationRead) GetStatus() NotificationReadStatus {
+	if o == nil {
+		return NotificationReadStatus("")
+	}
+	return o.Status
+}

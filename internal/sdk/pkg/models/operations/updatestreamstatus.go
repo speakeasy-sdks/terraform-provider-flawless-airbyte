@@ -17,3 +17,31 @@ type UpdateStreamStatusResponse struct {
 	// Successfully updated stream status.
 	StreamStatusRead *shared.StreamStatusRead
 }
+
+func (o *UpdateStreamStatusResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateStreamStatusResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateStreamStatusResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *UpdateStreamStatusResponse) GetStreamStatusRead() *shared.StreamStatusRead {
+	if o == nil {
+		return nil
+	}
+	return o.StreamStatusRead
+}

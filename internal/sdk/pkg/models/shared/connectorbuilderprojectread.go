@@ -6,3 +6,17 @@ type ConnectorBuilderProjectRead struct {
 	BuilderProject      ConnectorBuilderProjectDetailsRead `json:"builderProject"`
 	DeclarativeManifest *DeclarativeManifestRead           `json:"declarativeManifest,omitempty"`
 }
+
+func (o *ConnectorBuilderProjectRead) GetBuilderProject() ConnectorBuilderProjectDetailsRead {
+	if o == nil {
+		return ConnectorBuilderProjectDetailsRead{}
+	}
+	return o.BuilderProject
+}
+
+func (o *ConnectorBuilderProjectRead) GetDeclarativeManifest() *DeclarativeManifestRead {
+	if o == nil {
+		return nil
+	}
+	return o.DeclarativeManifest
+}

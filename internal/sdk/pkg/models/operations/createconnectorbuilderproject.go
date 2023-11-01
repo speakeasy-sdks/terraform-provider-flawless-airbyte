@@ -17,3 +17,31 @@ type CreateConnectorBuilderProjectResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *CreateConnectorBuilderProjectResponse) GetConnectorBuilderProjectIDWithWorkspaceID() *shared.ConnectorBuilderProjectIDWithWorkspaceID {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectorBuilderProjectIDWithWorkspaceID
+}
+
+func (o *CreateConnectorBuilderProjectResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateConnectorBuilderProjectResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateConnectorBuilderProjectResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

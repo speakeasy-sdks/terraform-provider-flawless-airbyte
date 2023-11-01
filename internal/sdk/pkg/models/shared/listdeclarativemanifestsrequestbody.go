@@ -6,3 +6,17 @@ type ListDeclarativeManifestsRequestBody struct {
 	SourceDefinitionID string `json:"sourceDefinitionId"`
 	WorkspaceID        string `json:"workspaceId"`
 }
+
+func (o *ListDeclarativeManifestsRequestBody) GetSourceDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceDefinitionID
+}
+
+func (o *ListDeclarativeManifestsRequestBody) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

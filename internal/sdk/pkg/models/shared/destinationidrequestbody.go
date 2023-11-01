@@ -5,3 +5,10 @@ package shared
 type DestinationIDRequestBody struct {
 	DestinationID string `json:"destinationId"`
 }
+
+func (o *DestinationIDRequestBody) GetDestinationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationID
+}

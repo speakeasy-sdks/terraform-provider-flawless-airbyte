@@ -19,3 +19,38 @@ type ListDeclarativeManifestsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *ListDeclarativeManifestsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListDeclarativeManifestsResponse) GetDeclarativeManifestsReadList() *shared.DeclarativeManifestsReadList {
+	if o == nil {
+		return nil
+	}
+	return o.DeclarativeManifestsReadList
+}
+
+func (o *ListDeclarativeManifestsResponse) GetNotFoundKnownExceptionInfo() *shared.NotFoundKnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.NotFoundKnownExceptionInfo
+}
+
+func (o *ListDeclarativeManifestsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListDeclarativeManifestsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

@@ -17,3 +17,31 @@ type ListSourceDefinitionsForWorkspaceResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *ListSourceDefinitionsForWorkspaceResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListSourceDefinitionsForWorkspaceResponse) GetSourceDefinitionReadList() *shared.SourceDefinitionReadList {
+	if o == nil {
+		return nil
+	}
+	return o.SourceDefinitionReadList
+}
+
+func (o *ListSourceDefinitionsForWorkspaceResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListSourceDefinitionsForWorkspaceResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

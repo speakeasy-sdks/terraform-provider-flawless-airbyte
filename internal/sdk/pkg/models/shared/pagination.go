@@ -6,3 +6,17 @@ type Pagination struct {
 	PageSize  *int64 `json:"pageSize,omitempty"`
 	RowOffset *int64 `json:"rowOffset,omitempty"`
 }
+
+func (o *Pagination) GetPageSize() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PageSize
+}
+
+func (o *Pagination) GetRowOffset() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RowOffset
+}

@@ -12,3 +12,59 @@ type StreamStatusListRequestBody struct {
 	StreamNamespace *string              `json:"streamNamespace,omitempty"`
 	WorkspaceID     string               `json:"workspaceId"`
 }
+
+func (o *StreamStatusListRequestBody) GetAttemptNumber() *int {
+	if o == nil {
+		return nil
+	}
+	return o.AttemptNumber
+}
+
+func (o *StreamStatusListRequestBody) GetConnectionID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionID
+}
+
+func (o *StreamStatusListRequestBody) GetJobID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobID
+}
+
+func (o *StreamStatusListRequestBody) GetJobType() *StreamStatusJobType {
+	if o == nil {
+		return nil
+	}
+	return o.JobType
+}
+
+func (o *StreamStatusListRequestBody) GetPagination() Pagination {
+	if o == nil {
+		return Pagination{}
+	}
+	return o.Pagination
+}
+
+func (o *StreamStatusListRequestBody) GetStreamName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StreamName
+}
+
+func (o *StreamStatusListRequestBody) GetStreamNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StreamNamespace
+}
+
+func (o *StreamStatusListRequestBody) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

@@ -7,3 +7,24 @@ type ExistingConnectorBuilderProjectWithWorkspaceID struct {
 	BuilderProjectID string                         `json:"builderProjectId"`
 	WorkspaceID      string                         `json:"workspaceId"`
 }
+
+func (o *ExistingConnectorBuilderProjectWithWorkspaceID) GetBuilderProject() ConnectorBuilderProjectDetails {
+	if o == nil {
+		return ConnectorBuilderProjectDetails{}
+	}
+	return o.BuilderProject
+}
+
+func (o *ExistingConnectorBuilderProjectWithWorkspaceID) GetBuilderProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.BuilderProjectID
+}
+
+func (o *ExistingConnectorBuilderProjectWithWorkspaceID) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

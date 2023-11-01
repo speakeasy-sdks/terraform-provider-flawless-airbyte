@@ -10,3 +10,17 @@ type ActorCatalogWithUpdatedAt struct {
 	Catalog   *ActorCatalogWithUpdatedAtCatalog `json:"catalog,omitempty"`
 	UpdatedAt *int64                            `json:"updatedAt,omitempty"`
 }
+
+func (o *ActorCatalogWithUpdatedAt) GetCatalog() *ActorCatalogWithUpdatedAtCatalog {
+	if o == nil {
+		return nil
+	}
+	return o.Catalog
+}
+
+func (o *ActorCatalogWithUpdatedAt) GetUpdatedAt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}

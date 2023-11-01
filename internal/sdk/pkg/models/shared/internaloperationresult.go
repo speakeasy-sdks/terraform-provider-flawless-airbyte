@@ -5,3 +5,10 @@ package shared
 type InternalOperationResult struct {
 	Succeeded bool `json:"succeeded"`
 }
+
+func (o *InternalOperationResult) GetSucceeded() bool {
+	if o == nil {
+		return false
+	}
+	return o.Succeeded
+}

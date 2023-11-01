@@ -5,3 +5,10 @@ package shared
 type SourceIDRequestBody struct {
 	SourceID string `json:"sourceId"`
 }
+
+func (o *SourceIDRequestBody) GetSourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceID
+}

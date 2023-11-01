@@ -21,3 +21,45 @@ type GetSpecificationForDestinationIDResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *GetSpecificationForDestinationIDResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetSpecificationForDestinationIDResponse) GetDestinationDefinitionSpecificationRead() *shared.DestinationDefinitionSpecificationRead {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationDefinitionSpecificationRead
+}
+
+func (o *GetSpecificationForDestinationIDResponse) GetInvalidInputExceptionInfo() *shared.InvalidInputExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidInputExceptionInfo
+}
+
+func (o *GetSpecificationForDestinationIDResponse) GetNotFoundKnownExceptionInfo() *shared.NotFoundKnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.NotFoundKnownExceptionInfo
+}
+
+func (o *GetSpecificationForDestinationIDResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetSpecificationForDestinationIDResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

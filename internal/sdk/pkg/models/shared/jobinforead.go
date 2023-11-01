@@ -6,3 +6,17 @@ type JobInfoRead struct {
 	Attempts []AttemptInfoRead `json:"attempts"`
 	Job      JobRead           `json:"job"`
 }
+
+func (o *JobInfoRead) GetAttempts() []AttemptInfoRead {
+	if o == nil {
+		return []AttemptInfoRead{}
+	}
+	return o.Attempts
+}
+
+func (o *JobInfoRead) GetJob() JobRead {
+	if o == nil {
+		return JobRead{}
+	}
+	return o.Job
+}

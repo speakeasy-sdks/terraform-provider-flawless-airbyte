@@ -11,3 +11,45 @@ type SourceSearch struct {
 	SourceName              *string     `json:"sourceName,omitempty"`
 	WorkspaceID             *string     `json:"workspaceId,omitempty"`
 }
+
+func (o *SourceSearch) GetConnectionConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionConfiguration
+}
+
+func (o *SourceSearch) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *SourceSearch) GetSourceDefinitionID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceDefinitionID
+}
+
+func (o *SourceSearch) GetSourceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceID
+}
+
+func (o *SourceSearch) GetSourceName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceName
+}
+
+func (o *SourceSearch) GetWorkspaceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceID
+}

@@ -8,3 +8,17 @@ type ActorDefinitionResourceRequirements struct {
 	Default     *ResourceRequirements  `json:"default,omitempty"`
 	JobSpecific []JobTypeResourceLimit `json:"jobSpecific,omitempty"`
 }
+
+func (o *ActorDefinitionResourceRequirements) GetDefault() *ResourceRequirements {
+	if o == nil {
+		return nil
+	}
+	return o.Default
+}
+
+func (o *ActorDefinitionResourceRequirements) GetJobSpecific() []JobTypeResourceLimit {
+	if o == nil {
+		return nil
+	}
+	return o.JobSpecific
+}

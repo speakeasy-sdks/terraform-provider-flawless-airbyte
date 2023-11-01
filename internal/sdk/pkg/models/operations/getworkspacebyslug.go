@@ -21,3 +21,45 @@ type GetWorkspaceBySlugResponse struct {
 	// Successful operation
 	WorkspaceRead *shared.WorkspaceRead
 }
+
+func (o *GetWorkspaceBySlugResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetWorkspaceBySlugResponse) GetInvalidInputExceptionInfo() *shared.InvalidInputExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidInputExceptionInfo
+}
+
+func (o *GetWorkspaceBySlugResponse) GetNotFoundKnownExceptionInfo() *shared.NotFoundKnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.NotFoundKnownExceptionInfo
+}
+
+func (o *GetWorkspaceBySlugResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetWorkspaceBySlugResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *GetWorkspaceBySlugResponse) GetWorkspaceRead() *shared.WorkspaceRead {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceRead
+}

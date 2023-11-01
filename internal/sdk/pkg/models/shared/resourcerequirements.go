@@ -9,3 +9,31 @@ type ResourceRequirements struct {
 	MemoryLimit   *string `json:"memory_limit,omitempty"`
 	MemoryRequest *string `json:"memory_request,omitempty"`
 }
+
+func (o *ResourceRequirements) GetCPULimit() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CPULimit
+}
+
+func (o *ResourceRequirements) GetCPURequest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CPURequest
+}
+
+func (o *ResourceRequirements) GetMemoryLimit() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MemoryLimit
+}
+
+func (o *ResourceRequirements) GetMemoryRequest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MemoryRequest
+}

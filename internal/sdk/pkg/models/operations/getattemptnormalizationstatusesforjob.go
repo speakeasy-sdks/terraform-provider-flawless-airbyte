@@ -17,3 +17,31 @@ type GetAttemptNormalizationStatusesForJobResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *GetAttemptNormalizationStatusesForJobResponse) GetAttemptNormalizationStatusReadList() *shared.AttemptNormalizationStatusReadList {
+	if o == nil {
+		return nil
+	}
+	return o.AttemptNormalizationStatusReadList
+}
+
+func (o *GetAttemptNormalizationStatusesForJobResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetAttemptNormalizationStatusesForJobResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetAttemptNormalizationStatusesForJobResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

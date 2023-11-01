@@ -34,3 +34,10 @@ func (e *OperatorNormalizationOption) UnmarshalJSON(data []byte) error {
 type OperatorNormalization struct {
 	Option *OperatorNormalizationOption `json:"option,omitempty"`
 }
+
+func (o *OperatorNormalization) GetOption() *OperatorNormalizationOption {
+	if o == nil {
+		return nil
+	}
+	return o.Option
+}

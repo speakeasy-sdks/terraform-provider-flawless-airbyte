@@ -11,3 +11,45 @@ type DestinationDefinitionSpecificationRead struct {
 	JobInfo                       SynchronousJobRead                  `json:"jobInfo"`
 	SupportedDestinationSyncModes []DestinationSyncMode               `json:"supportedDestinationSyncModes,omitempty"`
 }
+
+func (o *DestinationDefinitionSpecificationRead) GetAdvancedAuth() *AdvancedAuth {
+	if o == nil {
+		return nil
+	}
+	return o.AdvancedAuth
+}
+
+func (o *DestinationDefinitionSpecificationRead) GetConnectionSpecification() *DestinationDefinitionSpecification {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionSpecification
+}
+
+func (o *DestinationDefinitionSpecificationRead) GetDestinationDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationDefinitionID
+}
+
+func (o *DestinationDefinitionSpecificationRead) GetDocumentationURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DocumentationURL
+}
+
+func (o *DestinationDefinitionSpecificationRead) GetJobInfo() SynchronousJobRead {
+	if o == nil {
+		return SynchronousJobRead{}
+	}
+	return o.JobInfo
+}
+
+func (o *DestinationDefinitionSpecificationRead) GetSupportedDestinationSyncModes() []DestinationSyncMode {
+	if o == nil {
+		return nil
+	}
+	return o.SupportedDestinationSyncModes
+}

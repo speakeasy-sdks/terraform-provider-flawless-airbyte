@@ -10,3 +10,38 @@ type SourceDefinitionSpecificationRead struct {
 	JobInfo                 SynchronousJobRead             `json:"jobInfo"`
 	SourceDefinitionID      string                         `json:"sourceDefinitionId"`
 }
+
+func (o *SourceDefinitionSpecificationRead) GetAdvancedAuth() *AdvancedAuth {
+	if o == nil {
+		return nil
+	}
+	return o.AdvancedAuth
+}
+
+func (o *SourceDefinitionSpecificationRead) GetConnectionSpecification() *SourceDefinitionSpecification {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionSpecification
+}
+
+func (o *SourceDefinitionSpecificationRead) GetDocumentationURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DocumentationURL
+}
+
+func (o *SourceDefinitionSpecificationRead) GetJobInfo() SynchronousJobRead {
+	if o == nil {
+		return SynchronousJobRead{}
+	}
+	return o.JobInfo
+}
+
+func (o *SourceDefinitionSpecificationRead) GetSourceDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceDefinitionID
+}

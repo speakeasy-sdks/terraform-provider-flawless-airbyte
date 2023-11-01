@@ -38,3 +38,17 @@ type CheckOperationRead struct {
 	Message *string                  `json:"message,omitempty"`
 	Status  CheckOperationReadStatus `json:"status"`
 }
+
+func (o *CheckOperationRead) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *CheckOperationRead) GetStatus() CheckOperationReadStatus {
+	if o == nil {
+		return CheckOperationReadStatus("")
+	}
+	return o.Status
+}

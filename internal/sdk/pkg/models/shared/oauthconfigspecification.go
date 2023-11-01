@@ -12,3 +12,31 @@ type OAuthConfigSpecification struct {
 	// The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
 	OauthUserInputFromConnectorConfigSpecification interface{} `json:"oauthUserInputFromConnectorConfigSpecification,omitempty"`
 }
+
+func (o *OAuthConfigSpecification) GetCompleteOAuthOutputSpecification() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.CompleteOAuthOutputSpecification
+}
+
+func (o *OAuthConfigSpecification) GetCompleteOAuthServerInputSpecification() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.CompleteOAuthServerInputSpecification
+}
+
+func (o *OAuthConfigSpecification) GetCompleteOAuthServerOutputSpecification() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.CompleteOAuthServerOutputSpecification
+}
+
+func (o *OAuthConfigSpecification) GetOauthUserInputFromConnectorConfigSpecification() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.OauthUserInputFromConnectorConfigSpecification
+}

@@ -20,3 +20,115 @@ type WorkspaceRead struct {
 	WebhookConfigs          []WebhookConfigRead   `json:"webhookConfigs,omitempty"`
 	WorkspaceID             string                `json:"workspaceId"`
 }
+
+func (o *WorkspaceRead) GetAnonymousDataCollection() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AnonymousDataCollection
+}
+
+func (o *WorkspaceRead) GetCustomerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.CustomerID
+}
+
+func (o *WorkspaceRead) GetDefaultGeography() *Geography {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultGeography
+}
+
+func (o *WorkspaceRead) GetDisplaySetupWizard() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DisplaySetupWizard
+}
+
+func (o *WorkspaceRead) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *WorkspaceRead) GetFeedbackDone() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FeedbackDone
+}
+
+func (o *WorkspaceRead) GetFirstCompletedSync() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FirstCompletedSync
+}
+
+func (o *WorkspaceRead) GetInitialSetupComplete() bool {
+	if o == nil {
+		return false
+	}
+	return o.InitialSetupComplete
+}
+
+func (o *WorkspaceRead) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *WorkspaceRead) GetNews() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.News
+}
+
+func (o *WorkspaceRead) GetNotificationSettings() *NotificationSettings {
+	if o == nil {
+		return nil
+	}
+	return o.NotificationSettings
+}
+
+func (o *WorkspaceRead) GetNotifications() []Notification {
+	if o == nil {
+		return nil
+	}
+	return o.Notifications
+}
+
+func (o *WorkspaceRead) GetSecurityUpdates() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityUpdates
+}
+
+func (o *WorkspaceRead) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *WorkspaceRead) GetWebhookConfigs() []WebhookConfigRead {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookConfigs
+}
+
+func (o *WorkspaceRead) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

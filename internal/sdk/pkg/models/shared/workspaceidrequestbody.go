@@ -5,3 +5,10 @@ package shared
 type WorkspaceIDRequestBody struct {
 	WorkspaceID string `json:"workspaceId"`
 }
+
+func (o *WorkspaceIDRequestBody) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

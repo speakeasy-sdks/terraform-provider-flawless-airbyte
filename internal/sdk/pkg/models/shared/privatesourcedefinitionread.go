@@ -6,3 +6,17 @@ type PrivateSourceDefinitionRead struct {
 	Granted          bool                 `json:"granted"`
 	SourceDefinition SourceDefinitionRead `json:"sourceDefinition"`
 }
+
+func (o *PrivateSourceDefinitionRead) GetGranted() bool {
+	if o == nil {
+		return false
+	}
+	return o.Granted
+}
+
+func (o *PrivateSourceDefinitionRead) GetSourceDefinition() SourceDefinitionRead {
+	if o == nil {
+		return SourceDefinitionRead{}
+	}
+	return o.SourceDefinition
+}

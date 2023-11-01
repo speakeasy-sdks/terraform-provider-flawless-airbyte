@@ -19,3 +19,38 @@ type RevokeSourceOAuthTokensResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *RevokeSourceOAuthTokensResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RevokeSourceOAuthTokensResponse) GetKnownExceptionInfo() *shared.KnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.KnownExceptionInfo
+}
+
+func (o *RevokeSourceOAuthTokensResponse) GetNotFoundKnownExceptionInfo() *shared.NotFoundKnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.NotFoundKnownExceptionInfo
+}
+
+func (o *RevokeSourceOAuthTokensResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RevokeSourceOAuthTokensResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

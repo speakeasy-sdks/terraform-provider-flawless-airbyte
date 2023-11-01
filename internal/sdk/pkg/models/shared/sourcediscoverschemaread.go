@@ -14,3 +14,45 @@ type SourceDiscoverSchemaRead struct {
 	ConnectionStatus *ConnectionStatus  `json:"connectionStatus,omitempty"`
 	JobInfo          SynchronousJobRead `json:"jobInfo"`
 }
+
+func (o *SourceDiscoverSchemaRead) GetBreakingChange() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BreakingChange
+}
+
+func (o *SourceDiscoverSchemaRead) GetCatalog() *AirbyteCatalog {
+	if o == nil {
+		return nil
+	}
+	return o.Catalog
+}
+
+func (o *SourceDiscoverSchemaRead) GetCatalogDiff() *CatalogDiff {
+	if o == nil {
+		return nil
+	}
+	return o.CatalogDiff
+}
+
+func (o *SourceDiscoverSchemaRead) GetCatalogID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CatalogID
+}
+
+func (o *SourceDiscoverSchemaRead) GetConnectionStatus() *ConnectionStatus {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionStatus
+}
+
+func (o *SourceDiscoverSchemaRead) GetJobInfo() SynchronousJobRead {
+	if o == nil {
+		return SynchronousJobRead{}
+	}
+	return o.JobInfo
+}

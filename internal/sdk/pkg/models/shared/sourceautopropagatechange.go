@@ -10,3 +10,31 @@ type SourceAutoPropagateChange struct {
 	SourceID    string         `json:"sourceId"`
 	WorkspaceID string         `json:"workspaceId"`
 }
+
+func (o *SourceAutoPropagateChange) GetCatalog() AirbyteCatalog {
+	if o == nil {
+		return AirbyteCatalog{}
+	}
+	return o.Catalog
+}
+
+func (o *SourceAutoPropagateChange) GetCatalogID() string {
+	if o == nil {
+		return ""
+	}
+	return o.CatalogID
+}
+
+func (o *SourceAutoPropagateChange) GetSourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceID
+}
+
+func (o *SourceAutoPropagateChange) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

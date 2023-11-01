@@ -2,15 +2,93 @@
 
 package shared
 
+import (
+	"airbyte/internal/sdk/pkg/utils"
+)
+
 type SynchronousJobRead struct {
 	// only present if a config id was provided.
 	ConfigID                      *string        `json:"configId,omitempty"`
 	ConfigType                    JobConfigType  `json:"configType"`
-	ConnectorConfigurationUpdated *bool          `json:"connectorConfigurationUpdated,omitempty"`
+	ConnectorConfigurationUpdated *bool          `default:"false" json:"connectorConfigurationUpdated"`
 	CreatedAt                     int64          `json:"createdAt"`
 	EndedAt                       int64          `json:"endedAt"`
 	FailureReason                 *FailureReason `json:"failureReason,omitempty"`
 	ID                            string         `json:"id"`
 	Logs                          *LogRead       `json:"logs,omitempty"`
 	Succeeded                     bool           `json:"succeeded"`
+}
+
+func (s SynchronousJobRead) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SynchronousJobRead) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *SynchronousJobRead) GetConfigID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConfigID
+}
+
+func (o *SynchronousJobRead) GetConfigType() JobConfigType {
+	if o == nil {
+		return JobConfigType("")
+	}
+	return o.ConfigType
+}
+
+func (o *SynchronousJobRead) GetConnectorConfigurationUpdated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectorConfigurationUpdated
+}
+
+func (o *SynchronousJobRead) GetCreatedAt() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.CreatedAt
+}
+
+func (o *SynchronousJobRead) GetEndedAt() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.EndedAt
+}
+
+func (o *SynchronousJobRead) GetFailureReason() *FailureReason {
+	if o == nil {
+		return nil
+	}
+	return o.FailureReason
+}
+
+func (o *SynchronousJobRead) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *SynchronousJobRead) GetLogs() *LogRead {
+	if o == nil {
+		return nil
+	}
+	return o.Logs
+}
+
+func (o *SynchronousJobRead) GetSucceeded() bool {
+	if o == nil {
+		return false
+	}
+	return o.Succeeded
 }

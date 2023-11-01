@@ -9,3 +9,24 @@ type SourceDefinitionUpdate struct {
 	ResourceRequirements *ActorDefinitionResourceRequirements `json:"resourceRequirements,omitempty"`
 	SourceDefinitionID   string                               `json:"sourceDefinitionId"`
 }
+
+func (o *SourceDefinitionUpdate) GetDockerImageTag() string {
+	if o == nil {
+		return ""
+	}
+	return o.DockerImageTag
+}
+
+func (o *SourceDefinitionUpdate) GetResourceRequirements() *ActorDefinitionResourceRequirements {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceRequirements
+}
+
+func (o *SourceDefinitionUpdate) GetSourceDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceDefinitionID
+}

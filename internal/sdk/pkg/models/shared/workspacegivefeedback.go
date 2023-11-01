@@ -5,3 +5,10 @@ package shared
 type WorkspaceGiveFeedback struct {
 	WorkspaceID string `json:"workspaceId"`
 }
+
+func (o *WorkspaceGiveFeedback) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

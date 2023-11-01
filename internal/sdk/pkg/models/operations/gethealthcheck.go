@@ -17,3 +17,31 @@ type GetHealthCheckResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *GetHealthCheckResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetHealthCheckResponse) GetHealthCheckRead() *shared.HealthCheckRead {
+	if o == nil {
+		return nil
+	}
+	return o.HealthCheckRead
+}
+
+func (o *GetHealthCheckResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetHealthCheckResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

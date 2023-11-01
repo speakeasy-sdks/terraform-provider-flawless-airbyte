@@ -10,3 +10,24 @@ type AttemptSyncConfig struct {
 	// Contains the state for a connection. The stateType field identifies what type of state it is. Only the field corresponding to that type will be set, the rest will be null. If stateType=not_set, then none of the fields will be set.
 	State *ConnectionState `json:"state,omitempty"`
 }
+
+func (o *AttemptSyncConfig) GetDestinationConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationConfiguration
+}
+
+func (o *AttemptSyncConfig) GetSourceConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.SourceConfiguration
+}
+
+func (o *AttemptSyncConfig) GetState() *ConnectionState {
+	if o == nil {
+		return nil
+	}
+	return o.State
+}

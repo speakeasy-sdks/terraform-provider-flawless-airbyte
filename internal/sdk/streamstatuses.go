@@ -4,6 +4,7 @@ package sdk
 
 import (
 	"airbyte/internal/sdk/pkg/models/operations"
+	"airbyte/internal/sdk/pkg/models/sdkerrors"
 	"airbyte/internal/sdk/pkg/models/shared"
 	"airbyte/internal/sdk/pkg/utils"
 	"bytes"
@@ -25,15 +26,14 @@ func newStreamStatuses(sdkConfig sdkConfiguration) *streamStatuses {
 }
 
 // CreateStreamStatus - Creates a stream status.
-func (s *streamStatuses) CreateStreamStatus(ctx context.Context, request shared.StreamStatusCreateRequestBody) (*operations.CreateStreamStatusResponse, error) {
+func (s *streamStatuses) CreateStreamStatus(ctx context.Context, request *shared.StreamStatusCreateRequestBody) (*operations.CreateStreamStatusResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/stream_statuses/create"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
-
 	debugBody := bytes.NewBuffer([]byte{})
 	debugReader := io.TeeReader(bodyReader, debugBody)
 
@@ -75,12 +75,14 @@ func (s *streamStatuses) CreateStreamStatus(ctx context.Context, request shared.
 	case httpRes.StatusCode == 201:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.StreamStatusRead
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return res, err
+			var out shared.StreamStatusRead
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
 			}
 
-			res.StreamStatusRead = out
+			res.StreamStatusRead = &out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -88,15 +90,14 @@ func (s *streamStatuses) CreateStreamStatus(ctx context.Context, request shared.
 }
 
 // GetStreamStatuses - Gets a list of stream statuses filtered by parameters (with AND semantics).
-func (s *streamStatuses) GetStreamStatuses(ctx context.Context, request shared.StreamStatusListRequestBody) (*operations.GetStreamStatusesResponse, error) {
+func (s *streamStatuses) GetStreamStatuses(ctx context.Context, request *shared.StreamStatusListRequestBody) (*operations.GetStreamStatusesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/stream_statuses/list"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
-
 	debugBody := bytes.NewBuffer([]byte{})
 	debugReader := io.TeeReader(bodyReader, debugBody)
 
@@ -138,12 +139,14 @@ func (s *streamStatuses) GetStreamStatuses(ctx context.Context, request shared.S
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.StreamStatusReadList
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return res, err
+			var out shared.StreamStatusReadList
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
 			}
 
-			res.StreamStatusReadList = out
+			res.StreamStatusReadList = &out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -151,15 +154,14 @@ func (s *streamStatuses) GetStreamStatuses(ctx context.Context, request shared.S
 }
 
 // UpdateStreamStatus - Updates a stream status.
-func (s *streamStatuses) UpdateStreamStatus(ctx context.Context, request shared.StreamStatusUpdateRequestBody) (*operations.UpdateStreamStatusResponse, error) {
+func (s *streamStatuses) UpdateStreamStatus(ctx context.Context, request *shared.StreamStatusUpdateRequestBody) (*operations.UpdateStreamStatusResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/stream_statuses/update"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
-
 	debugBody := bytes.NewBuffer([]byte{})
 	debugReader := io.TeeReader(bodyReader, debugBody)
 
@@ -203,12 +205,14 @@ func (s *streamStatuses) UpdateStreamStatus(ctx context.Context, request shared.
 	case httpRes.StatusCode == 201:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.StreamStatusRead
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return res, err
+			var out shared.StreamStatusRead
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
 			}
 
-			res.StreamStatusRead = out
+			res.StreamStatusRead = &out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

@@ -7,3 +7,17 @@ type JobReadList struct {
 	// the total count of jobs for the specified connection
 	TotalJobCount int64 `json:"totalJobCount"`
 }
+
+func (o *JobReadList) GetJobs() []JobWithAttemptsRead {
+	if o == nil {
+		return []JobWithAttemptsRead{}
+	}
+	return o.Jobs
+}
+
+func (o *JobReadList) GetTotalJobCount() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TotalJobCount
+}

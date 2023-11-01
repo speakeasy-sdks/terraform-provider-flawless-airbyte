@@ -5,3 +5,10 @@ package shared
 type AttemptNormalizationStatusReadList struct {
 	AttemptNormalizationStatuses []AttemptNormalizationStatusRead `json:"attemptNormalizationStatuses,omitempty"`
 }
+
+func (o *AttemptNormalizationStatusReadList) GetAttemptNormalizationStatuses() []AttemptNormalizationStatusRead {
+	if o == nil {
+		return nil
+	}
+	return o.AttemptNormalizationStatuses
+}

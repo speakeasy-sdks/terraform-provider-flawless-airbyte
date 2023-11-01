@@ -14,3 +14,73 @@ type WorkspaceCreate struct {
 	SecurityUpdates         *bool                 `json:"securityUpdates,omitempty"`
 	WebhookConfigs          []WebhookConfigWrite  `json:"webhookConfigs,omitempty"`
 }
+
+func (o *WorkspaceCreate) GetAnonymousDataCollection() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AnonymousDataCollection
+}
+
+func (o *WorkspaceCreate) GetDefaultGeography() *Geography {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultGeography
+}
+
+func (o *WorkspaceCreate) GetDisplaySetupWizard() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DisplaySetupWizard
+}
+
+func (o *WorkspaceCreate) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *WorkspaceCreate) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *WorkspaceCreate) GetNews() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.News
+}
+
+func (o *WorkspaceCreate) GetNotificationSettings() *NotificationSettings {
+	if o == nil {
+		return nil
+	}
+	return o.NotificationSettings
+}
+
+func (o *WorkspaceCreate) GetNotifications() []Notification {
+	if o == nil {
+		return nil
+	}
+	return o.Notifications
+}
+
+func (o *WorkspaceCreate) GetSecurityUpdates() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityUpdates
+}
+
+func (o *WorkspaceCreate) GetWebhookConfigs() []WebhookConfigWrite {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookConfigs
+}

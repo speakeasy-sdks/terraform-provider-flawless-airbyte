@@ -18,3 +18,52 @@ type AirbyteStream struct {
 	SourceDefinedPrimaryKey [][]string `json:"sourceDefinedPrimaryKey,omitempty"`
 	SupportedSyncModes      []SyncMode `json:"supportedSyncModes,omitempty"`
 }
+
+func (o *AirbyteStream) GetDefaultCursorField() []string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultCursorField
+}
+
+func (o *AirbyteStream) GetJSONSchema() *StreamJSONSchema {
+	if o == nil {
+		return nil
+	}
+	return o.JSONSchema
+}
+
+func (o *AirbyteStream) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *AirbyteStream) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *AirbyteStream) GetSourceDefinedCursor() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SourceDefinedCursor
+}
+
+func (o *AirbyteStream) GetSourceDefinedPrimaryKey() [][]string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceDefinedPrimaryKey
+}
+
+func (o *AirbyteStream) GetSupportedSyncModes() []SyncMode {
+	if o == nil {
+		return nil
+	}
+	return o.SupportedSyncModes
+}

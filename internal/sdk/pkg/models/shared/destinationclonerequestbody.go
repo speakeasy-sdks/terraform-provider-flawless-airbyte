@@ -7,3 +7,17 @@ type DestinationCloneRequestBody struct {
 	DestinationCloneID       string                         `json:"destinationCloneId"`
 	DestinationConfiguration *DestinationCloneConfiguration `json:"destinationConfiguration,omitempty"`
 }
+
+func (o *DestinationCloneRequestBody) GetDestinationCloneID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationCloneID
+}
+
+func (o *DestinationCloneRequestBody) GetDestinationConfiguration() *DestinationCloneConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationConfiguration
+}

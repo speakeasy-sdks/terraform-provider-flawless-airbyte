@@ -48,13 +48,55 @@ type ConnectionScheduleDataBasicSchedule struct {
 	Units    int64                                       `json:"units"`
 }
 
+func (o *ConnectionScheduleDataBasicSchedule) GetTimeUnit() ConnectionScheduleDataBasicScheduleTimeUnit {
+	if o == nil {
+		return ConnectionScheduleDataBasicScheduleTimeUnit("")
+	}
+	return o.TimeUnit
+}
+
+func (o *ConnectionScheduleDataBasicSchedule) GetUnits() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Units
+}
+
 type ConnectionScheduleDataCron struct {
 	CronExpression string `json:"cronExpression"`
 	CronTimeZone   string `json:"cronTimeZone"`
+}
+
+func (o *ConnectionScheduleDataCron) GetCronExpression() string {
+	if o == nil {
+		return ""
+	}
+	return o.CronExpression
+}
+
+func (o *ConnectionScheduleDataCron) GetCronTimeZone() string {
+	if o == nil {
+		return ""
+	}
+	return o.CronTimeZone
 }
 
 // ConnectionScheduleData - schedule for when the the connection should run, per the schedule type
 type ConnectionScheduleData struct {
 	BasicSchedule *ConnectionScheduleDataBasicSchedule `json:"basicSchedule,omitempty"`
 	Cron          *ConnectionScheduleDataCron          `json:"cron,omitempty"`
+}
+
+func (o *ConnectionScheduleData) GetBasicSchedule() *ConnectionScheduleDataBasicSchedule {
+	if o == nil {
+		return nil
+	}
+	return o.BasicSchedule
+}
+
+func (o *ConnectionScheduleData) GetCron() *ConnectionScheduleDataCron {
+	if o == nil {
+		return nil
+	}
+	return o.Cron
 }

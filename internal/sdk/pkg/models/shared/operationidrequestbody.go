@@ -5,3 +5,10 @@ package shared
 type OperationIDRequestBody struct {
 	OperationID string `json:"operationId"`
 }
+
+func (o *OperationIDRequestBody) GetOperationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OperationID
+}

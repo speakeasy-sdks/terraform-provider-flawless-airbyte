@@ -5,3 +5,10 @@ package shared
 type LogRead struct {
 	LogLines []string `json:"logLines"`
 }
+
+func (o *LogRead) GetLogLines() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.LogLines
+}

@@ -7,3 +7,10 @@ type CatalogDiff struct {
 	// list of stream transformations. order does not matter.
 	Transforms []StreamTransform `json:"transforms"`
 }
+
+func (o *CatalogDiff) GetTransforms() []StreamTransform {
+	if o == nil {
+		return []StreamTransform{}
+	}
+	return o.Transforms
+}

@@ -2,6 +2,10 @@
 
 package shared
 
+import (
+	"airbyte/internal/sdk/pkg/utils"
+)
+
 // ConnectionUpdate - Used to apply a patch-style update to a connection, which means that null properties remain unchanged
 type ConnectionUpdate struct {
 	BreakingChange *bool      `json:"breakingChange,omitempty"`
@@ -12,7 +16,7 @@ type ConnectionUpdate struct {
 	// Method used for computing final namespace in destination
 	NamespaceDefinition *NamespaceDefinitionType `json:"namespaceDefinition,omitempty"`
 	// Used when namespaceDefinition is 'customformat'. If blank then behaves like namespaceDefinition = 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
-	NamespaceFormat              *string                       `json:"namespaceFormat,omitempty"`
+	NamespaceFormat              *string                       `default:"null" json:"namespaceFormat"`
 	NonBreakingChangesPreference *NonBreakingChangesPreference `json:"nonBreakingChangesPreference,omitempty"`
 	NotifySchemaChanges          *bool                         `json:"notifySchemaChanges,omitempty"`
 	NotifySchemaChangesByEmail   *bool                         `json:"notifySchemaChangesByEmail,omitempty"`
@@ -32,4 +36,141 @@ type ConnectionUpdate struct {
 	Status *ConnectionStatus `json:"status,omitempty"`
 	// describes the available schema (catalog).
 	SyncCatalog *AirbyteCatalog `json:"syncCatalog,omitempty"`
+}
+
+func (c ConnectionUpdate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ConnectionUpdate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ConnectionUpdate) GetBreakingChange() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BreakingChange
+}
+
+func (o *ConnectionUpdate) GetConnectionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConnectionID
+}
+
+func (o *ConnectionUpdate) GetGeography() *Geography {
+	if o == nil {
+		return nil
+	}
+	return o.Geography
+}
+
+func (o *ConnectionUpdate) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *ConnectionUpdate) GetNamespaceDefinition() *NamespaceDefinitionType {
+	if o == nil {
+		return nil
+	}
+	return o.NamespaceDefinition
+}
+
+func (o *ConnectionUpdate) GetNamespaceFormat() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NamespaceFormat
+}
+
+func (o *ConnectionUpdate) GetNonBreakingChangesPreference() *NonBreakingChangesPreference {
+	if o == nil {
+		return nil
+	}
+	return o.NonBreakingChangesPreference
+}
+
+func (o *ConnectionUpdate) GetNotifySchemaChanges() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.NotifySchemaChanges
+}
+
+func (o *ConnectionUpdate) GetNotifySchemaChangesByEmail() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.NotifySchemaChangesByEmail
+}
+
+func (o *ConnectionUpdate) GetOperationIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.OperationIds
+}
+
+func (o *ConnectionUpdate) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *ConnectionUpdate) GetResourceRequirements() *ResourceRequirements {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceRequirements
+}
+
+func (o *ConnectionUpdate) GetSchedule() *ConnectionSchedule {
+	if o == nil {
+		return nil
+	}
+	return o.Schedule
+}
+
+func (o *ConnectionUpdate) GetScheduleData() *ConnectionScheduleData {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduleData
+}
+
+func (o *ConnectionUpdate) GetScheduleType() *ConnectionScheduleType {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduleType
+}
+
+func (o *ConnectionUpdate) GetSourceCatalogID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceCatalogID
+}
+
+func (o *ConnectionUpdate) GetStatus() *ConnectionStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *ConnectionUpdate) GetSyncCatalog() *AirbyteCatalog {
+	if o == nil {
+		return nil
+	}
+	return o.SyncCatalog
 }

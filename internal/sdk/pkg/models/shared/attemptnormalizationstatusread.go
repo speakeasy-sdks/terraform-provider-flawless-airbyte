@@ -8,3 +8,31 @@ type AttemptNormalizationStatusRead struct {
 	HasRecordsCommitted    *bool  `json:"hasRecordsCommitted,omitempty"`
 	RecordsCommitted       *int64 `json:"recordsCommitted,omitempty"`
 }
+
+func (o *AttemptNormalizationStatusRead) GetAttemptNumber() *int {
+	if o == nil {
+		return nil
+	}
+	return o.AttemptNumber
+}
+
+func (o *AttemptNormalizationStatusRead) GetHasNormalizationFailed() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasNormalizationFailed
+}
+
+func (o *AttemptNormalizationStatusRead) GetHasRecordsCommitted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasRecordsCommitted
+}
+
+func (o *AttemptNormalizationStatusRead) GetRecordsCommitted() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RecordsCommitted
+}

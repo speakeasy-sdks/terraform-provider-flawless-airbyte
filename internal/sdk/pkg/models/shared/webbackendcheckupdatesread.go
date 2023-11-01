@@ -7,3 +7,17 @@ type WebBackendCheckUpdatesRead struct {
 	DestinationDefinitions int64 `json:"destinationDefinitions"`
 	SourceDefinitions      int64 `json:"sourceDefinitions"`
 }
+
+func (o *WebBackendCheckUpdatesRead) GetDestinationDefinitions() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.DestinationDefinitions
+}
+
+func (o *WebBackendCheckUpdatesRead) GetSourceDefinitions() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.SourceDefinitions
+}

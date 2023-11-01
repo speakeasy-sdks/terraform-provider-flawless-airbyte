@@ -17,3 +17,31 @@ type ListPrivateDestinationDefinitionsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *ListPrivateDestinationDefinitionsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListPrivateDestinationDefinitionsResponse) GetPrivateDestinationDefinitionReadList() *shared.PrivateDestinationDefinitionReadList {
+	if o == nil {
+		return nil
+	}
+	return o.PrivateDestinationDefinitionReadList
+}
+
+func (o *ListPrivateDestinationDefinitionsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListPrivateDestinationDefinitionsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

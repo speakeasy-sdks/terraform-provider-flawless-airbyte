@@ -2,6 +2,10 @@
 
 package shared
 
+import (
+	"airbyte/internal/sdk/pkg/utils"
+)
+
 type CompleteSourceOauthRequest struct {
 	// The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
 	OAuthInputConfiguration interface{} `json:"oAuthInputConfiguration,omitempty"`
@@ -10,8 +14,68 @@ type CompleteSourceOauthRequest struct {
 	// When completing OAuth flow to gain an access token, some API sometimes requires to verify that the app re-send the redirectUrl that was used when consent was given.
 	RedirectURL *string `json:"redirectUrl,omitempty"`
 	// If set to true, returns a secret coordinate which references the stored tokens. By default, returns raw tokens.
-	ReturnSecretCoordinate *bool   `json:"returnSecretCoordinate,omitempty"`
+	ReturnSecretCoordinate *bool   `default:"false" json:"returnSecretCoordinate"`
 	SourceDefinitionID     string  `json:"sourceDefinitionId"`
 	SourceID               *string `json:"sourceId,omitempty"`
 	WorkspaceID            string  `json:"workspaceId"`
+}
+
+func (c CompleteSourceOauthRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CompleteSourceOauthRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CompleteSourceOauthRequest) GetOAuthInputConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.OAuthInputConfiguration
+}
+
+func (o *CompleteSourceOauthRequest) GetQueryParams() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.QueryParams
+}
+
+func (o *CompleteSourceOauthRequest) GetRedirectURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectURL
+}
+
+func (o *CompleteSourceOauthRequest) GetReturnSecretCoordinate() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ReturnSecretCoordinate
+}
+
+func (o *CompleteSourceOauthRequest) GetSourceDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceDefinitionID
+}
+
+func (o *CompleteSourceOauthRequest) GetSourceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceID
+}
+
+func (o *CompleteSourceOauthRequest) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
 }

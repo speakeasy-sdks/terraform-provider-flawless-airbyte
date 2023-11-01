@@ -17,3 +17,31 @@ type ListPrivateSourceDefinitionsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *ListPrivateSourceDefinitionsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListPrivateSourceDefinitionsResponse) GetPrivateSourceDefinitionReadList() *shared.PrivateSourceDefinitionReadList {
+	if o == nil {
+		return nil
+	}
+	return o.PrivateSourceDefinitionReadList
+}
+
+func (o *ListPrivateSourceDefinitionsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListPrivateSourceDefinitionsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

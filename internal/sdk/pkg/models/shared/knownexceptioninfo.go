@@ -9,3 +9,38 @@ type KnownExceptionInfo struct {
 	RootCauseExceptionClassName *string  `json:"rootCauseExceptionClassName,omitempty"`
 	RootCauseExceptionStack     []string `json:"rootCauseExceptionStack,omitempty"`
 }
+
+func (o *KnownExceptionInfo) GetExceptionClassName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExceptionClassName
+}
+
+func (o *KnownExceptionInfo) GetExceptionStack() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ExceptionStack
+}
+
+func (o *KnownExceptionInfo) GetMessage() string {
+	if o == nil {
+		return ""
+	}
+	return o.Message
+}
+
+func (o *KnownExceptionInfo) GetRootCauseExceptionClassName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RootCauseExceptionClassName
+}
+
+func (o *KnownExceptionInfo) GetRootCauseExceptionStack() []string {
+	if o == nil {
+		return nil
+	}
+	return o.RootCauseExceptionStack
+}

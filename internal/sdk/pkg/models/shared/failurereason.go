@@ -14,3 +14,52 @@ type FailureReason struct {
 	Stacktrace *string `json:"stacktrace,omitempty"`
 	Timestamp  int64   `json:"timestamp"`
 }
+
+func (o *FailureReason) GetExternalMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExternalMessage
+}
+
+func (o *FailureReason) GetFailureOrigin() *FailureOrigin {
+	if o == nil {
+		return nil
+	}
+	return o.FailureOrigin
+}
+
+func (o *FailureReason) GetFailureType() *FailureType {
+	if o == nil {
+		return nil
+	}
+	return o.FailureType
+}
+
+func (o *FailureReason) GetInternalMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.InternalMessage
+}
+
+func (o *FailureReason) GetRetryable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Retryable
+}
+
+func (o *FailureReason) GetStacktrace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Stacktrace
+}
+
+func (o *FailureReason) GetTimestamp() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Timestamp
+}

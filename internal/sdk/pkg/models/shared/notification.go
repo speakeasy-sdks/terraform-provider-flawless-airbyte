@@ -2,10 +2,60 @@
 
 package shared
 
+import (
+	"airbyte/internal/sdk/pkg/utils"
+)
+
 type Notification struct {
 	CustomerioConfiguration *CustomerioNotificationConfiguration `json:"customerioConfiguration,omitempty"`
 	NotificationType        NotificationType                     `json:"notificationType"`
-	SendOnFailure           *bool                                `json:"sendOnFailure,omitempty"`
-	SendOnSuccess           *bool                                `json:"sendOnSuccess,omitempty"`
+	SendOnFailure           *bool                                `default:"true" json:"sendOnFailure"`
+	SendOnSuccess           *bool                                `default:"false" json:"sendOnSuccess"`
 	SlackConfiguration      *SlackNotificationConfiguration      `json:"slackConfiguration,omitempty"`
+}
+
+func (n Notification) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *Notification) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Notification) GetCustomerioConfiguration() *CustomerioNotificationConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.CustomerioConfiguration
+}
+
+func (o *Notification) GetNotificationType() NotificationType {
+	if o == nil {
+		return NotificationType("")
+	}
+	return o.NotificationType
+}
+
+func (o *Notification) GetSendOnFailure() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SendOnFailure
+}
+
+func (o *Notification) GetSendOnSuccess() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SendOnSuccess
+}
+
+func (o *Notification) GetSlackConfiguration() *SlackNotificationConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.SlackConfiguration
 }

@@ -21,3 +21,45 @@ type WebBackendGetWorkspaceStateResponse struct {
 	// Successful operation
 	WebBackendWorkspaceStateResult *shared.WebBackendWorkspaceStateResult
 }
+
+func (o *WebBackendGetWorkspaceStateResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *WebBackendGetWorkspaceStateResponse) GetInvalidInputExceptionInfo() *shared.InvalidInputExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidInputExceptionInfo
+}
+
+func (o *WebBackendGetWorkspaceStateResponse) GetNotFoundKnownExceptionInfo() *shared.NotFoundKnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.NotFoundKnownExceptionInfo
+}
+
+func (o *WebBackendGetWorkspaceStateResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *WebBackendGetWorkspaceStateResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *WebBackendGetWorkspaceStateResponse) GetWebBackendWorkspaceStateResult() *shared.WebBackendWorkspaceStateResult {
+	if o == nil {
+		return nil
+	}
+	return o.WebBackendWorkspaceStateResult
+}

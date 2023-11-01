@@ -7,3 +7,17 @@ type AttemptFailureSummary struct {
 	// True if the number of committed records for this attempt was greater than 0. False if 0 records were committed. If not set, the number of committed records is unknown.
 	PartialSuccess *bool `json:"partialSuccess,omitempty"`
 }
+
+func (o *AttemptFailureSummary) GetFailures() []FailureReason {
+	if o == nil {
+		return []FailureReason{}
+	}
+	return o.Failures
+}
+
+func (o *AttemptFailureSummary) GetPartialSuccess() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PartialSuccess
+}

@@ -7,3 +7,17 @@ type ConnectorBuilderProjectDetails struct {
 	DraftManifest *DeclarativeManifest `json:"draftManifest,omitempty"`
 	Name          string               `json:"name"`
 }
+
+func (o *ConnectorBuilderProjectDetails) GetDraftManifest() *DeclarativeManifest {
+	if o == nil {
+		return nil
+	}
+	return o.DraftManifest
+}
+
+func (o *ConnectorBuilderProjectDetails) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}

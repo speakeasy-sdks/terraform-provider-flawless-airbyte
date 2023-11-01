@@ -7,3 +7,24 @@ type SaveAttemptSyncConfigRequestBody struct {
 	JobID         int64             `json:"jobId"`
 	SyncConfig    AttemptSyncConfig `json:"syncConfig"`
 }
+
+func (o *SaveAttemptSyncConfigRequestBody) GetAttemptNumber() int {
+	if o == nil {
+		return 0
+	}
+	return o.AttemptNumber
+}
+
+func (o *SaveAttemptSyncConfigRequestBody) GetJobID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.JobID
+}
+
+func (o *SaveAttemptSyncConfigRequestBody) GetSyncConfig() AttemptSyncConfig {
+	if o == nil {
+		return AttemptSyncConfig{}
+	}
+	return o.SyncConfig
+}

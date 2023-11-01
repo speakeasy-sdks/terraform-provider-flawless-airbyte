@@ -5,3 +5,10 @@ package shared
 type WebBackendWorkspaceState struct {
 	WorkspaceID string `json:"workspaceId"`
 }
+
+func (o *WebBackendWorkspaceState) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

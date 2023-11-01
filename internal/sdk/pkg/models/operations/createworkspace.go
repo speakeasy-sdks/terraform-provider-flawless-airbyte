@@ -19,3 +19,38 @@ type CreateWorkspaceResponse struct {
 	// Successful operation
 	WorkspaceRead *shared.WorkspaceRead
 }
+
+func (o *CreateWorkspaceResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateWorkspaceResponse) GetInvalidInputExceptionInfo() *shared.InvalidInputExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidInputExceptionInfo
+}
+
+func (o *CreateWorkspaceResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateWorkspaceResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *CreateWorkspaceResponse) GetWorkspaceRead() *shared.WorkspaceRead {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceRead
+}

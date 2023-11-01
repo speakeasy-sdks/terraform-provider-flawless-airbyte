@@ -19,3 +19,38 @@ type ExecuteSourceCheckConnectionResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *ExecuteSourceCheckConnectionResponse) GetCheckConnectionRead() *shared.CheckConnectionRead {
+	if o == nil {
+		return nil
+	}
+	return o.CheckConnectionRead
+}
+
+func (o *ExecuteSourceCheckConnectionResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ExecuteSourceCheckConnectionResponse) GetInvalidInputExceptionInfo() *shared.InvalidInputExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidInputExceptionInfo
+}
+
+func (o *ExecuteSourceCheckConnectionResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ExecuteSourceCheckConnectionResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

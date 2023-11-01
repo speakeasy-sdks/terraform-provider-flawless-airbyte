@@ -8,3 +8,24 @@ type DestinationUpdate struct {
 	DestinationID           string      `json:"destinationId"`
 	Name                    string      `json:"name"`
 }
+
+func (o *DestinationUpdate) GetConnectionConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionConfiguration
+}
+
+func (o *DestinationUpdate) GetDestinationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationID
+}
+
+func (o *DestinationUpdate) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}

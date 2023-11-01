@@ -4,6 +4,7 @@ package shared
 
 import (
 	"airbyte/internal/sdk/pkg/types"
+	"airbyte/internal/sdk/pkg/utils"
 	"encoding/json"
 	"fmt"
 )
@@ -58,4 +59,99 @@ type SourceDefinitionRead struct {
 	ResourceRequirements *ActorDefinitionResourceRequirements `json:"resourceRequirements,omitempty"`
 	SourceDefinitionID   string                               `json:"sourceDefinitionId"`
 	SourceType           *SourceDefinitionReadSourceType      `json:"sourceType,omitempty"`
+}
+
+func (s SourceDefinitionRead) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SourceDefinitionRead) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *SourceDefinitionRead) GetDockerImageTag() string {
+	if o == nil {
+		return ""
+	}
+	return o.DockerImageTag
+}
+
+func (o *SourceDefinitionRead) GetDockerRepository() string {
+	if o == nil {
+		return ""
+	}
+	return o.DockerRepository
+}
+
+func (o *SourceDefinitionRead) GetDocumentationURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DocumentationURL
+}
+
+func (o *SourceDefinitionRead) GetIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Icon
+}
+
+func (o *SourceDefinitionRead) GetMaxSecondsBetweenMessages() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxSecondsBetweenMessages
+}
+
+func (o *SourceDefinitionRead) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *SourceDefinitionRead) GetProtocolVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProtocolVersion
+}
+
+func (o *SourceDefinitionRead) GetReleaseDate() *types.Date {
+	if o == nil {
+		return nil
+	}
+	return o.ReleaseDate
+}
+
+func (o *SourceDefinitionRead) GetReleaseStage() *ReleaseStage {
+	if o == nil {
+		return nil
+	}
+	return o.ReleaseStage
+}
+
+func (o *SourceDefinitionRead) GetResourceRequirements() *ActorDefinitionResourceRequirements {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceRequirements
+}
+
+func (o *SourceDefinitionRead) GetSourceDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceDefinitionID
+}
+
+func (o *SourceDefinitionRead) GetSourceType() *SourceDefinitionReadSourceType {
+	if o == nil {
+		return nil
+	}
+	return o.SourceType
 }

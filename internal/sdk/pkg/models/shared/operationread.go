@@ -8,3 +8,31 @@ type OperationRead struct {
 	OperatorConfiguration OperatorConfiguration `json:"operatorConfiguration"`
 	WorkspaceID           string                `json:"workspaceId"`
 }
+
+func (o *OperationRead) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *OperationRead) GetOperationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OperationID
+}
+
+func (o *OperationRead) GetOperatorConfiguration() OperatorConfiguration {
+	if o == nil {
+		return OperatorConfiguration{}
+	}
+	return o.OperatorConfiguration
+}
+
+func (o *OperationRead) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

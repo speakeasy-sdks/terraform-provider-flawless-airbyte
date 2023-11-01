@@ -6,3 +6,10 @@ type FieldAdd struct {
 	// JSONSchema representation of the field
 	Schema *FieldSchema `json:"schema,omitempty"`
 }
+
+func (o *FieldAdd) GetSchema() *FieldSchema {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}

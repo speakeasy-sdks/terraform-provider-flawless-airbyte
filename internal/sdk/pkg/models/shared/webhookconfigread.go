@@ -8,3 +8,17 @@ type WebhookConfigRead struct {
 	// human-readable name e.g. for display in UI
 	Name *string `json:"name,omitempty"`
 }
+
+func (o *WebhookConfigRead) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *WebhookConfigRead) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

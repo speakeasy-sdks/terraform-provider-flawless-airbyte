@@ -9,3 +9,31 @@ type DestinationCoreConfig struct {
 	DestinationID           *string     `json:"destinationId,omitempty"`
 	WorkspaceID             string      `json:"workspaceId"`
 }
+
+func (o *DestinationCoreConfig) GetConnectionConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionConfiguration
+}
+
+func (o *DestinationCoreConfig) GetDestinationDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationDefinitionID
+}
+
+func (o *DestinationCoreConfig) GetDestinationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationID
+}
+
+func (o *DestinationCoreConfig) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

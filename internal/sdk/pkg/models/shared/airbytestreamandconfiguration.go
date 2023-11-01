@@ -9,3 +9,17 @@ type AirbyteStreamAndConfiguration struct {
 	// the immutable schema defined by the source
 	Stream *AirbyteStream `json:"stream,omitempty"`
 }
+
+func (o *AirbyteStreamAndConfiguration) GetConfig() *AirbyteStreamConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.Config
+}
+
+func (o *AirbyteStreamAndConfiguration) GetStream() *AirbyteStream {
+	if o == nil {
+		return nil
+	}
+	return o.Stream
+}

@@ -9,3 +9,17 @@ type JobTypeResourceLimit struct {
 	// optional resource requirements to run workers (blank for unbounded allocations)
 	ResourceRequirements ResourceRequirements `json:"resourceRequirements"`
 }
+
+func (o *JobTypeResourceLimit) GetJobType() JobType {
+	if o == nil {
+		return JobType("")
+	}
+	return o.JobType
+}
+
+func (o *JobTypeResourceLimit) GetResourceRequirements() ResourceRequirements {
+	if o == nil {
+		return ResourceRequirements{}
+	}
+	return o.ResourceRequirements
+}

@@ -9,3 +9,31 @@ type SourceCoreConfig struct {
 	SourceID                *string     `json:"sourceId,omitempty"`
 	WorkspaceID             string      `json:"workspaceId"`
 }
+
+func (o *SourceCoreConfig) GetConnectionConfiguration() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionConfiguration
+}
+
+func (o *SourceCoreConfig) GetSourceDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceDefinitionID
+}
+
+func (o *SourceCoreConfig) GetSourceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceID
+}
+
+func (o *SourceCoreConfig) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

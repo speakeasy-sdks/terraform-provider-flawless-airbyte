@@ -8,3 +8,31 @@ type WebBackendOperationCreateOrUpdate struct {
 	OperatorConfiguration OperatorConfiguration `json:"operatorConfiguration"`
 	WorkspaceID           string                `json:"workspaceId"`
 }
+
+func (o *WebBackendOperationCreateOrUpdate) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *WebBackendOperationCreateOrUpdate) GetOperationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OperationID
+}
+
+func (o *WebBackendOperationCreateOrUpdate) GetOperatorConfiguration() OperatorConfiguration {
+	if o == nil {
+		return OperatorConfiguration{}
+	}
+	return o.OperatorConfiguration
+}
+
+func (o *WebBackendOperationCreateOrUpdate) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

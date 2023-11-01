@@ -7,3 +7,24 @@ type OperationUpdate struct {
 	OperationID           string                `json:"operationId"`
 	OperatorConfiguration OperatorConfiguration `json:"operatorConfiguration"`
 }
+
+func (o *OperationUpdate) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *OperationUpdate) GetOperationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OperationID
+}
+
+func (o *OperationUpdate) GetOperatorConfiguration() OperatorConfiguration {
+	if o == nil {
+		return OperatorConfiguration{}
+	}
+	return o.OperatorConfiguration
+}

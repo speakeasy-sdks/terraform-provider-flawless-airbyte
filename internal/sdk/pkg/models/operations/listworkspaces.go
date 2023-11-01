@@ -17,3 +17,31 @@ type ListWorkspacesResponse struct {
 	// Successful operation
 	WorkspaceReadList *shared.WorkspaceReadList
 }
+
+func (o *ListWorkspacesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListWorkspacesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListWorkspacesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *ListWorkspacesResponse) GetWorkspaceReadList() *shared.WorkspaceReadList {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceReadList
+}

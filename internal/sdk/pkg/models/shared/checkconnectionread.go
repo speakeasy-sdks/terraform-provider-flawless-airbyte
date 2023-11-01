@@ -39,3 +39,24 @@ type CheckConnectionRead struct {
 	Message *string                    `json:"message,omitempty"`
 	Status  *CheckConnectionReadStatus `json:"status,omitempty"`
 }
+
+func (o *CheckConnectionRead) GetJobInfo() SynchronousJobRead {
+	if o == nil {
+		return SynchronousJobRead{}
+	}
+	return o.JobInfo
+}
+
+func (o *CheckConnectionRead) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *CheckConnectionRead) GetStatus() *CheckConnectionReadStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

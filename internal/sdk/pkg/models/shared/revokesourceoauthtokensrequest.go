@@ -7,3 +7,24 @@ type RevokeSourceOauthTokensRequest struct {
 	SourceID           string `json:"sourceId"`
 	WorkspaceID        string `json:"workspaceId"`
 }
+
+func (o *RevokeSourceOauthTokensRequest) GetSourceDefinitionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceDefinitionID
+}
+
+func (o *RevokeSourceOauthTokensRequest) GetSourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceID
+}
+
+func (o *RevokeSourceOauthTokensRequest) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}

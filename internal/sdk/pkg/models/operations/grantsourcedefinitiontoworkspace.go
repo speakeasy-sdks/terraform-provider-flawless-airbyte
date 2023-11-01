@@ -21,3 +21,45 @@ type GrantSourceDefinitionToWorkspaceResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
+
+func (o *GrantSourceDefinitionToWorkspaceResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GrantSourceDefinitionToWorkspaceResponse) GetInvalidInputExceptionInfo() *shared.InvalidInputExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.InvalidInputExceptionInfo
+}
+
+func (o *GrantSourceDefinitionToWorkspaceResponse) GetNotFoundKnownExceptionInfo() *shared.NotFoundKnownExceptionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.NotFoundKnownExceptionInfo
+}
+
+func (o *GrantSourceDefinitionToWorkspaceResponse) GetPrivateSourceDefinitionRead() *shared.PrivateSourceDefinitionRead {
+	if o == nil {
+		return nil
+	}
+	return o.PrivateSourceDefinitionRead
+}
+
+func (o *GrantSourceDefinitionToWorkspaceResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GrantSourceDefinitionToWorkspaceResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

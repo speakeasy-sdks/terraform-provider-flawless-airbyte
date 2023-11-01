@@ -2,6 +2,10 @@
 
 package shared
 
+import (
+	"airbyte/internal/sdk/pkg/utils"
+)
+
 // NormalizationDestinationDefinitionConfig - describes a normalization config for destination definition
 type NormalizationDestinationDefinitionConfig struct {
 	// a field indicating the type of integration dialect to use for normalization.
@@ -11,5 +15,44 @@ type NormalizationDestinationDefinitionConfig struct {
 	// a field indicating the tag of the docker repository to be used for normalization.
 	NormalizationTag *string `json:"normalizationTag,omitempty"`
 	// whether the destination definition supports normalization.
-	Supported *bool `json:"supported,omitempty"`
+	Supported *bool `default:"false" json:"supported"`
+}
+
+func (n NormalizationDestinationDefinitionConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NormalizationDestinationDefinitionConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *NormalizationDestinationDefinitionConfig) GetNormalizationIntegrationType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NormalizationIntegrationType
+}
+
+func (o *NormalizationDestinationDefinitionConfig) GetNormalizationRepository() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NormalizationRepository
+}
+
+func (o *NormalizationDestinationDefinitionConfig) GetNormalizationTag() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NormalizationTag
+}
+
+func (o *NormalizationDestinationDefinitionConfig) GetSupported() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Supported
 }
