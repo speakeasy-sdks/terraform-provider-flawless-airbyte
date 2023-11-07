@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// source - Source related resources.
-type source struct {
+// Source related resources.
+type Source struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newSource(sdkConfig sdkConfiguration) *source {
-	return &source{
+func newSource(sdkConfig sdkConfiguration) *Source {
+	return &Source{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // ApplySchemaChangeForSource - Auto propagate the change on a catalog to a catalog saved in the DB. It will fetch all the connections linked to a source id and apply the provided diff to their catalog.
-func (s *source) ApplySchemaChangeForSource(ctx context.Context, request shared.SourceAutoPropagateChange) (*operations.ApplySchemaChangeForSourceResponse, error) {
+func (s *Source) ApplySchemaChangeForSource(ctx context.Context, request shared.SourceAutoPropagateChange) (*operations.ApplySchemaChangeForSourceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/apply_schema_changes"
 
@@ -108,7 +108,7 @@ func (s *source) ApplySchemaChangeForSource(ctx context.Context, request shared.
 }
 
 // CheckConnectionToSource - Check connection to the source
-func (s *source) CheckConnectionToSource(ctx context.Context, request shared.SourceIDRequestBody) (*operations.CheckConnectionToSourceResponse, error) {
+func (s *Source) CheckConnectionToSource(ctx context.Context, request shared.SourceIDRequestBody) (*operations.CheckConnectionToSourceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/check_connection"
 
@@ -200,7 +200,7 @@ func (s *source) CheckConnectionToSource(ctx context.Context, request shared.Sou
 }
 
 // CheckConnectionToSourceForUpdate - Check connection for a proposed update to a source
-func (s *source) CheckConnectionToSourceForUpdate(ctx context.Context, request shared.SourceUpdate) (*operations.CheckConnectionToSourceForUpdateResponse, error) {
+func (s *Source) CheckConnectionToSourceForUpdate(ctx context.Context, request shared.SourceUpdate) (*operations.CheckConnectionToSourceForUpdateResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/check_connection_for_update"
 
@@ -292,7 +292,7 @@ func (s *source) CheckConnectionToSourceForUpdate(ctx context.Context, request s
 }
 
 // CloneSource - Clone source
-func (s *source) CloneSource(ctx context.Context, request shared.SourceCloneRequestBody) (*operations.CloneSourceResponse, error) {
+func (s *Source) CloneSource(ctx context.Context, request shared.SourceCloneRequestBody) (*operations.CloneSourceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/clone"
 
@@ -384,7 +384,7 @@ func (s *source) CloneSource(ctx context.Context, request shared.SourceCloneRequ
 }
 
 // CreateSource - Create a source
-func (s *source) CreateSource(ctx context.Context, request shared.SourceCreate) (*operations.CreateSourceResponse, error) {
+func (s *Source) CreateSource(ctx context.Context, request shared.SourceCreate) (*operations.CreateSourceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/create"
 
@@ -464,7 +464,7 @@ func (s *source) CreateSource(ctx context.Context, request shared.SourceCreate) 
 }
 
 // DeleteSource - Delete a source
-func (s *source) DeleteSource(ctx context.Context, request shared.SourceIDRequestBody) (*operations.DeleteSourceResponse, error) {
+func (s *Source) DeleteSource(ctx context.Context, request shared.SourceIDRequestBody) (*operations.DeleteSourceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/delete"
 
@@ -545,7 +545,7 @@ func (s *source) DeleteSource(ctx context.Context, request shared.SourceIDReques
 }
 
 // DiscoverSchemaForSource - Discover the schema catalog of the source
-func (s *source) DiscoverSchemaForSource(ctx context.Context, request shared.SourceDiscoverSchemaRequestBody) (*operations.DiscoverSchemaForSourceResponse, error) {
+func (s *Source) DiscoverSchemaForSource(ctx context.Context, request shared.SourceDiscoverSchemaRequestBody) (*operations.DiscoverSchemaForSourceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/discover_schema"
 
@@ -637,7 +637,7 @@ func (s *source) DiscoverSchemaForSource(ctx context.Context, request shared.Sou
 }
 
 // GetMostRecentSourceActorCatalog - Get most recent ActorCatalog for source
-func (s *source) GetMostRecentSourceActorCatalog(ctx context.Context, request shared.SourceIDRequestBody) (*operations.GetMostRecentSourceActorCatalogResponse, error) {
+func (s *Source) GetMostRecentSourceActorCatalog(ctx context.Context, request shared.SourceIDRequestBody) (*operations.GetMostRecentSourceActorCatalogResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/most_recent_source_actor_catalog"
 
@@ -729,7 +729,7 @@ func (s *source) GetMostRecentSourceActorCatalog(ctx context.Context, request sh
 }
 
 // GetSource - Get source
-func (s *source) GetSource(ctx context.Context, request shared.SourceIDRequestBody) (*operations.GetSourceResponse, error) {
+func (s *Source) GetSource(ctx context.Context, request shared.SourceIDRequestBody) (*operations.GetSourceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/get"
 
@@ -822,7 +822,7 @@ func (s *source) GetSource(ctx context.Context, request shared.SourceIDRequestBo
 
 // ListSourcesForWorkspace - List sources for workspace
 // List sources for workspace. Does not return deleted sources.
-func (s *source) ListSourcesForWorkspace(ctx context.Context, request shared.WorkspaceIDRequestBody) (*operations.ListSourcesForWorkspaceResponse, error) {
+func (s *Source) ListSourcesForWorkspace(ctx context.Context, request shared.WorkspaceIDRequestBody) (*operations.ListSourcesForWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/list"
 
@@ -914,7 +914,7 @@ func (s *source) ListSourcesForWorkspace(ctx context.Context, request shared.Wor
 }
 
 // PartialUpdateSource - Partially update a source
-func (s *source) PartialUpdateSource(ctx context.Context, request shared.PartialSourceUpdate) (*operations.PartialUpdateSourceResponse, error) {
+func (s *Source) PartialUpdateSource(ctx context.Context, request shared.PartialSourceUpdate) (*operations.PartialUpdateSourceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/partial_update"
 
@@ -1006,7 +1006,7 @@ func (s *source) PartialUpdateSource(ctx context.Context, request shared.Partial
 }
 
 // SearchSources - Search sources
-func (s *source) SearchSources(ctx context.Context, request shared.SourceSearch) (*operations.SearchSourcesResponse, error) {
+func (s *Source) SearchSources(ctx context.Context, request shared.SourceSearch) (*operations.SearchSourcesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/search"
 
@@ -1086,7 +1086,7 @@ func (s *source) SearchSources(ctx context.Context, request shared.SourceSearch)
 }
 
 // UpdateSource - Update a source
-func (s *source) UpdateSource(ctx context.Context, request shared.SourceUpdate) (*operations.UpdateSourceResponse, error) {
+func (s *Source) UpdateSource(ctx context.Context, request shared.SourceUpdate) (*operations.UpdateSourceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/update"
 
@@ -1178,7 +1178,7 @@ func (s *source) UpdateSource(ctx context.Context, request shared.SourceUpdate) 
 }
 
 // WriteDiscoverCatalogResult - Should only called from worker, to write result from discover activity back to DB.
-func (s *source) WriteDiscoverCatalogResult(ctx context.Context, request shared.SourceDiscoverSchemaWriteRequestBody) (*operations.WriteDiscoverCatalogResultResponse, error) {
+func (s *Source) WriteDiscoverCatalogResult(ctx context.Context, request shared.SourceDiscoverSchemaWriteRequestBody) (*operations.WriteDiscoverCatalogResultResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/write_discover_catalog_result"
 

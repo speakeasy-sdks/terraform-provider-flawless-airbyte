@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// health - Healthchecks
-type health struct {
+// Health - Healthchecks
+type Health struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newHealth(sdkConfig sdkConfiguration) *health {
-	return &health{
+func newHealth(sdkConfig sdkConfiguration) *Health {
+	return &Health{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetHealthCheck - Health Check
-func (s *health) GetHealthCheck(ctx context.Context) (*operations.GetHealthCheckResponse, error) {
+func (s *Health) GetHealthCheck(ctx context.Context) (*operations.GetHealthCheckResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/health"
 

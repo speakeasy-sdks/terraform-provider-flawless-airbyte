@@ -15,18 +15,18 @@ import (
 	"strings"
 )
 
-type connectorBuilderProject struct {
+type ConnectorBuilderProject struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newConnectorBuilderProject(sdkConfig sdkConfiguration) *connectorBuilderProject {
-	return &connectorBuilderProject{
+func newConnectorBuilderProject(sdkConfig sdkConfiguration) *ConnectorBuilderProject {
+	return &ConnectorBuilderProject{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CreateConnectorBuilderProject - Create new connector builder project
-func (s *connectorBuilderProject) CreateConnectorBuilderProject(ctx context.Context, request shared.ConnectorBuilderProjectWithWorkspaceID) (*operations.CreateConnectorBuilderProjectResponse, error) {
+func (s *ConnectorBuilderProject) CreateConnectorBuilderProject(ctx context.Context, request shared.ConnectorBuilderProjectWithWorkspaceID) (*operations.CreateConnectorBuilderProjectResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/connector_builder_projects/create"
 
@@ -94,7 +94,7 @@ func (s *connectorBuilderProject) CreateConnectorBuilderProject(ctx context.Cont
 }
 
 // DeleteConnectorBuilderProject - Deletes connector builder project
-func (s *connectorBuilderProject) DeleteConnectorBuilderProject(ctx context.Context, request shared.ConnectorBuilderProjectIDWithWorkspaceID) (*operations.DeleteConnectorBuilderProjectResponse, error) {
+func (s *ConnectorBuilderProject) DeleteConnectorBuilderProject(ctx context.Context, request shared.ConnectorBuilderProjectIDWithWorkspaceID) (*operations.DeleteConnectorBuilderProjectResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/connector_builder_projects/delete"
 
@@ -151,7 +151,7 @@ func (s *connectorBuilderProject) DeleteConnectorBuilderProject(ctx context.Cont
 }
 
 // GetConnectorBuilderProject - Get a connector builder project with draft manifest
-func (s *connectorBuilderProject) GetConnectorBuilderProject(ctx context.Context, request shared.ConnectorBuilderProjectIDWithWorkspaceID) (*operations.GetConnectorBuilderProjectResponse, error) {
+func (s *ConnectorBuilderProject) GetConnectorBuilderProject(ctx context.Context, request shared.ConnectorBuilderProjectIDWithWorkspaceID) (*operations.GetConnectorBuilderProjectResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/connector_builder_projects/get_with_manifest"
 
@@ -219,7 +219,7 @@ func (s *connectorBuilderProject) GetConnectorBuilderProject(ctx context.Context
 }
 
 // ListConnectorBuilderProjects - List connector builder projects for workspace
-func (s *connectorBuilderProject) ListConnectorBuilderProjects(ctx context.Context, request shared.WorkspaceIDRequestBody) (*operations.ListConnectorBuilderProjectsResponse, error) {
+func (s *ConnectorBuilderProject) ListConnectorBuilderProjects(ctx context.Context, request shared.WorkspaceIDRequestBody) (*operations.ListConnectorBuilderProjectsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/connector_builder_projects/list"
 
@@ -287,7 +287,7 @@ func (s *connectorBuilderProject) ListConnectorBuilderProjects(ctx context.Conte
 }
 
 // PublishConnectorBuilderProject - Publish a connector to the workspace
-func (s *connectorBuilderProject) PublishConnectorBuilderProject(ctx context.Context, request shared.ConnectorBuilderPublishRequestBody) (*operations.PublishConnectorBuilderProjectResponse, error) {
+func (s *ConnectorBuilderProject) PublishConnectorBuilderProject(ctx context.Context, request shared.ConnectorBuilderPublishRequestBody) (*operations.PublishConnectorBuilderProjectResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/connector_builder_projects/publish"
 
@@ -355,7 +355,7 @@ func (s *connectorBuilderProject) PublishConnectorBuilderProject(ctx context.Con
 }
 
 // UpdateConnectorBuilderProject - Update connector builder project
-func (s *connectorBuilderProject) UpdateConnectorBuilderProject(ctx context.Context, request shared.ExistingConnectorBuilderProjectWithWorkspaceID) (*operations.UpdateConnectorBuilderProjectResponse, error) {
+func (s *ConnectorBuilderProject) UpdateConnectorBuilderProject(ctx context.Context, request shared.ExistingConnectorBuilderProjectWithWorkspaceID) (*operations.UpdateConnectorBuilderProjectResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/connector_builder_projects/update"
 

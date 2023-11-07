@@ -15,18 +15,18 @@ import (
 	"strings"
 )
 
-type notifications struct {
+type Notifications struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newNotifications(sdkConfig sdkConfiguration) *notifications {
-	return &notifications{
+func newNotifications(sdkConfig sdkConfiguration) *Notifications {
+	return &Notifications{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // TryNotificationConfig - Try sending a notifications
-func (s *notifications) TryNotificationConfig(ctx context.Context, request shared.Notification) (*operations.TryNotificationConfigResponse, error) {
+func (s *Notifications) TryNotificationConfig(ctx context.Context, request shared.Notification) (*operations.TryNotificationConfigResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/notifications/try"
 

@@ -15,18 +15,18 @@ import (
 	"strings"
 )
 
-type jobs struct {
+type Jobs struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newJobs(sdkConfig sdkConfiguration) *jobs {
-	return &jobs{
+func newJobs(sdkConfig sdkConfiguration) *Jobs {
+	return &Jobs{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CancelJob - Cancels a job
-func (s *jobs) CancelJob(ctx context.Context, request shared.JobIDRequestBody) (*operations.CancelJobResponse, error) {
+func (s *Jobs) CancelJob(ctx context.Context, request shared.JobIDRequestBody) (*operations.CancelJobResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/jobs/cancel"
 
@@ -118,7 +118,7 @@ func (s *jobs) CancelJob(ctx context.Context, request shared.JobIDRequestBody) (
 }
 
 // GetAttemptNormalizationStatusesForJob - Get normalization status to determine if we can bypass normalization phase
-func (s *jobs) GetAttemptNormalizationStatusesForJob(ctx context.Context, request *shared.JobIDRequestBody) (*operations.GetAttemptNormalizationStatusesForJobResponse, error) {
+func (s *Jobs) GetAttemptNormalizationStatusesForJob(ctx context.Context, request *shared.JobIDRequestBody) (*operations.GetAttemptNormalizationStatusesForJobResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/jobs/get_normalization_status"
 
@@ -182,7 +182,7 @@ func (s *jobs) GetAttemptNormalizationStatusesForJob(ctx context.Context, reques
 }
 
 // GetJobDebugInfo - Gets all information needed to debug this job
-func (s *jobs) GetJobDebugInfo(ctx context.Context, request shared.JobIDRequestBody) (*operations.GetJobDebugInfoResponse, error) {
+func (s *Jobs) GetJobDebugInfo(ctx context.Context, request shared.JobIDRequestBody) (*operations.GetJobDebugInfoResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/jobs/get_debug_info"
 
@@ -274,7 +274,7 @@ func (s *jobs) GetJobDebugInfo(ctx context.Context, request shared.JobIDRequestB
 }
 
 // GetJobInfo - Get information about a job
-func (s *jobs) GetJobInfo(ctx context.Context, request shared.JobIDRequestBody) (*operations.GetJobInfoResponse, error) {
+func (s *Jobs) GetJobInfo(ctx context.Context, request shared.JobIDRequestBody) (*operations.GetJobInfoResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/jobs/get"
 
@@ -366,7 +366,7 @@ func (s *jobs) GetJobInfo(ctx context.Context, request shared.JobIDRequestBody) 
 }
 
 // GetJobInfoLight - Get information about a job excluding attempt info and logs
-func (s *jobs) GetJobInfoLight(ctx context.Context, request shared.JobIDRequestBody) (*operations.GetJobInfoLightResponse, error) {
+func (s *Jobs) GetJobInfoLight(ctx context.Context, request shared.JobIDRequestBody) (*operations.GetJobInfoLightResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/jobs/get_light"
 
@@ -458,7 +458,7 @@ func (s *jobs) GetJobInfoLight(ctx context.Context, request shared.JobIDRequestB
 }
 
 // GetJobInfoWithoutLogs - Get information about a job excluding logs
-func (s *jobs) GetJobInfoWithoutLogs(ctx context.Context, request shared.JobIDRequestBody) (*operations.GetJobInfoWithoutLogsResponse, error) {
+func (s *Jobs) GetJobInfoWithoutLogs(ctx context.Context, request shared.JobIDRequestBody) (*operations.GetJobInfoWithoutLogsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/jobs/get_without_logs"
 
@@ -549,7 +549,7 @@ func (s *jobs) GetJobInfoWithoutLogs(ctx context.Context, request shared.JobIDRe
 	return res, nil
 }
 
-func (s *jobs) GetLastReplicationJob(ctx context.Context, request shared.ConnectionIDRequestBody) (*operations.GetLastReplicationJobResponse, error) {
+func (s *Jobs) GetLastReplicationJob(ctx context.Context, request shared.ConnectionIDRequestBody) (*operations.GetLastReplicationJobResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/jobs/get_last_replication_job"
 
@@ -641,7 +641,7 @@ func (s *jobs) GetLastReplicationJob(ctx context.Context, request shared.Connect
 }
 
 // ListJobsFor - Returns recent jobs for a connection. Jobs are returned in descending order by createdAt.
-func (s *jobs) ListJobsFor(ctx context.Context, request shared.JobListRequestBody) (*operations.ListJobsForResponse, error) {
+func (s *Jobs) ListJobsFor(ctx context.Context, request shared.JobListRequestBody) (*operations.ListJobsForResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/jobs/list"
 

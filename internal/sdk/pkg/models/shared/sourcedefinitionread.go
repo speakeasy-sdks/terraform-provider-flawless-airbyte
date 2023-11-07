@@ -9,20 +9,20 @@ import (
 	"fmt"
 )
 
-type SourceDefinitionReadSourceType string
+type SourceType string
 
 const (
-	SourceDefinitionReadSourceTypeAPI      SourceDefinitionReadSourceType = "api"
-	SourceDefinitionReadSourceTypeFile     SourceDefinitionReadSourceType = "file"
-	SourceDefinitionReadSourceTypeDatabase SourceDefinitionReadSourceType = "database"
-	SourceDefinitionReadSourceTypeCustom   SourceDefinitionReadSourceType = "custom"
+	SourceTypeAPI      SourceType = "api"
+	SourceTypeFile     SourceType = "file"
+	SourceTypeDatabase SourceType = "database"
+	SourceTypeCustom   SourceType = "custom"
 )
 
-func (e SourceDefinitionReadSourceType) ToPointer() *SourceDefinitionReadSourceType {
+func (e SourceType) ToPointer() *SourceType {
 	return &e
 }
 
-func (e *SourceDefinitionReadSourceType) UnmarshalJSON(data []byte) error {
+func (e *SourceType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -35,10 +35,10 @@ func (e *SourceDefinitionReadSourceType) UnmarshalJSON(data []byte) error {
 	case "database":
 		fallthrough
 	case "custom":
-		*e = SourceDefinitionReadSourceType(v)
+		*e = SourceType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SourceDefinitionReadSourceType: %v", v)
+		return fmt.Errorf("invalid value for SourceType: %v", v)
 	}
 }
 
@@ -58,7 +58,7 @@ type SourceDefinitionRead struct {
 	// actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
 	ResourceRequirements *ActorDefinitionResourceRequirements `json:"resourceRequirements,omitempty"`
 	SourceDefinitionID   string                               `json:"sourceDefinitionId"`
-	SourceType           *SourceDefinitionReadSourceType      `json:"sourceType,omitempty"`
+	SourceType           *SourceType                          `json:"sourceType,omitempty"`
 }
 
 func (s SourceDefinitionRead) MarshalJSON() ([]byte, error) {
@@ -149,7 +149,7 @@ func (o *SourceDefinitionRead) GetSourceDefinitionID() string {
 	return o.SourceDefinitionID
 }
 
-func (o *SourceDefinitionRead) GetSourceType() *SourceDefinitionReadSourceType {
+func (o *SourceDefinitionRead) GetSourceType() *SourceType {
 	if o == nil {
 		return nil
 	}

@@ -14,7 +14,7 @@ type GetOpenAPISpecResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Returns the openapi specification file
-	GetOpenAPISpec200TextPlainBinaryString []byte
+	Bytes []byte
 }
 
 func (o *GetOpenAPISpecResponse) GetContentType() string {
@@ -38,9 +38,9 @@ func (o *GetOpenAPISpecResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *GetOpenAPISpecResponse) GetGetOpenAPISpec200TextPlainBinaryString() []byte {
+func (o *GetOpenAPISpecResponse) GetBytes() []byte {
 	if o == nil {
 		return nil
 	}
-	return o.GetOpenAPISpec200TextPlainBinaryString
+	return o.Bytes
 }

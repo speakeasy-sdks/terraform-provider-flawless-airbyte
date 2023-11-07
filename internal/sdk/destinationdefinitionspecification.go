@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// destinationDefinitionSpecification - DestinationDefinitionSpecification related resources.
-type destinationDefinitionSpecification struct {
+// DestinationDefinitionSpecification related resources.
+type DestinationDefinitionSpecification struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newDestinationDefinitionSpecification(sdkConfig sdkConfiguration) *destinationDefinitionSpecification {
-	return &destinationDefinitionSpecification{
+func newDestinationDefinitionSpecification(sdkConfig sdkConfiguration) *DestinationDefinitionSpecification {
+	return &DestinationDefinitionSpecification{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetDestinationDefinitionSpecification - Get specification for a destinationDefinition
-func (s *destinationDefinitionSpecification) GetDestinationDefinitionSpecification(ctx context.Context, request shared.DestinationDefinitionIDWithWorkspaceID) (*operations.GetDestinationDefinitionSpecificationResponse, error) {
+func (s *DestinationDefinitionSpecification) GetDestinationDefinitionSpecification(ctx context.Context, request shared.DestinationDefinitionIDWithWorkspaceID) (*operations.GetDestinationDefinitionSpecificationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_definition_specifications/get"
 
@@ -119,7 +119,7 @@ func (s *destinationDefinitionSpecification) GetDestinationDefinitionSpecificati
 }
 
 // GetSpecificationForDestinationID - Get specification for a destination
-func (s *destinationDefinitionSpecification) GetSpecificationForDestinationID(ctx context.Context, request shared.DestinationIDRequestBody) (*operations.GetSpecificationForDestinationIDResponse, error) {
+func (s *DestinationDefinitionSpecification) GetSpecificationForDestinationID(ctx context.Context, request shared.DestinationIDRequestBody) (*operations.GetSpecificationForDestinationIDResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_definition_specifications/get_for_destination"
 

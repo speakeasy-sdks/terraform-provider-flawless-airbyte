@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// workspace - Workspace related resources.
-type workspace struct {
+// Workspace related resources.
+type Workspace struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newWorkspace(sdkConfig sdkConfiguration) *workspace {
-	return &workspace{
+func newWorkspace(sdkConfig sdkConfiguration) *Workspace {
+	return &Workspace{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CreateWorkspace - Creates a workspace
-func (s *workspace) CreateWorkspace(ctx context.Context, request shared.WorkspaceCreate) (*operations.CreateWorkspaceResponse, error) {
+func (s *Workspace) CreateWorkspace(ctx context.Context, request shared.WorkspaceCreate) (*operations.CreateWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/workspaces/create"
 
@@ -107,7 +107,7 @@ func (s *workspace) CreateWorkspace(ctx context.Context, request shared.Workspac
 }
 
 // DeleteWorkspace - Deletes a workspace
-func (s *workspace) DeleteWorkspace(ctx context.Context, request shared.WorkspaceIDRequestBody) (*operations.DeleteWorkspaceResponse, error) {
+func (s *Workspace) DeleteWorkspace(ctx context.Context, request shared.WorkspaceIDRequestBody) (*operations.DeleteWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/workspaces/delete"
 
@@ -188,7 +188,7 @@ func (s *workspace) DeleteWorkspace(ctx context.Context, request shared.Workspac
 }
 
 // GetWorkspace - Find workspace by ID
-func (s *workspace) GetWorkspace(ctx context.Context, request shared.WorkspaceIDRequestBody) (*operations.GetWorkspaceResponse, error) {
+func (s *Workspace) GetWorkspace(ctx context.Context, request shared.WorkspaceIDRequestBody) (*operations.GetWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/workspaces/get"
 
@@ -280,7 +280,7 @@ func (s *workspace) GetWorkspace(ctx context.Context, request shared.WorkspaceID
 }
 
 // GetWorkspaceByConnectionID - Find workspace by connection id
-func (s *workspace) GetWorkspaceByConnectionID(ctx context.Context, request shared.ConnectionIDRequestBody) (*operations.GetWorkspaceByConnectionIDResponse, error) {
+func (s *Workspace) GetWorkspaceByConnectionID(ctx context.Context, request shared.ConnectionIDRequestBody) (*operations.GetWorkspaceByConnectionIDResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/workspaces/get_by_connection_id"
 
@@ -372,7 +372,7 @@ func (s *workspace) GetWorkspaceByConnectionID(ctx context.Context, request shar
 }
 
 // GetWorkspaceBySlug - Find workspace by slug
-func (s *workspace) GetWorkspaceBySlug(ctx context.Context, request shared.SlugRequestBody) (*operations.GetWorkspaceBySlugResponse, error) {
+func (s *Workspace) GetWorkspaceBySlug(ctx context.Context, request shared.SlugRequestBody) (*operations.GetWorkspaceBySlugResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/workspaces/get_by_slug"
 
@@ -464,7 +464,7 @@ func (s *workspace) GetWorkspaceBySlug(ctx context.Context, request shared.SlugR
 }
 
 // ListWorkspaces - List all workspaces registered in the current Airbyte deployment
-func (s *workspace) ListWorkspaces(ctx context.Context) (*operations.ListWorkspacesResponse, error) {
+func (s *Workspace) ListWorkspaces(ctx context.Context) (*operations.ListWorkspacesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/workspaces/list"
 
@@ -518,7 +518,7 @@ func (s *workspace) ListWorkspaces(ctx context.Context) (*operations.ListWorkspa
 }
 
 // UpdateWorkspace - Update workspace state
-func (s *workspace) UpdateWorkspace(ctx context.Context, request shared.WorkspaceUpdate) (*operations.UpdateWorkspaceResponse, error) {
+func (s *Workspace) UpdateWorkspace(ctx context.Context, request shared.WorkspaceUpdate) (*operations.UpdateWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/workspaces/update"
 
@@ -610,7 +610,7 @@ func (s *workspace) UpdateWorkspace(ctx context.Context, request shared.Workspac
 }
 
 // UpdateWorkspaceFeedback - Update workspace feedback state
-func (s *workspace) UpdateWorkspaceFeedback(ctx context.Context, request shared.WorkspaceGiveFeedback) (*operations.UpdateWorkspaceFeedbackResponse, error) {
+func (s *Workspace) UpdateWorkspaceFeedback(ctx context.Context, request shared.WorkspaceGiveFeedback) (*operations.UpdateWorkspaceFeedbackResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/workspaces/tag_feedback_status_as_done"
 
@@ -679,7 +679,7 @@ func (s *workspace) UpdateWorkspaceFeedback(ctx context.Context, request shared.
 }
 
 // UpdateWorkspaceName - Update workspace name
-func (s *workspace) UpdateWorkspaceName(ctx context.Context, request shared.WorkspaceUpdateName) (*operations.UpdateWorkspaceNameResponse, error) {
+func (s *Workspace) UpdateWorkspaceName(ctx context.Context, request shared.WorkspaceUpdateName) (*operations.UpdateWorkspaceNameResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/workspaces/update_name"
 

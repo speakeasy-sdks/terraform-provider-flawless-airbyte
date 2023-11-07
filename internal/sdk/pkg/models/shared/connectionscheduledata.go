@@ -7,21 +7,21 @@ import (
 	"fmt"
 )
 
-type ConnectionScheduleDataBasicScheduleTimeUnit string
+type ConnectionScheduleDataTimeUnit string
 
 const (
-	ConnectionScheduleDataBasicScheduleTimeUnitMinutes ConnectionScheduleDataBasicScheduleTimeUnit = "minutes"
-	ConnectionScheduleDataBasicScheduleTimeUnitHours   ConnectionScheduleDataBasicScheduleTimeUnit = "hours"
-	ConnectionScheduleDataBasicScheduleTimeUnitDays    ConnectionScheduleDataBasicScheduleTimeUnit = "days"
-	ConnectionScheduleDataBasicScheduleTimeUnitWeeks   ConnectionScheduleDataBasicScheduleTimeUnit = "weeks"
-	ConnectionScheduleDataBasicScheduleTimeUnitMonths  ConnectionScheduleDataBasicScheduleTimeUnit = "months"
+	ConnectionScheduleDataTimeUnitMinutes ConnectionScheduleDataTimeUnit = "minutes"
+	ConnectionScheduleDataTimeUnitHours   ConnectionScheduleDataTimeUnit = "hours"
+	ConnectionScheduleDataTimeUnitDays    ConnectionScheduleDataTimeUnit = "days"
+	ConnectionScheduleDataTimeUnitWeeks   ConnectionScheduleDataTimeUnit = "weeks"
+	ConnectionScheduleDataTimeUnitMonths  ConnectionScheduleDataTimeUnit = "months"
 )
 
-func (e ConnectionScheduleDataBasicScheduleTimeUnit) ToPointer() *ConnectionScheduleDataBasicScheduleTimeUnit {
+func (e ConnectionScheduleDataTimeUnit) ToPointer() *ConnectionScheduleDataTimeUnit {
 	return &e
 }
 
-func (e *ConnectionScheduleDataBasicScheduleTimeUnit) UnmarshalJSON(data []byte) error {
+func (e *ConnectionScheduleDataTimeUnit) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -36,45 +36,45 @@ func (e *ConnectionScheduleDataBasicScheduleTimeUnit) UnmarshalJSON(data []byte)
 	case "weeks":
 		fallthrough
 	case "months":
-		*e = ConnectionScheduleDataBasicScheduleTimeUnit(v)
+		*e = ConnectionScheduleDataTimeUnit(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ConnectionScheduleDataBasicScheduleTimeUnit: %v", v)
+		return fmt.Errorf("invalid value for ConnectionScheduleDataTimeUnit: %v", v)
 	}
 }
 
-type ConnectionScheduleDataBasicSchedule struct {
-	TimeUnit ConnectionScheduleDataBasicScheduleTimeUnit `json:"timeUnit"`
-	Units    int64                                       `json:"units"`
+type BasicSchedule struct {
+	TimeUnit ConnectionScheduleDataTimeUnit `json:"timeUnit"`
+	Units    int64                          `json:"units"`
 }
 
-func (o *ConnectionScheduleDataBasicSchedule) GetTimeUnit() ConnectionScheduleDataBasicScheduleTimeUnit {
+func (o *BasicSchedule) GetTimeUnit() ConnectionScheduleDataTimeUnit {
 	if o == nil {
-		return ConnectionScheduleDataBasicScheduleTimeUnit("")
+		return ConnectionScheduleDataTimeUnit("")
 	}
 	return o.TimeUnit
 }
 
-func (o *ConnectionScheduleDataBasicSchedule) GetUnits() int64 {
+func (o *BasicSchedule) GetUnits() int64 {
 	if o == nil {
 		return 0
 	}
 	return o.Units
 }
 
-type ConnectionScheduleDataCron struct {
+type Cron struct {
 	CronExpression string `json:"cronExpression"`
 	CronTimeZone   string `json:"cronTimeZone"`
 }
 
-func (o *ConnectionScheduleDataCron) GetCronExpression() string {
+func (o *Cron) GetCronExpression() string {
 	if o == nil {
 		return ""
 	}
 	return o.CronExpression
 }
 
-func (o *ConnectionScheduleDataCron) GetCronTimeZone() string {
+func (o *Cron) GetCronTimeZone() string {
 	if o == nil {
 		return ""
 	}
@@ -83,18 +83,18 @@ func (o *ConnectionScheduleDataCron) GetCronTimeZone() string {
 
 // ConnectionScheduleData - schedule for when the the connection should run, per the schedule type
 type ConnectionScheduleData struct {
-	BasicSchedule *ConnectionScheduleDataBasicSchedule `json:"basicSchedule,omitempty"`
-	Cron          *ConnectionScheduleDataCron          `json:"cron,omitempty"`
+	BasicSchedule *BasicSchedule `json:"basicSchedule,omitempty"`
+	Cron          *Cron          `json:"cron,omitempty"`
 }
 
-func (o *ConnectionScheduleData) GetBasicSchedule() *ConnectionScheduleDataBasicSchedule {
+func (o *ConnectionScheduleData) GetBasicSchedule() *BasicSchedule {
 	if o == nil {
 		return nil
 	}
 	return o.BasicSchedule
 }
 
-func (o *ConnectionScheduleData) GetCron() *ConnectionScheduleDataCron {
+func (o *ConnectionScheduleData) GetCron() *Cron {
 	if o == nil {
 		return nil
 	}

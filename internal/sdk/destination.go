@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// destination - Destination related resources.
-type destination struct {
+// Destination related resources.
+type Destination struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newDestination(sdkConfig sdkConfiguration) *destination {
-	return &destination{
+func newDestination(sdkConfig sdkConfiguration) *Destination {
+	return &Destination{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CheckConnectionToDestination - Check connection to the destination
-func (s *destination) CheckConnectionToDestination(ctx context.Context, request shared.DestinationIDRequestBody) (*operations.CheckConnectionToDestinationResponse, error) {
+func (s *Destination) CheckConnectionToDestination(ctx context.Context, request shared.DestinationIDRequestBody) (*operations.CheckConnectionToDestinationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destinations/check_connection"
 
@@ -119,7 +119,7 @@ func (s *destination) CheckConnectionToDestination(ctx context.Context, request 
 }
 
 // CheckConnectionToDestinationForUpdate - Check connection for a proposed update to a destination
-func (s *destination) CheckConnectionToDestinationForUpdate(ctx context.Context, request shared.DestinationUpdate) (*operations.CheckConnectionToDestinationForUpdateResponse, error) {
+func (s *Destination) CheckConnectionToDestinationForUpdate(ctx context.Context, request shared.DestinationUpdate) (*operations.CheckConnectionToDestinationForUpdateResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destinations/check_connection_for_update"
 
@@ -211,7 +211,7 @@ func (s *destination) CheckConnectionToDestinationForUpdate(ctx context.Context,
 }
 
 // CloneDestination - Clone destination
-func (s *destination) CloneDestination(ctx context.Context, request shared.DestinationCloneRequestBody) (*operations.CloneDestinationResponse, error) {
+func (s *Destination) CloneDestination(ctx context.Context, request shared.DestinationCloneRequestBody) (*operations.CloneDestinationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destinations/clone"
 
@@ -303,7 +303,7 @@ func (s *destination) CloneDestination(ctx context.Context, request shared.Desti
 }
 
 // CreateDestination - Create a destination
-func (s *destination) CreateDestination(ctx context.Context, request shared.DestinationCreate) (*operations.CreateDestinationResponse, error) {
+func (s *Destination) CreateDestination(ctx context.Context, request shared.DestinationCreate) (*operations.CreateDestinationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destinations/create"
 
@@ -383,7 +383,7 @@ func (s *destination) CreateDestination(ctx context.Context, request shared.Dest
 }
 
 // DeleteDestination - Delete the destination
-func (s *destination) DeleteDestination(ctx context.Context, request shared.DestinationIDRequestBody) (*operations.DeleteDestinationResponse, error) {
+func (s *Destination) DeleteDestination(ctx context.Context, request shared.DestinationIDRequestBody) (*operations.DeleteDestinationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destinations/delete"
 
@@ -464,7 +464,7 @@ func (s *destination) DeleteDestination(ctx context.Context, request shared.Dest
 }
 
 // GetDestination - Get configured destination
-func (s *destination) GetDestination(ctx context.Context, request shared.DestinationIDRequestBody) (*operations.GetDestinationResponse, error) {
+func (s *Destination) GetDestination(ctx context.Context, request shared.DestinationIDRequestBody) (*operations.GetDestinationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destinations/get"
 
@@ -556,7 +556,7 @@ func (s *destination) GetDestination(ctx context.Context, request shared.Destina
 }
 
 // ListDestinationsForWorkspace - List configured destinations for a workspace
-func (s *destination) ListDestinationsForWorkspace(ctx context.Context, request shared.WorkspaceIDRequestBody) (*operations.ListDestinationsForWorkspaceResponse, error) {
+func (s *Destination) ListDestinationsForWorkspace(ctx context.Context, request shared.WorkspaceIDRequestBody) (*operations.ListDestinationsForWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destinations/list"
 
@@ -648,7 +648,7 @@ func (s *destination) ListDestinationsForWorkspace(ctx context.Context, request 
 }
 
 // PartialUpdateDestination - Update a destination partially
-func (s *destination) PartialUpdateDestination(ctx context.Context, request shared.PartialDestinationUpdate) (*operations.PartialUpdateDestinationResponse, error) {
+func (s *Destination) PartialUpdateDestination(ctx context.Context, request shared.PartialDestinationUpdate) (*operations.PartialUpdateDestinationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destinations/partial_update"
 
@@ -728,7 +728,7 @@ func (s *destination) PartialUpdateDestination(ctx context.Context, request shar
 }
 
 // SearchDestinations - Search destinations
-func (s *destination) SearchDestinations(ctx context.Context, request shared.DestinationSearch) (*operations.SearchDestinationsResponse, error) {
+func (s *Destination) SearchDestinations(ctx context.Context, request shared.DestinationSearch) (*operations.SearchDestinationsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destinations/search"
 
@@ -808,7 +808,7 @@ func (s *destination) SearchDestinations(ctx context.Context, request shared.Des
 }
 
 // UpdateDestination - Update a destination
-func (s *destination) UpdateDestination(ctx context.Context, request shared.DestinationUpdate) (*operations.UpdateDestinationResponse, error) {
+func (s *Destination) UpdateDestination(ctx context.Context, request shared.DestinationUpdate) (*operations.UpdateDestinationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destinations/update"
 

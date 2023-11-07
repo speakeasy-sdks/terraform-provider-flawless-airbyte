@@ -7,19 +7,19 @@ import (
 	"fmt"
 )
 
-type FieldTransformTransformType string
+type TransformType string
 
 const (
-	FieldTransformTransformTypeAddField          FieldTransformTransformType = "add_field"
-	FieldTransformTransformTypeRemoveField       FieldTransformTransformType = "remove_field"
-	FieldTransformTransformTypeUpdateFieldSchema FieldTransformTransformType = "update_field_schema"
+	TransformTypeAddField          TransformType = "add_field"
+	TransformTypeRemoveField       TransformType = "remove_field"
+	TransformTypeUpdateFieldSchema TransformType = "update_field_schema"
 )
 
-func (e FieldTransformTransformType) ToPointer() *FieldTransformTransformType {
+func (e TransformType) ToPointer() *TransformType {
 	return &e
 }
 
-func (e *FieldTransformTransformType) UnmarshalJSON(data []byte) error {
+func (e *TransformType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -30,10 +30,10 @@ func (e *FieldTransformTransformType) UnmarshalJSON(data []byte) error {
 	case "remove_field":
 		fallthrough
 	case "update_field_schema":
-		*e = FieldTransformTransformType(v)
+		*e = TransformType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldTransformTransformType: %v", v)
+		return fmt.Errorf("invalid value for TransformType: %v", v)
 	}
 }
 
@@ -42,10 +42,10 @@ type FieldTransform struct {
 	AddField *FieldAdd `json:"addField,omitempty"`
 	Breaking bool      `json:"breaking"`
 	// A field name is a list of strings that form the path to the field.
-	FieldName         []string                    `json:"fieldName"`
-	RemoveField       *FieldRemove                `json:"removeField,omitempty"`
-	TransformType     FieldTransformTransformType `json:"transformType"`
-	UpdateFieldSchema *FieldSchemaUpdate          `json:"updateFieldSchema,omitempty"`
+	FieldName         []string           `json:"fieldName"`
+	RemoveField       *FieldRemove       `json:"removeField,omitempty"`
+	TransformType     TransformType      `json:"transformType"`
+	UpdateFieldSchema *FieldSchemaUpdate `json:"updateFieldSchema,omitempty"`
 }
 
 func (o *FieldTransform) GetAddField() *FieldAdd {
@@ -76,9 +76,9 @@ func (o *FieldTransform) GetRemoveField() *FieldRemove {
 	return o.RemoveField
 }
 
-func (o *FieldTransform) GetTransformType() FieldTransformTransformType {
+func (o *FieldTransform) GetTransformType() TransformType {
 	if o == nil {
-		return FieldTransformTransformType("")
+		return TransformType("")
 	}
 	return o.TransformType
 }

@@ -15,20 +15,20 @@ import (
 	"strings"
 )
 
-// webBackend - Endpoints for the Airbyte web application. Those APIs should not be called outside the web application implementation and are not
+// WebBackend - Endpoints for the Airbyte web application. Those APIs should not be called outside the web application implementation and are not
 // guaranteeing any backwards compatibility.
-type webBackend struct {
+type WebBackend struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newWebBackend(sdkConfig sdkConfiguration) *webBackend {
-	return &webBackend{
+func newWebBackend(sdkConfig sdkConfiguration) *WebBackend {
+	return &WebBackend{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetStateType - Fetch the current state type for a connection.
-func (s *webBackend) GetStateType(ctx context.Context, request shared.ConnectionIDRequestBody) (*operations.GetStateTypeResponse, error) {
+func (s *WebBackend) GetStateType(ctx context.Context, request shared.ConnectionIDRequestBody) (*operations.GetStateTypeResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/web_backend/state/get_type"
 
@@ -120,7 +120,7 @@ func (s *webBackend) GetStateType(ctx context.Context, request shared.Connection
 }
 
 // WebBackendCheckUpdates - Returns a summary of source and destination definitions that could be updated.
-func (s *webBackend) WebBackendCheckUpdates(ctx context.Context) (*operations.WebBackendCheckUpdatesResponse, error) {
+func (s *WebBackend) WebBackendCheckUpdates(ctx context.Context) (*operations.WebBackendCheckUpdatesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/web_backend/check_updates"
 
@@ -174,7 +174,7 @@ func (s *webBackend) WebBackendCheckUpdates(ctx context.Context) (*operations.We
 }
 
 // WebBackendCreateConnection - Create a connection
-func (s *webBackend) WebBackendCreateConnection(ctx context.Context, request shared.WebBackendConnectionCreate) (*operations.WebBackendCreateConnectionResponse, error) {
+func (s *WebBackend) WebBackendCreateConnection(ctx context.Context, request shared.WebBackendConnectionCreate) (*operations.WebBackendCreateConnectionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/web_backend/connections/create"
 
@@ -254,7 +254,7 @@ func (s *webBackend) WebBackendCreateConnection(ctx context.Context, request sha
 }
 
 // WebBackendGetConnection - Get a connection
-func (s *webBackend) WebBackendGetConnection(ctx context.Context, request shared.WebBackendConnectionRequestBody) (*operations.WebBackendGetConnectionResponse, error) {
+func (s *WebBackend) WebBackendGetConnection(ctx context.Context, request shared.WebBackendConnectionRequestBody) (*operations.WebBackendGetConnectionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/web_backend/connections/get"
 
@@ -346,7 +346,7 @@ func (s *webBackend) WebBackendGetConnection(ctx context.Context, request shared
 }
 
 // WebBackendGetWorkspaceState - Returns the current state of a workspace
-func (s *webBackend) WebBackendGetWorkspaceState(ctx context.Context, request *shared.WebBackendWorkspaceState) (*operations.WebBackendGetWorkspaceStateResponse, error) {
+func (s *WebBackend) WebBackendGetWorkspaceState(ctx context.Context, request *shared.WebBackendWorkspaceState) (*operations.WebBackendGetWorkspaceStateResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/web_backend/workspace/state"
 
@@ -434,7 +434,7 @@ func (s *webBackend) WebBackendGetWorkspaceState(ctx context.Context, request *s
 }
 
 // WebBackendListConnectionsForWorkspace - Returns all non-deleted connections for a workspace.
-func (s *webBackend) WebBackendListConnectionsForWorkspace(ctx context.Context, request shared.WebBackendConnectionListRequestBody) (*operations.WebBackendListConnectionsForWorkspaceResponse, error) {
+func (s *WebBackend) WebBackendListConnectionsForWorkspace(ctx context.Context, request shared.WebBackendConnectionListRequestBody) (*operations.WebBackendListConnectionsForWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/web_backend/connections/list"
 
@@ -531,7 +531,7 @@ func (s *webBackend) WebBackendListConnectionsForWorkspace(ctx context.Context, 
 // follow the ISO 3166-1 alpha-2 standard.
 //
 // Returns all available geographies in which a data sync can run.
-func (s *webBackend) WebBackendListGeographies(ctx context.Context) (*operations.WebBackendListGeographiesResponse, error) {
+func (s *WebBackend) WebBackendListGeographies(ctx context.Context) (*operations.WebBackendListGeographiesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/web_backend/geographies/list"
 
@@ -592,7 +592,7 @@ func (s *webBackend) WebBackendListGeographies(ctx context.Context) (*operations
 // Note that if a catalog is present in the request body, the connection's entire catalog will be replaced
 // with the catalog from the request. This means that to modify a single stream, the entire new catalog
 // containing the updated stream needs to be sent.
-func (s *webBackend) WebBackendUpdateConnection(ctx context.Context, request shared.WebBackendConnectionUpdate) (*operations.WebBackendUpdateConnectionResponse, error) {
+func (s *WebBackend) WebBackendUpdateConnection(ctx context.Context, request shared.WebBackendConnectionUpdate) (*operations.WebBackendUpdateConnectionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/web_backend/connections/update"
 

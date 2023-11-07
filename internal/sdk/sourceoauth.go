@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// sourceOauth - Source OAuth related resources to delegate access from user.
-type sourceOauth struct {
+// SourceOauth - Source OAuth related resources to delegate access from user.
+type SourceOauth struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newSourceOauth(sdkConfig sdkConfiguration) *sourceOauth {
-	return &sourceOauth{
+func newSourceOauth(sdkConfig sdkConfiguration) *SourceOauth {
+	return &SourceOauth{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CompleteSourceOAuth - Given a source def ID generate an access/refresh token etc.
-func (s *sourceOauth) CompleteSourceOAuth(ctx context.Context, request shared.CompleteSourceOauthRequest) (*operations.CompleteSourceOAuthResponse, error) {
+func (s *SourceOauth) CompleteSourceOAuth(ctx context.Context, request shared.CompleteSourceOauthRequest) (*operations.CompleteSourceOAuthResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_oauths/complete_oauth"
 
@@ -119,7 +119,7 @@ func (s *sourceOauth) CompleteSourceOAuth(ctx context.Context, request shared.Co
 }
 
 // GetSourceOAuthConsent - Given a source connector definition ID, return the URL to the consent screen where to redirect the user to.
-func (s *sourceOauth) GetSourceOAuthConsent(ctx context.Context, request shared.SourceOauthConsentRequest) (*operations.GetSourceOAuthConsentResponse, error) {
+func (s *SourceOauth) GetSourceOAuthConsent(ctx context.Context, request shared.SourceOauthConsentRequest) (*operations.GetSourceOAuthConsentResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_oauths/get_consent_url"
 
@@ -211,7 +211,7 @@ func (s *sourceOauth) GetSourceOAuthConsent(ctx context.Context, request shared.
 }
 
 // RevokeSourceOAuthTokens - Given a source definition ID and workspace ID revoke access/refresh token etc.
-func (s *sourceOauth) RevokeSourceOAuthTokens(ctx context.Context, request shared.RevokeSourceOauthTokensRequest) (*operations.RevokeSourceOAuthTokensResponse, error) {
+func (s *SourceOauth) RevokeSourceOAuthTokens(ctx context.Context, request shared.RevokeSourceOauthTokensRequest) (*operations.RevokeSourceOAuthTokensResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_oauths/revoke"
 
@@ -292,7 +292,7 @@ func (s *sourceOauth) RevokeSourceOAuthTokens(ctx context.Context, request share
 }
 
 // SetInstancewideSourceOauthParams - Sets instancewide variables to be used for the oauth flow when creating this source. When set, these variables will be injected into a connector's configuration before any interaction with the connector image itself. This enables running oauth flows with consistent variables e.g: the company's Google Ads developer_token, client_id, and client_secret without the user having to know about these variables.
-func (s *sourceOauth) SetInstancewideSourceOauthParams(ctx context.Context, request shared.SetInstancewideSourceOauthParamsRequestBody) (*operations.SetInstancewideSourceOauthParamsResponse, error) {
+func (s *SourceOauth) SetInstancewideSourceOauthParams(ctx context.Context, request shared.SetInstancewideSourceOauthParamsRequestBody) (*operations.SetInstancewideSourceOauthParamsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_oauths/oauth_params/create"
 

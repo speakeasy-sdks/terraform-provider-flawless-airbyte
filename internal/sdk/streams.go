@@ -15,18 +15,18 @@ import (
 	"strings"
 )
 
-type streams struct {
+type Streams struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newStreams(sdkConfig sdkConfiguration) *streams {
-	return &streams{
+func newStreams(sdkConfig sdkConfiguration) *Streams {
+	return &Streams{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CreateStreamStatus - Creates a stream status.
-func (s *streams) CreateStreamStatus(ctx context.Context, request *shared.StreamStatusCreateRequestBody) (*operations.CreateStreamStatusResponse, error) {
+func (s *Streams) CreateStreamStatus(ctx context.Context, request *shared.StreamStatusCreateRequestBody) (*operations.CreateStreamStatusResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/stream_statuses/create"
 
@@ -90,7 +90,7 @@ func (s *streams) CreateStreamStatus(ctx context.Context, request *shared.Stream
 }
 
 // GetStreamStatuses - Gets a list of stream statuses filtered by parameters (with AND semantics).
-func (s *streams) GetStreamStatuses(ctx context.Context, request *shared.StreamStatusListRequestBody) (*operations.GetStreamStatusesResponse, error) {
+func (s *Streams) GetStreamStatuses(ctx context.Context, request *shared.StreamStatusListRequestBody) (*operations.GetStreamStatusesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/stream_statuses/list"
 
@@ -154,7 +154,7 @@ func (s *streams) GetStreamStatuses(ctx context.Context, request *shared.StreamS
 }
 
 // UpdateStreamStatus - Updates a stream status.
-func (s *streams) UpdateStreamStatus(ctx context.Context, request *shared.StreamStatusUpdateRequestBody) (*operations.UpdateStreamStatusResponse, error) {
+func (s *Streams) UpdateStreamStatus(ctx context.Context, request *shared.StreamStatusUpdateRequestBody) (*operations.UpdateStreamStatusResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/stream_statuses/update"
 

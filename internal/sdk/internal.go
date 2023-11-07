@@ -15,18 +15,18 @@ import (
 	"strings"
 )
 
-type internal struct {
+type Internal struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newInternal(sdkConfig sdkConfiguration) *internal {
-	return &internal{
+func newInternal(sdkConfig sdkConfiguration) *Internal {
+	return &Internal{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CreateOrUpdateState - Create or update the state for a connection.
-func (s *internal) CreateOrUpdateState(ctx context.Context, request shared.ConnectionStateCreateOrUpdate) (*operations.CreateOrUpdateStateResponse, error) {
+func (s *Internal) CreateOrUpdateState(ctx context.Context, request shared.ConnectionStateCreateOrUpdate) (*operations.CreateOrUpdateStateResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/state/create_or_update"
 
@@ -118,7 +118,7 @@ func (s *internal) CreateOrUpdateState(ctx context.Context, request shared.Conne
 }
 
 // GetAttemptNormalizationStatusesForJob - Get normalization status to determine if we can bypass normalization phase
-func (s *internal) GetAttemptNormalizationStatusesForJob(ctx context.Context, request *shared.JobIDRequestBody) (*operations.GetAttemptNormalizationStatusesForJobResponse, error) {
+func (s *Internal) GetAttemptNormalizationStatusesForJob(ctx context.Context, request *shared.JobIDRequestBody) (*operations.GetAttemptNormalizationStatusesForJobResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/jobs/get_normalization_status"
 
@@ -182,7 +182,7 @@ func (s *internal) GetAttemptNormalizationStatusesForJob(ctx context.Context, re
 }
 
 // SaveStats - For worker to set sync stats of a running attempt.
-func (s *internal) SaveStats(ctx context.Context, request shared.SaveStatsRequestBody) (*operations.SaveStatsResponse, error) {
+func (s *Internal) SaveStats(ctx context.Context, request shared.SaveStatsRequestBody) (*operations.SaveStatsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/attempt/save_stats"
 
@@ -250,7 +250,7 @@ func (s *internal) SaveStats(ctx context.Context, request shared.SaveStatsReques
 }
 
 // SaveSyncConfig - For worker to save the AttemptSyncConfig for an attempt.
-func (s *internal) SaveSyncConfig(ctx context.Context, request shared.SaveAttemptSyncConfigRequestBody) (*operations.SaveSyncConfigResponse, error) {
+func (s *Internal) SaveSyncConfig(ctx context.Context, request shared.SaveAttemptSyncConfigRequestBody) (*operations.SaveSyncConfigResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/attempt/save_sync_config"
 
@@ -318,7 +318,7 @@ func (s *internal) SaveSyncConfig(ctx context.Context, request shared.SaveAttemp
 }
 
 // SetWorkflowInAttempt - For worker to register the workflow id in attempt.
-func (s *internal) SetWorkflowInAttempt(ctx context.Context, request shared.SetWorkflowInAttemptRequestBody) (*operations.SetWorkflowInAttemptResponse, error) {
+func (s *Internal) SetWorkflowInAttempt(ctx context.Context, request shared.SetWorkflowInAttemptRequestBody) (*operations.SetWorkflowInAttemptResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/attempt/set_workflow_in_attempt"
 
@@ -386,7 +386,7 @@ func (s *internal) SetWorkflowInAttempt(ctx context.Context, request shared.SetW
 }
 
 // WriteDiscoverCatalogResult - Should only called from worker, to write result from discover activity back to DB.
-func (s *internal) WriteDiscoverCatalogResult(ctx context.Context, request shared.SourceDiscoverSchemaWriteRequestBody) (*operations.WriteDiscoverCatalogResultResponse, error) {
+func (s *Internal) WriteDiscoverCatalogResult(ctx context.Context, request shared.SourceDiscoverSchemaWriteRequestBody) (*operations.WriteDiscoverCatalogResultResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/sources/write_discover_catalog_result"
 

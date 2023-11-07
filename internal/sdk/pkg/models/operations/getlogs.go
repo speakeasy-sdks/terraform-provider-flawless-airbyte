@@ -19,7 +19,7 @@ type GetLogsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Returns the log file
-	GetLogs200TextPlainBinaryString []byte
+	Bytes []byte
 }
 
 func (o *GetLogsResponse) GetContentType() string {
@@ -57,9 +57,9 @@ func (o *GetLogsResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *GetLogsResponse) GetGetLogs200TextPlainBinaryString() []byte {
+func (o *GetLogsResponse) GetBytes() []byte {
 	if o == nil {
 		return nil
 	}
-	return o.GetLogs200TextPlainBinaryString
+	return o.Bytes
 }

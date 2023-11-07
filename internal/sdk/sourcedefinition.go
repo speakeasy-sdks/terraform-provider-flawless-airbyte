@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// sourceDefinition - SourceDefinition related resources.
-type sourceDefinition struct {
+// SourceDefinition related resources.
+type SourceDefinition struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newSourceDefinition(sdkConfig sdkConfiguration) *sourceDefinition {
-	return &sourceDefinition{
+func newSourceDefinition(sdkConfig sdkConfiguration) *SourceDefinition {
+	return &SourceDefinition{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CreateCustomSourceDefinition - Creates a custom sourceDefinition for the given workspace
-func (s *sourceDefinition) CreateCustomSourceDefinition(ctx context.Context, request *shared.CustomSourceDefinitionCreate) (*operations.CreateCustomSourceDefinitionResponse, error) {
+func (s *SourceDefinition) CreateCustomSourceDefinition(ctx context.Context, request *shared.CustomSourceDefinitionCreate) (*operations.CreateCustomSourceDefinitionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_definitions/create_custom"
 
@@ -103,7 +103,7 @@ func (s *sourceDefinition) CreateCustomSourceDefinition(ctx context.Context, req
 }
 
 // DeleteSourceDefinition - Delete a source definition
-func (s *sourceDefinition) DeleteSourceDefinition(ctx context.Context, request shared.SourceDefinitionIDRequestBody) (*operations.DeleteSourceDefinitionResponse, error) {
+func (s *SourceDefinition) DeleteSourceDefinition(ctx context.Context, request shared.SourceDefinitionIDRequestBody) (*operations.DeleteSourceDefinitionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_definitions/delete"
 
@@ -184,7 +184,7 @@ func (s *sourceDefinition) DeleteSourceDefinition(ctx context.Context, request s
 }
 
 // GetSourceDefinition - Get source
-func (s *sourceDefinition) GetSourceDefinition(ctx context.Context, request shared.SourceDefinitionIDRequestBody) (*operations.GetSourceDefinitionResponse, error) {
+func (s *SourceDefinition) GetSourceDefinition(ctx context.Context, request shared.SourceDefinitionIDRequestBody) (*operations.GetSourceDefinitionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_definitions/get"
 
@@ -276,7 +276,7 @@ func (s *sourceDefinition) GetSourceDefinition(ctx context.Context, request shar
 }
 
 // GetSourceDefinitionForWorkspace - Get a sourceDefinition that is configured for the given workspace
-func (s *sourceDefinition) GetSourceDefinitionForWorkspace(ctx context.Context, request shared.SourceDefinitionIDWithWorkspaceID) (*operations.GetSourceDefinitionForWorkspaceResponse, error) {
+func (s *SourceDefinition) GetSourceDefinitionForWorkspace(ctx context.Context, request shared.SourceDefinitionIDWithWorkspaceID) (*operations.GetSourceDefinitionForWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_definitions/get_for_workspace"
 
@@ -368,7 +368,7 @@ func (s *sourceDefinition) GetSourceDefinitionForWorkspace(ctx context.Context, 
 }
 
 // GrantSourceDefinitionToWorkspace - grant a private, non-custom sourceDefinition to a given workspace
-func (s *sourceDefinition) GrantSourceDefinitionToWorkspace(ctx context.Context, request shared.SourceDefinitionIDWithWorkspaceID) (*operations.GrantSourceDefinitionToWorkspaceResponse, error) {
+func (s *SourceDefinition) GrantSourceDefinitionToWorkspace(ctx context.Context, request shared.SourceDefinitionIDWithWorkspaceID) (*operations.GrantSourceDefinitionToWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_definitions/grant_definition"
 
@@ -461,7 +461,7 @@ func (s *sourceDefinition) GrantSourceDefinitionToWorkspace(ctx context.Context,
 
 // ListLatestSourceDefinitions - List the latest sourceDefinitions Airbyte supports
 // Guaranteed to retrieve the latest information on supported sources.
-func (s *sourceDefinition) ListLatestSourceDefinitions(ctx context.Context) (*operations.ListLatestSourceDefinitionsResponse, error) {
+func (s *SourceDefinition) ListLatestSourceDefinitions(ctx context.Context) (*operations.ListLatestSourceDefinitionsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_definitions/list_latest"
 
@@ -515,7 +515,7 @@ func (s *sourceDefinition) ListLatestSourceDefinitions(ctx context.Context) (*op
 }
 
 // ListPrivateSourceDefinitions - List all private, non-custom sourceDefinitions, and for each indicate whether the given workspace has a grant for using the definition. Used by admins to view and modify a given workspace's grants.
-func (s *sourceDefinition) ListPrivateSourceDefinitions(ctx context.Context, request *shared.WorkspaceIDRequestBody) (*operations.ListPrivateSourceDefinitionsResponse, error) {
+func (s *SourceDefinition) ListPrivateSourceDefinitions(ctx context.Context, request *shared.WorkspaceIDRequestBody) (*operations.ListPrivateSourceDefinitionsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_definitions/list_private"
 
@@ -579,7 +579,7 @@ func (s *sourceDefinition) ListPrivateSourceDefinitions(ctx context.Context, req
 }
 
 // ListSourceDefinitions - List all the sourceDefinitions the current Airbyte deployment is configured to use
-func (s *sourceDefinition) ListSourceDefinitions(ctx context.Context) (*operations.ListSourceDefinitionsResponse, error) {
+func (s *SourceDefinition) ListSourceDefinitions(ctx context.Context) (*operations.ListSourceDefinitionsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_definitions/list"
 
@@ -633,7 +633,7 @@ func (s *sourceDefinition) ListSourceDefinitions(ctx context.Context) (*operatio
 }
 
 // ListSourceDefinitionsForWorkspace - List all the sourceDefinitions the given workspace is configured to use
-func (s *sourceDefinition) ListSourceDefinitionsForWorkspace(ctx context.Context, request *shared.WorkspaceIDRequestBody) (*operations.ListSourceDefinitionsForWorkspaceResponse, error) {
+func (s *SourceDefinition) ListSourceDefinitionsForWorkspace(ctx context.Context, request *shared.WorkspaceIDRequestBody) (*operations.ListSourceDefinitionsForWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_definitions/list_for_workspace"
 
@@ -697,7 +697,7 @@ func (s *sourceDefinition) ListSourceDefinitionsForWorkspace(ctx context.Context
 }
 
 // RevokeSourceDefinitionFromWorkspace - revoke a grant to a private, non-custom sourceDefinition from a given workspace
-func (s *sourceDefinition) RevokeSourceDefinitionFromWorkspace(ctx context.Context, request shared.SourceDefinitionIDWithWorkspaceID) (*operations.RevokeSourceDefinitionFromWorkspaceResponse, error) {
+func (s *SourceDefinition) RevokeSourceDefinitionFromWorkspace(ctx context.Context, request shared.SourceDefinitionIDWithWorkspaceID) (*operations.RevokeSourceDefinitionFromWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_definitions/revoke_definition"
 
@@ -778,7 +778,7 @@ func (s *sourceDefinition) RevokeSourceDefinitionFromWorkspace(ctx context.Conte
 }
 
 // UpdateSourceDefinition - Update a sourceDefinition
-func (s *sourceDefinition) UpdateSourceDefinition(ctx context.Context, request *shared.SourceDefinitionUpdate) (*operations.UpdateSourceDefinitionResponse, error) {
+func (s *SourceDefinition) UpdateSourceDefinition(ctx context.Context, request *shared.SourceDefinitionUpdate) (*operations.UpdateSourceDefinitionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_definitions/update"
 

@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// destinationOauth - Source OAuth related resources to delegate access from user.
-type destinationOauth struct {
+// DestinationOauth - Source OAuth related resources to delegate access from user.
+type DestinationOauth struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newDestinationOauth(sdkConfig sdkConfiguration) *destinationOauth {
-	return &destinationOauth{
+func newDestinationOauth(sdkConfig sdkConfiguration) *DestinationOauth {
+	return &DestinationOauth{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CompleteDestinationOAuth - Given a destination def ID generate an access/refresh token etc.
-func (s *destinationOauth) CompleteDestinationOAuth(ctx context.Context, request shared.CompleteDestinationOAuthRequest) (*operations.CompleteDestinationOAuthResponse, error) {
+func (s *DestinationOauth) CompleteDestinationOAuth(ctx context.Context, request shared.CompleteDestinationOAuthRequest) (*operations.CompleteDestinationOAuthResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_oauths/complete_oauth"
 
@@ -119,7 +119,7 @@ func (s *destinationOauth) CompleteDestinationOAuth(ctx context.Context, request
 }
 
 // GetDestinationOAuthConsent - Given a destination connector definition ID, return the URL to the consent screen where to redirect the user to.
-func (s *destinationOauth) GetDestinationOAuthConsent(ctx context.Context, request shared.DestinationOauthConsentRequest) (*operations.GetDestinationOAuthConsentResponse, error) {
+func (s *DestinationOauth) GetDestinationOAuthConsent(ctx context.Context, request shared.DestinationOauthConsentRequest) (*operations.GetDestinationOAuthConsentResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_oauths/get_consent_url"
 
@@ -211,7 +211,7 @@ func (s *destinationOauth) GetDestinationOAuthConsent(ctx context.Context, reque
 }
 
 // SetInstancewideDestinationOauthParams - Sets instancewide variables to be used for the oauth flow when creating this destination. When set, these variables will be injected into a connector's configuration before any interaction with the connector image itself. This enables running oauth flows with consistent variables e.g: the company's Google Ads developer_token, client_id, and client_secret without the user having to know about these variables.
-func (s *destinationOauth) SetInstancewideDestinationOauthParams(ctx context.Context, request shared.SetInstancewideDestinationOauthParamsRequestBody) (*operations.SetInstancewideDestinationOauthParamsResponse, error) {
+func (s *DestinationOauth) SetInstancewideDestinationOauthParams(ctx context.Context, request shared.SetInstancewideDestinationOauthParamsRequestBody) (*operations.SetInstancewideDestinationOauthParamsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_oauths/oauth_params/create"
 

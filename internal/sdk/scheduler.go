@@ -15,18 +15,18 @@ import (
 	"strings"
 )
 
-type scheduler struct {
+type Scheduler struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newScheduler(sdkConfig sdkConfiguration) *scheduler {
-	return &scheduler{
+func newScheduler(sdkConfig sdkConfiguration) *Scheduler {
+	return &Scheduler{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // ExecuteDestinationCheckConnection - Run check connection for a given destination configuration
-func (s *scheduler) ExecuteDestinationCheckConnection(ctx context.Context, request shared.DestinationCoreConfig) (*operations.ExecuteDestinationCheckConnectionResponse, error) {
+func (s *Scheduler) ExecuteDestinationCheckConnection(ctx context.Context, request shared.DestinationCoreConfig) (*operations.ExecuteDestinationCheckConnectionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/scheduler/destinations/check_connection"
 
@@ -106,7 +106,7 @@ func (s *scheduler) ExecuteDestinationCheckConnection(ctx context.Context, reque
 }
 
 // ExecuteSourceCheckConnection - Run check connection for a given source configuration
-func (s *scheduler) ExecuteSourceCheckConnection(ctx context.Context, request shared.SourceCoreConfig) (*operations.ExecuteSourceCheckConnectionResponse, error) {
+func (s *Scheduler) ExecuteSourceCheckConnection(ctx context.Context, request shared.SourceCoreConfig) (*operations.ExecuteSourceCheckConnectionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/scheduler/sources/check_connection"
 
@@ -186,7 +186,7 @@ func (s *scheduler) ExecuteSourceCheckConnection(ctx context.Context, request sh
 }
 
 // ExecuteSourceDiscoverSchema - Run discover schema for a given source a source configuration
-func (s *scheduler) ExecuteSourceDiscoverSchema(ctx context.Context, request shared.SourceCoreConfig) (*operations.ExecuteSourceDiscoverSchemaResponse, error) {
+func (s *Scheduler) ExecuteSourceDiscoverSchema(ctx context.Context, request shared.SourceCoreConfig) (*operations.ExecuteSourceDiscoverSchemaResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/scheduler/sources/discover_schema"
 

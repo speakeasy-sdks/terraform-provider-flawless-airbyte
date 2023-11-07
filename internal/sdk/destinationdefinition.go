@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// destinationDefinition - DestinationDefinition related resources.
-type destinationDefinition struct {
+// DestinationDefinition related resources.
+type DestinationDefinition struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newDestinationDefinition(sdkConfig sdkConfiguration) *destinationDefinition {
-	return &destinationDefinition{
+func newDestinationDefinition(sdkConfig sdkConfiguration) *DestinationDefinition {
+	return &DestinationDefinition{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CreateCustomDestinationDefinition - Creates a custom destinationDefinition for the given workspace
-func (s *destinationDefinition) CreateCustomDestinationDefinition(ctx context.Context, request *shared.CustomDestinationDefinitionCreate) (*operations.CreateCustomDestinationDefinitionResponse, error) {
+func (s *DestinationDefinition) CreateCustomDestinationDefinition(ctx context.Context, request *shared.CustomDestinationDefinitionCreate) (*operations.CreateCustomDestinationDefinitionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_definitions/create_custom"
 
@@ -103,7 +103,7 @@ func (s *destinationDefinition) CreateCustomDestinationDefinition(ctx context.Co
 }
 
 // DeleteDestinationDefinition - Delete a destination definition
-func (s *destinationDefinition) DeleteDestinationDefinition(ctx context.Context, request shared.DestinationDefinitionIDRequestBody) (*operations.DeleteDestinationDefinitionResponse, error) {
+func (s *DestinationDefinition) DeleteDestinationDefinition(ctx context.Context, request shared.DestinationDefinitionIDRequestBody) (*operations.DeleteDestinationDefinitionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_definitions/delete"
 
@@ -184,7 +184,7 @@ func (s *destinationDefinition) DeleteDestinationDefinition(ctx context.Context,
 }
 
 // GetDestinationDefinition - Get destinationDefinition
-func (s *destinationDefinition) GetDestinationDefinition(ctx context.Context, request shared.DestinationDefinitionIDRequestBody) (*operations.GetDestinationDefinitionResponse, error) {
+func (s *DestinationDefinition) GetDestinationDefinition(ctx context.Context, request shared.DestinationDefinitionIDRequestBody) (*operations.GetDestinationDefinitionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_definitions/get"
 
@@ -276,7 +276,7 @@ func (s *destinationDefinition) GetDestinationDefinition(ctx context.Context, re
 }
 
 // GetDestinationDefinitionForWorkspace - Get a destinationDefinition that is configured for the given workspace
-func (s *destinationDefinition) GetDestinationDefinitionForWorkspace(ctx context.Context, request shared.DestinationDefinitionIDWithWorkspaceID) (*operations.GetDestinationDefinitionForWorkspaceResponse, error) {
+func (s *DestinationDefinition) GetDestinationDefinitionForWorkspace(ctx context.Context, request shared.DestinationDefinitionIDWithWorkspaceID) (*operations.GetDestinationDefinitionForWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_definitions/get_for_workspace"
 
@@ -368,7 +368,7 @@ func (s *destinationDefinition) GetDestinationDefinitionForWorkspace(ctx context
 }
 
 // GrantDestinationDefinitionToWorkspace - grant a private, non-custom destinationDefinition to a given workspace
-func (s *destinationDefinition) GrantDestinationDefinitionToWorkspace(ctx context.Context, request shared.DestinationDefinitionIDWithWorkspaceID) (*operations.GrantDestinationDefinitionToWorkspaceResponse, error) {
+func (s *DestinationDefinition) GrantDestinationDefinitionToWorkspace(ctx context.Context, request shared.DestinationDefinitionIDWithWorkspaceID) (*operations.GrantDestinationDefinitionToWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_definitions/grant_definition"
 
@@ -460,7 +460,7 @@ func (s *destinationDefinition) GrantDestinationDefinitionToWorkspace(ctx contex
 }
 
 // ListDestinationDefinitions - List all the destinationDefinitions the current Airbyte deployment is configured to use
-func (s *destinationDefinition) ListDestinationDefinitions(ctx context.Context) (*operations.ListDestinationDefinitionsResponse, error) {
+func (s *DestinationDefinition) ListDestinationDefinitions(ctx context.Context) (*operations.ListDestinationDefinitionsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_definitions/list"
 
@@ -514,7 +514,7 @@ func (s *destinationDefinition) ListDestinationDefinitions(ctx context.Context) 
 }
 
 // ListDestinationDefinitionsForWorkspace - List all the destinationDefinitions the given workspace is configured to use
-func (s *destinationDefinition) ListDestinationDefinitionsForWorkspace(ctx context.Context, request *shared.WorkspaceIDRequestBody) (*operations.ListDestinationDefinitionsForWorkspaceResponse, error) {
+func (s *DestinationDefinition) ListDestinationDefinitionsForWorkspace(ctx context.Context, request *shared.WorkspaceIDRequestBody) (*operations.ListDestinationDefinitionsForWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_definitions/list_for_workspace"
 
@@ -579,7 +579,7 @@ func (s *destinationDefinition) ListDestinationDefinitionsForWorkspace(ctx conte
 
 // ListLatestDestinationDefinitions - List the latest destinationDefinitions Airbyte supports
 // Guaranteed to retrieve the latest information on supported destinations.
-func (s *destinationDefinition) ListLatestDestinationDefinitions(ctx context.Context) (*operations.ListLatestDestinationDefinitionsResponse, error) {
+func (s *DestinationDefinition) ListLatestDestinationDefinitions(ctx context.Context) (*operations.ListLatestDestinationDefinitionsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_definitions/list_latest"
 
@@ -633,7 +633,7 @@ func (s *destinationDefinition) ListLatestDestinationDefinitions(ctx context.Con
 }
 
 // ListPrivateDestinationDefinitions - List all private, non-custom destinationDefinitions, and for each indicate whether the given workspace has a grant for using the definition. Used by admins to view and modify a given workspace's grants.
-func (s *destinationDefinition) ListPrivateDestinationDefinitions(ctx context.Context, request *shared.WorkspaceIDRequestBody) (*operations.ListPrivateDestinationDefinitionsResponse, error) {
+func (s *DestinationDefinition) ListPrivateDestinationDefinitions(ctx context.Context, request *shared.WorkspaceIDRequestBody) (*operations.ListPrivateDestinationDefinitionsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_definitions/list_private"
 
@@ -697,7 +697,7 @@ func (s *destinationDefinition) ListPrivateDestinationDefinitions(ctx context.Co
 }
 
 // RevokeDestinationDefinitionFromWorkspace - revoke a grant to a private, non-custom destinationDefinition from a given workspace
-func (s *destinationDefinition) RevokeDestinationDefinitionFromWorkspace(ctx context.Context, request shared.DestinationDefinitionIDWithWorkspaceID) (*operations.RevokeDestinationDefinitionFromWorkspaceResponse, error) {
+func (s *DestinationDefinition) RevokeDestinationDefinitionFromWorkspace(ctx context.Context, request shared.DestinationDefinitionIDWithWorkspaceID) (*operations.RevokeDestinationDefinitionFromWorkspaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_definitions/revoke_definition"
 
@@ -778,7 +778,7 @@ func (s *destinationDefinition) RevokeDestinationDefinitionFromWorkspace(ctx con
 }
 
 // UpdateDestinationDefinition - Update destinationDefinition
-func (s *destinationDefinition) UpdateDestinationDefinition(ctx context.Context, request shared.DestinationDefinitionUpdate) (*operations.UpdateDestinationDefinitionResponse, error) {
+func (s *DestinationDefinition) UpdateDestinationDefinition(ctx context.Context, request shared.DestinationDefinitionUpdate) (*operations.UpdateDestinationDefinitionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/destination_definitions/update"
 

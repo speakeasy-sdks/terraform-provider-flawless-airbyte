@@ -88,46 +88,46 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 // https://airbyte.io - Find out more about Airbyte
 type Airbyte struct {
 	// Interactions with attempt related resources.
-	Attempt *attempt
+	Attempt  *Attempt
+	Internal *Internal
 	// Connection between sources and destinations.
-	Connection                   *connection
-	ConnectorBuilderProject      *connectorBuilderProject
-	DeclarativeSourceDefinitions *declarativeSourceDefinitions
-	// Destination related resources.
-	Destination *destination
-	// DestinationDefinition related resources.
-	DestinationDefinition *destinationDefinition
+	Connection                   *Connection
+	ConnectorBuilderProject      *ConnectorBuilderProject
+	DeclarativeSourceDefinitions *DeclarativeSourceDefinitions
 	// DestinationDefinitionSpecification related resources.
-	DestinationDefinitionSpecification *destinationDefinitionSpecification
+	DestinationDefinitionSpecification *DestinationDefinitionSpecification
+	// DestinationDefinition related resources.
+	DestinationDefinition *DestinationDefinition
 	// Source OAuth related resources to delegate access from user.
-	DestinationOauth *destinationOauth
+	DestinationOauth *DestinationOauth
+	// Destination related resources.
+	Destination *Destination
 	// Healthchecks
-	Health        *health
-	Internal      *internal
-	Jobs          *jobs
-	Logs          *logs
-	Notifications *notifications
-	Openapi       *openapi
-	Operation     *operation
-	Scheduler     *scheduler
-	// Source related resources.
-	Source *source
-	// SourceDefinition related resources.
-	SourceDefinition *sourceDefinition
+	Health        *Health
+	Jobs          *Jobs
+	Logs          *Logs
+	Notifications *Notifications
+	Openapi       *Openapi
+	Operation     *Operation
+	Scheduler     *Scheduler
 	// SourceDefinition specification related resources.
-	SourceDefinitionSpecification *sourceDefinitionSpecification
+	SourceDefinitionSpecification *SourceDefinitionSpecification
+	// SourceDefinition related resources.
+	SourceDefinition *SourceDefinition
 	// Source OAuth related resources to delegate access from user.
-	SourceOauth *sourceOauth
+	SourceOauth *SourceOauth
+	// Source related resources.
+	Source *Source
 	// Interactions with state related resources.
-	State          *state
-	StreamStatuses *streamStatuses
-	Streams        *streams
+	State          *State
+	StreamStatuses *StreamStatuses
+	Streams        *Streams
 	// Endpoints for the Airbyte web application. Those APIs should not be called outside the web application implementation and are not
 	// guaranteeing any backwards compatibility.
 	//
-	WebBackend *webBackend
+	WebBackend *WebBackend
 	// Workspace related resources.
-	Workspace *workspace
+	Workspace *Workspace
 
 	sdkConfiguration sdkConfiguration
 }
@@ -204,9 +204,9 @@ func New(opts ...SDKOption) *Airbyte {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.6.0",
-			GenVersion:        "2.173.0",
-			UserAgent:         "speakeasy-sdk/go 0.6.0 2.173.0 1.0.0 airbyte",
+			SDKVersion:        "0.7.0",
+			GenVersion:        "2.181.1",
+			UserAgent:         "speakeasy-sdk/go 0.7.0 2.181.1 1.0.0 airbyte",
 		},
 	}
 	for _, opt := range opts {
@@ -227,23 +227,23 @@ func New(opts ...SDKOption) *Airbyte {
 
 	sdk.Attempt = newAttempt(sdk.sdkConfiguration)
 
+	sdk.Internal = newInternal(sdk.sdkConfiguration)
+
 	sdk.Connection = newConnection(sdk.sdkConfiguration)
 
 	sdk.ConnectorBuilderProject = newConnectorBuilderProject(sdk.sdkConfiguration)
 
 	sdk.DeclarativeSourceDefinitions = newDeclarativeSourceDefinitions(sdk.sdkConfiguration)
 
-	sdk.Destination = newDestination(sdk.sdkConfiguration)
+	sdk.DestinationDefinitionSpecification = newDestinationDefinitionSpecification(sdk.sdkConfiguration)
 
 	sdk.DestinationDefinition = newDestinationDefinition(sdk.sdkConfiguration)
 
-	sdk.DestinationDefinitionSpecification = newDestinationDefinitionSpecification(sdk.sdkConfiguration)
-
 	sdk.DestinationOauth = newDestinationOauth(sdk.sdkConfiguration)
 
-	sdk.Health = newHealth(sdk.sdkConfiguration)
+	sdk.Destination = newDestination(sdk.sdkConfiguration)
 
-	sdk.Internal = newInternal(sdk.sdkConfiguration)
+	sdk.Health = newHealth(sdk.sdkConfiguration)
 
 	sdk.Jobs = newJobs(sdk.sdkConfiguration)
 
@@ -257,13 +257,13 @@ func New(opts ...SDKOption) *Airbyte {
 
 	sdk.Scheduler = newScheduler(sdk.sdkConfiguration)
 
-	sdk.Source = newSource(sdk.sdkConfiguration)
+	sdk.SourceDefinitionSpecification = newSourceDefinitionSpecification(sdk.sdkConfiguration)
 
 	sdk.SourceDefinition = newSourceDefinition(sdk.sdkConfiguration)
 
-	sdk.SourceDefinitionSpecification = newSourceDefinitionSpecification(sdk.sdkConfiguration)
-
 	sdk.SourceOauth = newSourceOauth(sdk.sdkConfiguration)
+
+	sdk.Source = newSource(sdk.sdkConfiguration)
 
 	sdk.State = newState(sdk.sdkConfiguration)
 

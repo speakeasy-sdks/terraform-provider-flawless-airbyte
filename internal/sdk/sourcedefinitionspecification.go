@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// sourceDefinitionSpecification - SourceDefinition specification related resources.
-type sourceDefinitionSpecification struct {
+// SourceDefinitionSpecification - SourceDefinition specification related resources.
+type SourceDefinitionSpecification struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newSourceDefinitionSpecification(sdkConfig sdkConfiguration) *sourceDefinitionSpecification {
-	return &sourceDefinitionSpecification{
+func newSourceDefinitionSpecification(sdkConfig sdkConfiguration) *SourceDefinitionSpecification {
+	return &SourceDefinitionSpecification{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetSourceDefinitionSpecification - Get specification for a SourceDefinition.
-func (s *sourceDefinitionSpecification) GetSourceDefinitionSpecification(ctx context.Context, request shared.SourceDefinitionIDWithWorkspaceID) (*operations.GetSourceDefinitionSpecificationResponse, error) {
+func (s *SourceDefinitionSpecification) GetSourceDefinitionSpecification(ctx context.Context, request shared.SourceDefinitionIDWithWorkspaceID) (*operations.GetSourceDefinitionSpecificationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_definition_specifications/get"
 
@@ -119,7 +119,7 @@ func (s *sourceDefinitionSpecification) GetSourceDefinitionSpecification(ctx con
 }
 
 // GetSpecificationForSourceID - Get specification for a source.
-func (s *sourceDefinitionSpecification) GetSpecificationForSourceID(ctx context.Context, request shared.SourceIDRequestBody) (*operations.GetSpecificationForSourceIDResponse, error) {
+func (s *SourceDefinitionSpecification) GetSpecificationForSourceID(ctx context.Context, request shared.SourceIDRequestBody) (*operations.GetSpecificationForSourceIDResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/source_definition_specifications/get_for_source"
 

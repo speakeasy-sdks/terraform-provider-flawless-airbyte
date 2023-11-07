@@ -15,18 +15,18 @@ import (
 	"strings"
 )
 
-type logs struct {
+type Logs struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newLogs(sdkConfig sdkConfiguration) *logs {
-	return &logs{
+func newLogs(sdkConfig sdkConfiguration) *Logs {
+	return &Logs{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetLogs - Get logs
-func (s *logs) GetLogs(ctx context.Context, request shared.LogsRequestBody, opts ...operations.Option) (*operations.GetLogsResponse, error) {
+func (s *Logs) GetLogs(ctx context.Context, request shared.LogsRequestBody, opts ...operations.Option) (*operations.GetLogsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -94,7 +94,7 @@ func (s *logs) GetLogs(ctx context.Context, request shared.LogsRequestBody, opts
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `text/plain`):
-			res.GetLogs200TextPlainBinaryString = rawBody
+			res.Bytes = rawBody
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// state - Interactions with state related resources.
-type state struct {
+// State - Interactions with state related resources.
+type State struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newState(sdkConfig sdkConfiguration) *state {
-	return &state{
+func newState(sdkConfig sdkConfiguration) *State {
+	return &State{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CreateOrUpdateState - Create or update the state for a connection.
-func (s *state) CreateOrUpdateState(ctx context.Context, request shared.ConnectionStateCreateOrUpdate) (*operations.CreateOrUpdateStateResponse, error) {
+func (s *State) CreateOrUpdateState(ctx context.Context, request shared.ConnectionStateCreateOrUpdate) (*operations.CreateOrUpdateStateResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/state/create_or_update"
 
@@ -119,7 +119,7 @@ func (s *state) CreateOrUpdateState(ctx context.Context, request shared.Connecti
 }
 
 // GetState - Fetch the current state for a connection.
-func (s *state) GetState(ctx context.Context, request shared.ConnectionIDRequestBody) (*operations.GetStateResponse, error) {
+func (s *State) GetState(ctx context.Context, request shared.ConnectionIDRequestBody) (*operations.GetStateResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/state/get"
 

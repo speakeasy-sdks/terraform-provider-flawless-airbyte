@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// attempt - Interactions with attempt related resources.
-type attempt struct {
+// Attempt - Interactions with attempt related resources.
+type Attempt struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newAttempt(sdkConfig sdkConfiguration) *attempt {
-	return &attempt{
+func newAttempt(sdkConfig sdkConfiguration) *Attempt {
+	return &Attempt{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // SaveStats - For worker to set sync stats of a running attempt.
-func (s *attempt) SaveStats(ctx context.Context, request shared.SaveStatsRequestBody) (*operations.SaveStatsResponse, error) {
+func (s *Attempt) SaveStats(ctx context.Context, request shared.SaveStatsRequestBody) (*operations.SaveStatsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/attempt/save_stats"
 
@@ -95,7 +95,7 @@ func (s *attempt) SaveStats(ctx context.Context, request shared.SaveStatsRequest
 }
 
 // SaveSyncConfig - For worker to save the AttemptSyncConfig for an attempt.
-func (s *attempt) SaveSyncConfig(ctx context.Context, request shared.SaveAttemptSyncConfigRequestBody) (*operations.SaveSyncConfigResponse, error) {
+func (s *Attempt) SaveSyncConfig(ctx context.Context, request shared.SaveAttemptSyncConfigRequestBody) (*operations.SaveSyncConfigResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/attempt/save_sync_config"
 
@@ -163,7 +163,7 @@ func (s *attempt) SaveSyncConfig(ctx context.Context, request shared.SaveAttempt
 }
 
 // SetWorkflowInAttempt - For worker to register the workflow id in attempt.
-func (s *attempt) SetWorkflowInAttempt(ctx context.Context, request shared.SetWorkflowInAttemptRequestBody) (*operations.SetWorkflowInAttemptResponse, error) {
+func (s *Attempt) SetWorkflowInAttempt(ctx context.Context, request shared.SetWorkflowInAttemptRequestBody) (*operations.SetWorkflowInAttemptResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/attempt/set_workflow_in_attempt"
 

@@ -15,18 +15,18 @@ import (
 	"strings"
 )
 
-type declarativeSourceDefinitions struct {
+type DeclarativeSourceDefinitions struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newDeclarativeSourceDefinitions(sdkConfig sdkConfiguration) *declarativeSourceDefinitions {
-	return &declarativeSourceDefinitions{
+func newDeclarativeSourceDefinitions(sdkConfig sdkConfiguration) *DeclarativeSourceDefinitions {
+	return &DeclarativeSourceDefinitions{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CreateDeclarativeSourceDefinitionManifest - Create a declarative manifest to be used by the specified source definition
-func (s *declarativeSourceDefinitions) CreateDeclarativeSourceDefinitionManifest(ctx context.Context, request shared.DeclarativeSourceDefinitionCreateManifestRequestBody) (*operations.CreateDeclarativeSourceDefinitionManifestResponse, error) {
+func (s *DeclarativeSourceDefinitions) CreateDeclarativeSourceDefinitionManifest(ctx context.Context, request shared.DeclarativeSourceDefinitionCreateManifestRequestBody) (*operations.CreateDeclarativeSourceDefinitionManifestResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/declarative_source_definitions/create_manifest"
 
@@ -99,7 +99,7 @@ func (s *declarativeSourceDefinitions) CreateDeclarativeSourceDefinitionManifest
 }
 
 // ListDeclarativeManifests - List all available declarative manifest versions of a declarative source definition
-func (s *declarativeSourceDefinitions) ListDeclarativeManifests(ctx context.Context, request shared.ListDeclarativeManifestsRequestBody) (*operations.ListDeclarativeManifestsResponse, error) {
+func (s *DeclarativeSourceDefinitions) ListDeclarativeManifests(ctx context.Context, request shared.ListDeclarativeManifestsRequestBody) (*operations.ListDeclarativeManifestsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/declarative_source_definitions/list_manifests"
 
@@ -180,7 +180,7 @@ func (s *declarativeSourceDefinitions) ListDeclarativeManifests(ctx context.Cont
 }
 
 // UpdateDeclarativeManifestVersion - Update the declarative manifest version for a source
-func (s *declarativeSourceDefinitions) UpdateDeclarativeManifestVersion(ctx context.Context, request shared.UpdateActiveManifestRequestBody) (*operations.UpdateDeclarativeManifestVersionResponse, error) {
+func (s *DeclarativeSourceDefinitions) UpdateDeclarativeManifestVersion(ctx context.Context, request shared.UpdateActiveManifestRequestBody) (*operations.UpdateDeclarativeManifestVersionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/declarative_source_definitions/update_active_manifest"
 

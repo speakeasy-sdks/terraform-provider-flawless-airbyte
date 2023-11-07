@@ -14,18 +14,18 @@ import (
 	"strings"
 )
 
-type openapi struct {
+type Openapi struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newOpenapi(sdkConfig sdkConfiguration) *openapi {
-	return &openapi{
+func newOpenapi(sdkConfig sdkConfiguration) *Openapi {
+	return &Openapi{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetOpenAPISpec - Returns the openapi specification
-func (s *openapi) GetOpenAPISpec(ctx context.Context) (*operations.GetOpenAPISpecResponse, error) {
+func (s *Openapi) GetOpenAPISpec(ctx context.Context) (*operations.GetOpenAPISpecResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/openapi"
 
@@ -64,7 +64,7 @@ func (s *openapi) GetOpenAPISpec(ctx context.Context) (*operations.GetOpenAPISpe
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `text/plain`):
-			res.GetOpenAPISpec200TextPlainBinaryString = rawBody
+			res.Bytes = rawBody
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

@@ -15,18 +15,18 @@ import (
 	"strings"
 )
 
-type streamStatuses struct {
+type StreamStatuses struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newStreamStatuses(sdkConfig sdkConfiguration) *streamStatuses {
-	return &streamStatuses{
+func newStreamStatuses(sdkConfig sdkConfiguration) *StreamStatuses {
+	return &StreamStatuses{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CreateStreamStatus - Creates a stream status.
-func (s *streamStatuses) CreateStreamStatus(ctx context.Context, request *shared.StreamStatusCreateRequestBody) (*operations.CreateStreamStatusResponse, error) {
+func (s *StreamStatuses) CreateStreamStatus(ctx context.Context, request *shared.StreamStatusCreateRequestBody) (*operations.CreateStreamStatusResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/stream_statuses/create"
 
@@ -90,7 +90,7 @@ func (s *streamStatuses) CreateStreamStatus(ctx context.Context, request *shared
 }
 
 // GetStreamStatuses - Gets a list of stream statuses filtered by parameters (with AND semantics).
-func (s *streamStatuses) GetStreamStatuses(ctx context.Context, request *shared.StreamStatusListRequestBody) (*operations.GetStreamStatusesResponse, error) {
+func (s *StreamStatuses) GetStreamStatuses(ctx context.Context, request *shared.StreamStatusListRequestBody) (*operations.GetStreamStatusesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/stream_statuses/list"
 
@@ -154,7 +154,7 @@ func (s *streamStatuses) GetStreamStatuses(ctx context.Context, request *shared.
 }
 
 // UpdateStreamStatus - Updates a stream status.
-func (s *streamStatuses) UpdateStreamStatus(ctx context.Context, request *shared.StreamStatusUpdateRequestBody) (*operations.UpdateStreamStatusResponse, error) {
+func (s *StreamStatuses) UpdateStreamStatus(ctx context.Context, request *shared.StreamStatusUpdateRequestBody) (*operations.UpdateStreamStatusResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/stream_statuses/update"
 

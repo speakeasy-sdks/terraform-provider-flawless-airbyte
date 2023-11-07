@@ -7,18 +7,18 @@ import (
 	"fmt"
 )
 
-type AdvancedAuthAuthFlowType string
+type AuthFlowType string
 
 const (
-	AdvancedAuthAuthFlowTypeOauth20 AdvancedAuthAuthFlowType = "oauth2.0"
-	AdvancedAuthAuthFlowTypeOauth10 AdvancedAuthAuthFlowType = "oauth1.0"
+	AuthFlowTypeOauth20 AuthFlowType = "oauth2.0"
+	AuthFlowTypeOauth10 AuthFlowType = "oauth1.0"
 )
 
-func (e AdvancedAuthAuthFlowType) ToPointer() *AdvancedAuthAuthFlowType {
+func (e AuthFlowType) ToPointer() *AuthFlowType {
 	return &e
 }
 
-func (e *AdvancedAuthAuthFlowType) UnmarshalJSON(data []byte) error {
+func (e *AuthFlowType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -27,15 +27,15 @@ func (e *AdvancedAuthAuthFlowType) UnmarshalJSON(data []byte) error {
 	case "oauth2.0":
 		fallthrough
 	case "oauth1.0":
-		*e = AdvancedAuthAuthFlowType(v)
+		*e = AuthFlowType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AdvancedAuthAuthFlowType: %v", v)
+		return fmt.Errorf("invalid value for AuthFlowType: %v", v)
 	}
 }
 
 type AdvancedAuth struct {
-	AuthFlowType             *AdvancedAuthAuthFlowType `json:"authFlowType,omitempty"`
+	AuthFlowType             *AuthFlowType             `json:"authFlowType,omitempty"`
 	OauthConfigSpecification *OAuthConfigSpecification `json:"oauthConfigSpecification,omitempty"`
 	// Json Path to a field in the connectorSpecification that should exist for the advanced auth to be applicable.
 	PredicateKey []string `json:"predicateKey,omitempty"`
@@ -43,7 +43,7 @@ type AdvancedAuth struct {
 	PredicateValue *string `json:"predicateValue,omitempty"`
 }
 
-func (o *AdvancedAuth) GetAuthFlowType() *AdvancedAuthAuthFlowType {
+func (o *AdvancedAuth) GetAuthFlowType() *AuthFlowType {
 	if o == nil {
 		return nil
 	}
