@@ -3,10 +3,10 @@
 package sdk
 
 import (
-	"airbyte/internal/sdk/pkg/models/shared"
-	"airbyte/internal/sdk/pkg/utils"
 	"context"
 	"fmt"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk/pkg/models/shared"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -204,9 +204,9 @@ func New(opts ...SDKOption) *Airbyte {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.7.0",
-			GenVersion:        "2.181.1",
-			UserAgent:         "speakeasy-sdk/go 0.7.0 2.181.1 1.0.0 airbyte",
+			SDKVersion:        "0.8.0",
+			GenVersion:        "2.183.0",
+			UserAgent:         "speakeasy-sdk/go 0.8.0 2.183.0 1.0.0 airbyte",
 		},
 	}
 	for _, opt := range opts {

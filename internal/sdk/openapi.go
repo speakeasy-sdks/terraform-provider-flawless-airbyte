@@ -3,12 +3,12 @@
 package sdk
 
 import (
-	"airbyte/internal/sdk/pkg/models/operations"
-	"airbyte/internal/sdk/pkg/models/sdkerrors"
-	"airbyte/internal/sdk/pkg/utils"
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk/pkg/models/operations"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk/pkg/models/sdkerrors"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk/pkg/utils"
 	"io"
 	"net/http"
 	"strings"

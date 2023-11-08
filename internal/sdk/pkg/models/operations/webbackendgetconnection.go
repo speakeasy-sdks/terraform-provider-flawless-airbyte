@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"airbyte/internal/sdk/pkg/models/shared"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk/pkg/models/shared"
 	"net/http"
 )
 

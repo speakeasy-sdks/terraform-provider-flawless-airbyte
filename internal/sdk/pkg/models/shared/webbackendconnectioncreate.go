@@ -3,7 +3,7 @@
 package shared
 
 import (
-	"airbyte/internal/sdk/pkg/utils"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk/pkg/utils"
 )
 
 type WebBackendConnectionCreate struct {

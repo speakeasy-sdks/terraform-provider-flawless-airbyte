@@ -12,7 +12,7 @@ import (
 	"time"
 	"unsafe"
 
-	"airbyte/internal/sdk/pkg/types"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk/pkg/types"
 
 	"github.com/ericlagergren/decimal"
 )

@@ -3,9 +3,9 @@
 package provider
 
 import (
-	"airbyte/internal/sdk"
-	"airbyte/internal/sdk/pkg/models/shared"
 	"context"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk/pkg/models/shared"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/provider"

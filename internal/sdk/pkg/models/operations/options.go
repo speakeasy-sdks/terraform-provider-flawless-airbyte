@@ -3,8 +3,8 @@
 package operations
 
 import (
-	"airbyte/internal/sdk/pkg/utils"
 	"errors"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk/pkg/utils"
 )
 
 var ErrUnsupportedOption = errors.New("unsupported option")

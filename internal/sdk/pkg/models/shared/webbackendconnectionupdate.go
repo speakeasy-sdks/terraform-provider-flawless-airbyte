@@ -3,7 +3,7 @@
 package shared
 
 import (
-	"airbyte/internal/sdk/pkg/utils"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk/pkg/utils"
 )
 
 // WebBackendConnectionUpdate - Used to apply a patch-style update to a connection, which means that null properties remain unchanged

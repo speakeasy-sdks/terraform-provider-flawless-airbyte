@@ -7,7 +7,7 @@ import (
 	"flag"
 	"log"
 
-	"airbyte/internal/provider"
+	"github.com/flawless/terraform-provider-airbyte/internal/provider"
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 )
 

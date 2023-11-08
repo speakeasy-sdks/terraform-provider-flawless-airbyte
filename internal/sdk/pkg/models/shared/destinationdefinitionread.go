@@ -3,8 +3,8 @@
 package shared
 
 import (
-	"airbyte/internal/sdk/pkg/types"
-	"airbyte/internal/sdk/pkg/utils"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk/pkg/types"
+	"github.com/flawless/terraform-provider-airbyte/internal/sdk/pkg/utils"
 )
 
 type DestinationDefinitionRead struct {
