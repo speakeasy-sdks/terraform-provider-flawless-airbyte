@@ -1,22 +1,10 @@
-configVersion: 1.0.0
-management:
-  docChecksum: 3ec10d093d755188af465ce486e6e107
-  docVersion: 1.0.0
-  speakeasyVersion: 1.125.1
-  generationVersion: 2.210.3
+configVersion: 2.0.0
 generation:
-  comments: {}
   sdkClassName: airbyte
-  repoURL: https://github.com/speakeasy-sdks/terraform-provider-flawless-airbyte.git
   usageSnippets:
     optionalPropertyRendering: withExample
-features:
-  terraform:
-    constsAndDefaults: 0.1.2
-    core: 3.5.1
-    deprecations: 2.81.1
-    globalSecurity: 2.81.1
-    globalServerURLs: 2.82.1
+  fixes:
+    nameResolutionDec2023: false
 terraform:
   version: 0.10.2
   author: flawless
@@ -31,5 +19,3 @@ terraform:
   inputModelSuffix: input
   outputModelSuffix: output
   packageName: airbyte
-  published: true
-  repoSubDirectory: .
