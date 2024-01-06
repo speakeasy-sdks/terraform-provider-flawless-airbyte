@@ -204,9 +204,9 @@ func New(opts ...SDKOption) *Airbyte {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.10.2",
-			GenVersion:        "2.225.2",
-			UserAgent:         "speakeasy-sdk/go 0.10.2 2.225.2 1.0.0 airbyte",
+			SDKVersion:        "0.11.0",
+			GenVersion:        "2.228.1",
+			UserAgent:         "speakeasy-sdk/go 0.11.0 2.228.1 1.0.0 airbyte",
 		},
 	}
 	for _, opt := range opts {
