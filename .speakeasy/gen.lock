@@ -4,9 +4,9 @@ management:
   docChecksum: 3ec10d093d755188af465ce486e6e107
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.234.3
-  releaseVersion: 0.11.3
-  configChecksum: 728beb64aef411a154d4016b15742d7c
+  generationVersion: 2.237.2
+  releaseVersion: 0.11.4
+  configChecksum: cea9f49b25854f32f5d2cb94757976fd
   repoURL: https://github.com/speakeasy-sdks/terraform-provider-flawless-airbyte.git
   repoSubDirectory: .
   published: true
@@ -15,7 +15,7 @@ features:
     constsAndDefaults: 0.1.2
     core: 3.8.4
     deprecations: 2.81.1
-    globalSecurity: 2.81.2
+    globalSecurity: 2.81.3
     globalServerURLs: 2.82.1
 generatedFiles:
   - internal/sdk/attempt.go
