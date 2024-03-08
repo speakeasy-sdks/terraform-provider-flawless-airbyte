@@ -14,12 +14,12 @@ type DiscoverSchemaForSourceResponse struct {
 	InvalidInputExceptionInfo *shared.InvalidInputExceptionInfo
 	// Object with given id was not found.
 	NotFoundKnownExceptionInfo *shared.NotFoundKnownExceptionInfo
-	// Successful operation
-	SourceDiscoverSchemaRead *shared.SourceDiscoverSchemaRead
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Successful operation
+	SourceDiscoverSchemaRead *shared.SourceDiscoverSchemaRead
 }
 
 func (o *DiscoverSchemaForSourceResponse) GetContentType() string {
@@ -43,13 +43,6 @@ func (o *DiscoverSchemaForSourceResponse) GetNotFoundKnownExceptionInfo() *share
 	return o.NotFoundKnownExceptionInfo
 }
 
-func (o *DiscoverSchemaForSourceResponse) GetSourceDiscoverSchemaRead() *shared.SourceDiscoverSchemaRead {
-	if o == nil {
-		return nil
-	}
-	return o.SourceDiscoverSchemaRead
-}
-
 func (o *DiscoverSchemaForSourceResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -62,4 +55,11 @@ func (o *DiscoverSchemaForSourceResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *DiscoverSchemaForSourceResponse) GetSourceDiscoverSchemaRead() *shared.SourceDiscoverSchemaRead {
+	if o == nil {
+		return nil
+	}
+	return o.SourceDiscoverSchemaRead
 }

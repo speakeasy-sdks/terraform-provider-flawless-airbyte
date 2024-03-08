@@ -14,12 +14,12 @@ type ListSourcesForWorkspaceResponse struct {
 	InvalidInputExceptionInfo *shared.InvalidInputExceptionInfo
 	// Object with given id was not found.
 	NotFoundKnownExceptionInfo *shared.NotFoundKnownExceptionInfo
-	// Successful operation
-	SourceReadList *shared.SourceReadList
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Successful operation
+	SourceReadList *shared.SourceReadList
 }
 
 func (o *ListSourcesForWorkspaceResponse) GetContentType() string {
@@ -43,13 +43,6 @@ func (o *ListSourcesForWorkspaceResponse) GetNotFoundKnownExceptionInfo() *share
 	return o.NotFoundKnownExceptionInfo
 }
 
-func (o *ListSourcesForWorkspaceResponse) GetSourceReadList() *shared.SourceReadList {
-	if o == nil {
-		return nil
-	}
-	return o.SourceReadList
-}
-
 func (o *ListSourcesForWorkspaceResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -62,4 +55,11 @@ func (o *ListSourcesForWorkspaceResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *ListSourcesForWorkspaceResponse) GetSourceReadList() *shared.SourceReadList {
+	if o == nil {
+		return nil
+	}
+	return o.SourceReadList
 }

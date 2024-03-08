@@ -14,12 +14,12 @@ type GetSourceDefinitionResponse struct {
 	InvalidInputExceptionInfo *shared.InvalidInputExceptionInfo
 	// Object with given id was not found.
 	NotFoundKnownExceptionInfo *shared.NotFoundKnownExceptionInfo
-	// Successful operation
-	SourceDefinitionRead *shared.SourceDefinitionRead
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	// Successful operation
+	SourceDefinitionRead *shared.SourceDefinitionRead
 }
 
 func (o *GetSourceDefinitionResponse) GetContentType() string {
@@ -43,13 +43,6 @@ func (o *GetSourceDefinitionResponse) GetNotFoundKnownExceptionInfo() *shared.No
 	return o.NotFoundKnownExceptionInfo
 }
 
-func (o *GetSourceDefinitionResponse) GetSourceDefinitionRead() *shared.SourceDefinitionRead {
-	if o == nil {
-		return nil
-	}
-	return o.SourceDefinitionRead
-}
-
 func (o *GetSourceDefinitionResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -62,4 +55,11 @@ func (o *GetSourceDefinitionResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetSourceDefinitionResponse) GetSourceDefinitionRead() *shared.SourceDefinitionRead {
+	if o == nil {
+		return nil
+	}
+	return o.SourceDefinitionRead
 }
