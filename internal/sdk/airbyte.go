@@ -206,8 +206,8 @@ func New(opts ...SDKOption) *Airbyte {
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
 			SDKVersion:        "0.0.1",
-			GenVersion:        "2.286.4",
-			UserAgent:         "speakeasy-sdk/go 0.0.1 2.286.4 1.0.0 github.com/flawless/terraform-provider-airbyte/internal/sdk",
+			GenVersion:        "2.291.0",
+			UserAgent:         "speakeasy-sdk/go 0.0.1 2.291.0 1.0.0 github.com/flawless/terraform-provider-airbyte/internal/sdk",
 			Hooks:             hooks.New(),
 		},
 	}
